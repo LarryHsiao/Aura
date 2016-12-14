@@ -1,0 +1,6 @@
+coverage:
+	notify:
+		slack:
+			aura_build:
+			    channel: aura_build
+				url: "https://hooks.slack.com/services/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"

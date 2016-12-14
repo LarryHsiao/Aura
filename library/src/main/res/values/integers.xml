@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="animation_long">375</integer>
+    <integer name="animation_small">150</integer>
+    <integer name="animation_delay_for_previous">125</integer>
+    <integer name="animation_enterScreen">225</integer>
+    <integer name="animation_leaveScreen">195</integer>
+</resources>

@@ -1,0 +1,118 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'jacoco'
+apply plugin: 'maven'
+
+def auraVersionCode = (int) (new Date().getTime() / 300000)
+def auraVersionName = '1.0.0-' + String.valueOf(auraVersionCode)
+
+jacoco {
+    toolVersion = "0.7.9"
+}
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode auraVersionCode
+        versionName auraVersionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+            all {
+                jacoco {
+                    includeNoLocationClasses = true
+                }
+            }
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven{url = "http://172.104.79.181:81/repository/Elizabeth/"}
+}
+
+dependencies {
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2')
+    implementation 'com.android.support:support-fragment:27.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.0'
+    implementation 'com.android.support:design:27.1.0'
+    implementation 'com.android.support:recyclerview-v7:27.1.0'
+    implementation 'com.google.code.gson:gson:2.8.4'
+    testImplementation 'junit:junit:4.12'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+
+
+project.afterEvaluate {
+    android.libraryVariants.all { variant ->
+        def name = variant.name
+        def testTaskName = "test${name.capitalize()}UnitTest"
+        tasks.create(name: "${testTaskName}Coverage", type: JacocoReport, dependsOn: "$testTaskName") {
+            group = "Reporting"
+            description = "Generate Jacoco coverage reports for the ${name.capitalize()} build."
+            classDirectories = fileTree(
+                    dir: "${project.buildDir}/intermediates/classes/${name}",
+                    includes: ['**/com/silverhetch/util/**'],
+                    excludes: ['**/R.class',
+                               '**/R$*.class',
+                               '**/*$ViewInjector*.*',
+                               '**/*$ViewBinder*.*',
+                               '**/BuildConfig.*',
+                               '**/Manifest*.*']
+            )
+            sourceDirectories = files(['src/main/java'].plus(android.sourceSets[name].java.srcDirs))
+            executionData = files("${project.buildDir}/jacoco/${testTaskName}.exec")
+            reports {
+                xml.enabled = true
+                html.enabled = true
+            }
+        }
+    }
+}
+
+
+apply plugin: 'com.jfrog.bintray'
+bintray {
+    user = 'larryhsiao'
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['release']
+    publish = true
+    override = true
+    pkg {
+        repo = 'Elizabeth'
+        name = 'Aura'
+        userOrg = 'larryhsiao'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/LarryHsiao/Aura.git'
+        version {
+            name = auraVersionName
+        }
+    }
+}
+
+apply plugin: 'digital.wup.android-maven-publish'
+publishing {
+    publications {
+        release(MavenPublication) {
+            from components.android
+            groupId 'com.silverhetch'
+            artifactId 'aura'
+            version auraVersionName
+        }
+    }
+}
