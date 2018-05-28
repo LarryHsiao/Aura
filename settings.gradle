@@ -1,1 +1,1 @@
-include ':library', ':aurademo'
+include ':library'

@@ -1,3 +1,5 @@
+fixes:
+- "library/build/reports/jacoco/testDebugUnitTestCoverage/html/**"
 coverage:
 	notify:
 		slack:
