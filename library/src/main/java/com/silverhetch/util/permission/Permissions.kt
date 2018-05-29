@@ -37,15 +37,8 @@ class Permissions(private val activity: Activity, private val permissionCallback
         ActivityCompat.requestPermissions(activity, permissions, REQUEST_CODE)
     }
 
-    private fun checkRationaleRequired(): Boolean {
-        permissionsRequireRationale().let { permissions ->
-            return if (permissions.isNotEmpty()) {
-                permissionCallback.showPermissionRationale(permissions)
-                true
-            } else {
-                false
-            }
-        }
+    private fun isRationaleRequired(): Boolean {
+        return permissionsRequireRationale().isNotEmpty()
     }
 
     private fun permissionsRequireRationale(): Array<String> {
@@ -70,7 +63,9 @@ class Permissions(private val activity: Activity, private val permissionCallback
                 }
             }
             if (permission.size > 0) {
-                if (!checkRationaleRequired()) {
+                if (isRationaleRequired()) {
+                    permissionCallback.showPermissionRationale(permission.toTypedArray())
+                } else {
                     permissionCallback.onPermissionPermanentlyDecline(permission.toTypedArray())
                 }
             } else {
