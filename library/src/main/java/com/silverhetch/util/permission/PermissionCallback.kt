@@ -3,7 +3,7 @@ package com.silverhetch.util.permission
 /**
  * Callback for permission checking
  */
-interface Callback {
+interface PermissionCallback {
     /**
      * Permission granted.
      */

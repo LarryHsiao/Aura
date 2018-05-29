@@ -11,7 +11,7 @@ import android.support.v4.content.ContextCompat.checkSelfPermission
 /**
  * Utility class for checking permission
  */
-class Permissions(private val activity: Activity, private val callback: Callback, private val permissions: Array<String>) {
+class Permissions(private val activity: Activity, private val permissionCallback: PermissionCallback, private val permissions: Array<String>) {
     companion object {
         private const val REQUEST_CODE = 2134
     }
@@ -40,7 +40,7 @@ class Permissions(private val activity: Activity, private val callback: Callback
     private fun checkRationaleRequired(): Boolean {
         permissionsRequireRationale().let { permissions ->
             return if (permissions.isNotEmpty()) {
-                callback.rationaleRequired(permissions)
+                permissionCallback.rationaleRequired(permissions)
                 true
             } else {
                 false
@@ -71,12 +71,12 @@ class Permissions(private val activity: Activity, private val callback: Callback
             }
             if (noPermission.size > 0) {
                 if (checkRationaleRequired()) {
-                    callback.onPermissionDecline(noPermission.toTypedArray())
+                    permissionCallback.onPermissionDecline(noPermission.toTypedArray())
                 } else {
-                    callback.onPermissionPermanentlyDecline(noPermission.toTypedArray())
+                    permissionCallback.onPermissionPermanentlyDecline(noPermission.toTypedArray())
                 }
             } else {
-                callback.onPermissionGranted()
+                permissionCallback.onPermissionGranted()
             }
         }
     }

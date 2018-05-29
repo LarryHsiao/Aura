@@ -1,7 +1,6 @@
 package com.silverhetch.aurademo
 
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -12,11 +11,10 @@ import android.view.ViewGroup.LayoutParams
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.*
 import com.silverhetch.util.permission.Permissions
-import android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+import com.silverhetch.util.permission.PermissionCallback
 
 
-
-class MainActivity : AppCompatActivity(), Permissions.Callback {
+class MainActivity : AppCompatActivity(), PermissionCallback {
     private val permissions = Permissions(this, this, arrayOf(
             WRITE_EXTERNAL_STORAGE
     ))
