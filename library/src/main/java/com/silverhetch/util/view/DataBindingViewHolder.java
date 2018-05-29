@@ -20,4 +20,7 @@ public class DataBindingViewHolder extends RecyclerView.ViewHolder {
         return (T) viewDataBinding;
     }
 
+    public View rootView() {
+        return itemView;
+    }
 }
