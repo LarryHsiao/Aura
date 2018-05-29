@@ -70,9 +70,7 @@ class Permissions(private val activity: Activity, private val permissionCallback
                 }
             }
             if (permission.size > 0) {
-                if (checkRationaleRequired()) {
-                    permissionCallback.showPermissionRationale(permission.toTypedArray())
-                }else{
+                if (!checkRationaleRequired()) {
                     permissionCallback.onPermissionPermanentlyDecline(permission.toTypedArray())
                 }
             } else {
