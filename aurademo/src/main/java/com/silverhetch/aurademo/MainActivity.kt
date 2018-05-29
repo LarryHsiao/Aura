@@ -53,11 +53,7 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
         Toast.makeText(this, "Granted", Toast.LENGTH_LONG).show()
     }
 
-    override fun onPermissionDecline(permission: Array<String>) {
-        Toast.makeText(this, "Decline", Toast.LENGTH_LONG).show()
-    }
-
-    override fun rationaleRequired(permission: Array<String>) {
+    override fun showPermissionRationale(permission: Array<String>) {
         AlertDialog.Builder(this)
                 .setMessage("Permission required!")
                 .setPositiveButton("OK") { dialog, which ->

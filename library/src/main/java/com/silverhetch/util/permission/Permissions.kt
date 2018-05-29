@@ -40,7 +40,7 @@ class Permissions(private val activity: Activity, private val permissionCallback
     private fun checkRationaleRequired(): Boolean {
         permissionsRequireRationale().let { permissions ->
             return if (permissions.isNotEmpty()) {
-                permissionCallback.rationaleRequired(permissions)
+                permissionCallback.showPermissionRationale(permissions)
                 true
             } else {
                 false
@@ -63,17 +63,17 @@ class Permissions(private val activity: Activity, private val permissionCallback
      */
     fun handleResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if (requestCode == REQUEST_CODE) {
-            val noPermission = ArrayList<String>()
+            val permission = ArrayList<String>()
             for (index in permissions.indices) {
                 if (grantResults[index] != PERMISSION_GRANTED) {
-                    noPermission.add(permissions[index])
+                    permission.add(permissions[index])
                 }
             }
-            if (noPermission.size > 0) {
+            if (permission.size > 0) {
                 if (checkRationaleRequired()) {
-                    permissionCallback.onPermissionDecline(noPermission.toTypedArray())
-                } else {
-                    permissionCallback.onPermissionPermanentlyDecline(noPermission.toTypedArray())
+                    permissionCallback.showPermissionRationale(permission.toTypedArray())
+                }else{
+                    permissionCallback.onPermissionPermanentlyDecline(permission.toTypedArray())
                 }
             } else {
                 permissionCallback.onPermissionGranted()

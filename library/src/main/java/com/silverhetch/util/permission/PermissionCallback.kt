@@ -10,16 +10,9 @@ interface PermissionCallback {
     fun onPermissionGranted()
 
     /**
-     * Permissino decline
-     *
-     * @param permission Permissions declined.
+     * Promotion require which user had decline the previous promotion.
      */
-    fun onPermissionDecline(permission: Array<String>)
-
-    /**
-     * Promotion require.
-     */
-    fun rationaleRequired(permission: Array<String>)
+    fun showPermissionRationale(permission: Array<String>)
 
     /**
      * The permission is permanently decline by checking the "Never ask again".
