@@ -24,6 +24,7 @@ allprojects {
         maven{
             url 'https://maven.google.com'
         }
+        maven { url = 'http://172.104.79.181:81/repository/Elizabeth/'}
     }
 }
 
