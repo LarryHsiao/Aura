@@ -6,7 +6,7 @@ import com.silverhetch.clotho.log.Log
 /**
  * Created by mikes on 4/24/2018.
  */
-internal class AndroidLog : Log {
+class AndroidLog : Log {
     override fun info(message: String) {
         android.util.Log.i("General", message)
     }

@@ -5,7 +5,7 @@ import com.silverhetch.clotho.log.Log
 /**
  * Created by mikes on 4/24/2018.
  */
-internal class MultiLog(private vararg val logs: Log) : Log {
+class MultiLog(private vararg val logs: Log) : Log {
 
     override fun debug(message: String) {
         try {

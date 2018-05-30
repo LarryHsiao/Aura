@@ -5,7 +5,7 @@ import com.silverhetch.clotho.log.Log
 /**
  * Created by mikes on 4/24/2018.
  */
-internal class EmptyLog : Log {
+class EmptyLog : Log {
     override fun info(message: String) {
         // just leave it empty
     }

@@ -13,7 +13,7 @@ import android.os.Environment.getExternalStorageDirectory
 /**
  * Created by mikes on 4/24/2018.
  */
-internal class FileLog : Log {
+class FileLog : Log {
     override fun debug(s: String) {
         save(s)
     }
@@ -36,7 +36,7 @@ internal class FileLog : Log {
                     BufferedWriter(
                             FileWriter(
                                     File(getExternalStorageDirectory(), "General.log"), true)))
-            writer.println(LogString(message).value())
+            writer.println(LogString(message).fetch())
             writer.close()
         } catch (ex: IOException) {
             android.util.Log.e("FileLog", "STORING LOG Error cause $ex")
