@@ -7,7 +7,7 @@ import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import com.silverhetch.util.phantom.ColorFragment
+import com.silverhetch.aura.phantom.ColorFragment
 
 /**
  * Created by mikes on 4/2/2018.

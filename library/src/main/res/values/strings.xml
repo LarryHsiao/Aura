@@ -1,8 +1,12 @@
 <resources>
     <!-- Application -->
-    <string name="app_name">Android Util</string>
+    <string name="app_name">Aura</string>
     <string name="app_drawerOpen">Drawer open</string>
     <string name="app_drawerClose">Drawer close</string>
+    <string name="app_confirm">Confirm</string>
+    <string name="app_cancel">Cancel</string>
+    <string name="app_approved">Approved</string>
+    <string name="app_decline">Decline</string>
 
     <!-- Application error -->
     <string name="appError_unknown">Oops! Something bad happened. Make sure the operation result is correct.</string>

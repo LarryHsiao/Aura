@@ -10,8 +10,8 @@ import android.support.v7.app.AppCompatActivity
 import android.view.ViewGroup.LayoutParams
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.*
-import com.silverhetch.util.permission.Permissions
-import com.silverhetch.util.permission.PermissionCallback
+import com.silverhetch.aura.permission.Permissions
+import com.silverhetch.aura.permission.PermissionCallback
 
 
 class MainActivity : AppCompatActivity(), PermissionCallback {
