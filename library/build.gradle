@@ -104,6 +104,7 @@ bintray {
             name = auraVersionName
             gpg{
                 sign = true
+                passphrase = System.getenv('BINTRAY_PASSPHRASE')
             }
         }
     }
