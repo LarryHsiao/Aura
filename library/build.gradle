@@ -102,6 +102,9 @@ bintray {
         vcsUrl = 'https://github.com/LarryHsiao/Aura.git'
         version {
             name = auraVersionName
+            gpg{
+                sign = true
+            }
         }
     }
 }
