@@ -1,20 +1,32 @@
 package com.silverhetch.aura.permission
 
 import android.app.Activity
-import android.support.v4.app.ActivityCompat
-
-import java.util.ArrayList
-
 import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat.checkSelfPermission
+import java.util.*
 
 /**
  * Utility class for checking permission
  */
-class Permissions(private val activity: Activity, private val permissionCallback: PermissionCallback, private val permissions: Array<String>) {
+class Permissions {
     companion object {
         private const val REQUEST_CODE = 2134
     }
+
+    private val permission: PermissionAPI
+    private val permissionCallback: PermissionCallback
+    private val permissions: Array<String>;
+
+    constructor(activity: Activity, permissionCallback: PermissionCallback, permissions: Array<String>) : this(ActivityPermission(activity), permissionCallback, permissions)
+    constructor(fragment: Fragment, permissionCallback: PermissionCallback, permissions: Array<String>) : this(FragmentPermission(fragment), permissionCallback, permissions)
+
+    internal constructor(permission: PermissionAPI, permissionCallback: PermissionCallback, permissions: Array<String>) {
+        this.permission = permission
+        this.permissionCallback = permissionCallback
+        this.permissions = permissions
+    }
+
 
     /**
      * Check permission for given permissions.
@@ -23,7 +35,7 @@ class Permissions(private val activity: Activity, private val permissionCallback
      */
     fun isPermissionGranted(): Boolean {
         for (permission in permissions) {
-            if (checkSelfPermission(activity, permission) != PERMISSION_GRANTED) {
+            if (checkSelfPermission(this.permission.context(), permission) != PERMISSION_GRANTED) {
                 return false
             }
         }
@@ -34,7 +46,7 @@ class Permissions(private val activity: Activity, private val permissionCallback
      * Request the permission for app.
      */
     fun requestPermissions() {
-        ActivityCompat.requestPermissions(activity, permissions, REQUEST_CODE)
+        permission.requestPermissions(permissions, REQUEST_CODE)
     }
 
     private fun isRationaleRequired(): Boolean {
@@ -44,7 +56,7 @@ class Permissions(private val activity: Activity, private val permissionCallback
     private fun permissionsRequireRationale(): Array<String> {
         val rationalNeeded = ArrayList<String>()
         for (permission in permissions) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
+            if (this.permission.shouldShowRequestPermissionRationale(permission)) {
                 rationalNeeded.add(permission)
             }
         }
