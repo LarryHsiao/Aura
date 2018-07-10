@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Aura.iml" filepath="$PROJECT_DIR$/Aura.iml" />
       <module fileurl="file://$PROJECT_DIR$/aura.iml" filepath="$PROJECT_DIR$/aura.iml" />
       <module fileurl="file://$PROJECT_DIR$/aurademo/aurademo.iml" filepath="$PROJECT_DIR$/aurademo/aurademo.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
