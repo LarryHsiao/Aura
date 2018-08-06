@@ -38,10 +38,7 @@ public class FabControlImpl implements FabControl {
             throw new RuntimeException("fab not matched when detaching");
         }
         this.fabBehavior = null;
-        fabView.animate()
-                .scaleX(0).scaleY(0)
-                .setDuration(fabView.getContext().getResources().getInteger(R.integer.animation_small))
-                .start();
+        fabView.hide();
         fabView.setOnClickListener(null);
         fabView.setImageDrawable(null);
     }
@@ -56,10 +53,7 @@ public class FabControlImpl implements FabControl {
     }
 
     private void showFab(final FabBehavior fabBehavior) {
-        fabView.animate()
-                .scaleX(1.0f).scaleY(1.0f)
-                .setDuration(fabView.getContext().getResources().getInteger(R.integer.animation_small))
-                .start();
+        fabView.show();
         fabView.setImageResource(fabBehavior.icon());
         fabView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -12,6 +12,7 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.*
 import com.silverhetch.aura.permission.Permissions
 import com.silverhetch.aura.permission.PermissionCallback
+import com.silverhetch.aurademo.fabcontrol.FabControlDemoActivity
 
 
 class MainActivity : AppCompatActivity(), PermissionCallback {
@@ -30,15 +31,19 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 android.R.layout.simple_list_item_1,
                 arrayOf(
                         "Color fragment",
-                        "Request permissions"
+                        "Request permissions",
+                        "FabControl Demo"
                 ))
-        listview.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+        listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
                 0 -> {
                     startActivity(Intent(this, ColorFragmentDemoActivity::class.java))
                 }
                 1 -> {
                     permissions.requestPermissions()
+                }
+                2 -> {
+                    startActivity(Intent(this, FabControlDemoActivity::class.java))
                 }
             }
         }
@@ -56,11 +61,10 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
     override fun showPermissionRationale(permission: Array<String>) {
         AlertDialog.Builder(this)
                 .setMessage("Permission required!")
-                .setPositiveButton("OK") { dialog, which ->
+                .setPositiveButton("OK") { _, _ ->
                     permissions.requestPermissions()
-                }.setNegativeButton("Cancel", { dialog, which ->
-
-                }).create().show()
+                }.setNegativeButton("Cancel") { _, _ ->
+                }.create().show()
     }
 
     override fun onPermissionPermanentlyDecline(permission: Array<String>) {
