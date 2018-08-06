@@ -1,14 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'jacoco'
 apply plugin: 'maven'
 
 def auraVersionCode = (int) (new Date().getTime() / 300000)
 def auraVersionName = '1.0.0-' + String.valueOf(auraVersionCode)
-
-jacoco {
-    toolVersion = "0.7.9"
-}
 
 android {
     compileSdkVersion 27
@@ -59,16 +54,32 @@ dependencies {
 }
 
 
+apply plugin: 'jacoco'
+jacoco {
+    toolVersion = "0.7.9"
+}
+
 project.afterEvaluate {
     android.libraryVariants.all { variant ->
         def name = variant.name
         def testTaskName = "test${name.capitalize()}UnitTest"
+
         tasks.create(name: "${testTaskName}Coverage", type: JacocoReport, dependsOn: "$testTaskName") {
             group = "Reporting"
             description = "Generate Jacoco coverage reports for the ${name.capitalize()} build."
+
             classDirectories = fileTree(
-                    dir: "${project.buildDir}/intermediates/classes/${name}",
-                    includes: ['**/com/silverhetch/util/**'],
+                    dir: "${project.buildDir}/intermediates/javac/$name/",
+                    includes: ['**/com/silverhetch/aura/**'],
+                    excludes: ['**/R.class',
+                               '**/R$*.class',
+                               '**/*$ViewInjector*.*',
+                               '**/*$ViewBinder*.*',
+                               '**/BuildConfig.*',
+                               '**/Manifest*.*']
+            )+fileTree(
+                    dir: "${project.buildDir}/tmp/kotlin-classes/$name",
+                    includes: ['**/com/silverhetch/aura/**'],
                     excludes: ['**/R.class',
                                '**/R$*.class',
                                '**/*$ViewInjector*.*',
@@ -76,8 +87,10 @@ project.afterEvaluate {
                                '**/BuildConfig.*',
                                '**/Manifest*.*']
             )
-            sourceDirectories = files(['src/main/java'] + android.sourceSets[name].java.srcDirs)
+
+            sourceDirectories = files(["${project.projectDir}/src/main/java","${project.projectDir}/src/${variant.flavorName}/java"].plus(android.sourceSets[name].java.srcDirs))
             executionData = files("${project.buildDir}/jacoco/${testTaskName}.exec")
+
             reports {
                 xml.enabled = true
                 html.enabled = true
