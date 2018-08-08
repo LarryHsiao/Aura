@@ -13,6 +13,8 @@ import android.webkit.PermissionRequest
 import android.widget.*
 import com.silverhetch.aura.permission.PermissionsImpl
 import com.silverhetch.aura.permission.PermissionCallback
+import com.silverhetch.aura.view.images.pager.PagerImageActivity
+import com.silverhetch.aura.view.images.pager.PagerImageAdapter
 import com.silverhetch.aurademo.fabcontrol.FabControlDemoActivity
 
 
@@ -35,7 +37,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                         "Request permissions",
                         "FabControl Demo",
                         "AuraActivity: Permission request",
-                        "AuraFragment: Permission request"
+                        "AuraFragment: Permission request",
+                        "Remote image pager"
                 ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -53,6 +56,17 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 }
                 4 -> {
                     startActivity(Intent(this, AuraFragmentPermissionActivity::class.java))
+                }
+                5 -> {
+                    startActivity(PagerImageActivity.newIntent(this, arrayListOf(
+                            "https://dummyimage.com/600x400/000/fff",
+                            "https://dummyimage.com/600x400/fff/000",
+                            "https://dummyimage.com/600x400/000/fff",
+                            "https://dummyimage.com/600x400/fff/000",
+                            "https://dummyimage.com/600x400/000/fff",
+                            "https://dummyimage.com/600x400/fff/000",
+                            "https://dummyimage.com/600x400/000/fff"
+                    )))
                 }
             }
         }

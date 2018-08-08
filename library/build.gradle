@@ -43,6 +43,11 @@ repositories {
 
 dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2')
+    implementation('com.squareup.picasso:picasso:2.71828') {
+        // find compatible one to remove exclude
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'exifinterface'
+    }
     implementation 'com.android.support:support-fragment:27.1.1'
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'

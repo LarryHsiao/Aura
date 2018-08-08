@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="id" name="colorFramgent_viewPager"/>
+    <item name="colorFramgent_viewPager" type="id" />
+    <item name="temp001" type="id" />
 </resources>
