@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'maven'
 
 def auraVersionCode = (int) (new Date().getTime() / 300000)
-def auraVersionName = '1.0.0-' + String.valueOf(auraVersionCode)
+def auraVersionName = '1.0.' + String.valueOf(auraVersionCode)
 
 android {
     compileSdkVersion 27
