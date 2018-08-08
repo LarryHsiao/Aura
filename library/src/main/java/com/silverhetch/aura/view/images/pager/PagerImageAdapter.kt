@@ -1,7 +1,6 @@
 package com.silverhetch.aura.view.images.pager
 
-import android.support.v4.view.PagerAdapter
-import android.util.Log
+import androidx.viewpager.widget.PagerAdapter
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT

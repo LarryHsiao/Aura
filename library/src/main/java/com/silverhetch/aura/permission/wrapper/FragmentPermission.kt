@@ -1,7 +1,7 @@
 package com.silverhetch.aura.permission.wrapper
 
 import android.content.Context
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 
 /**
  * Wrapper for Fragment

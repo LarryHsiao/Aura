@@ -5,16 +5,14 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import android.view.ViewGroup.LayoutParams
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import android.webkit.PermissionRequest
 import android.widget.*
 import com.silverhetch.aura.permission.PermissionsImpl
 import com.silverhetch.aura.permission.PermissionCallback
 import com.silverhetch.aura.view.images.pager.PagerImageActivity
-import com.silverhetch.aura.view.images.pager.PagerImageAdapter
 import com.silverhetch.aurademo.fabcontrol.FabControlDemoActivity
 
 

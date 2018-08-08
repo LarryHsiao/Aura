@@ -2,8 +2,8 @@ package com.silverhetch.aura.permission
 
 import android.app.Activity
 import android.content.pm.PackageManager.PERMISSION_GRANTED
-import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat.checkSelfPermission
+import androidx.fragment.app.Fragment
+import androidx.core.content.ContextCompat.checkSelfPermission
 import com.silverhetch.aura.permission.wrapper.ActivityPermission
 import com.silverhetch.aura.permission.wrapper.FragmentPermission
 import com.silverhetch.aura.permission.wrapper.PermissionAPI

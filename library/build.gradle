@@ -6,16 +6,15 @@ def auraVersionCode = (int) (new Date().getTime() / 300000)
 def auraVersionName = '1.0.' + String.valueOf(auraVersionCode)
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion 28
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode auraVersionCode
         versionName auraVersionName
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
     buildTypes {
@@ -42,16 +41,16 @@ repositories {
 }
 
 dependencies {
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2')
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-alpha3')
     implementation('com.squareup.picasso:picasso:2.71828') {
         // find compatible one to remove exclude
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.android.support', module: 'exifinterface'
     }
-    implementation 'com.android.support:support-fragment:27.1.1'
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:design:27.1.1'
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'androidx.fragment:fragment:1.0.0-beta01'
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+    implementation 'com.google.android.material:material:1.0.0-beta01'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0-beta01'
     implementation 'com.silverhetch:clotho:1.0.0-5103953'
     implementation 'com.google.code.gson:gson:2.8.4'
     testImplementation 'junit:junit:4.12'

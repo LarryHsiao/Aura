@@ -2,17 +2,17 @@ package com.silverhetch.aura.view.navigation;
 
 import android.app.Activity;
 import android.content.res.Configuration;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 
 
 import com.silverhetch.aura.R;
 
-import static android.support.v4.view.GravityCompat.START;
-import static android.support.v4.widget.DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
-import static android.support.v4.widget.DrawerLayout.LOCK_MODE_UNLOCKED;
+import static androidx.core.view.GravityCompat.START;
+import static androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
+import static androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_UNLOCKED;
 
 /**
  * Created by Larry Hsiao on 2017/6/25.
