@@ -7,6 +7,7 @@
     <string name="app_cancel">Cancel</string>
     <string name="app_approved">Approved</string>
     <string name="app_decline">Decline</string>
+    <string name="permission_pleaseAllowPermission">Please allow permissions.</string>
 
     <!-- Application error -->
     <string name="appError_unknown">Oops! Something bad happened. Make sure the operation result is correct.</string>

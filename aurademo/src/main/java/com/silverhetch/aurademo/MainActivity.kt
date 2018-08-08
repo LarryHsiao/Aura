@@ -9,14 +9,15 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.ViewGroup.LayoutParams
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.webkit.PermissionRequest
 import android.widget.*
-import com.silverhetch.aura.permission.Permissions
+import com.silverhetch.aura.permission.PermissionsImpl
 import com.silverhetch.aura.permission.PermissionCallback
 import com.silverhetch.aurademo.fabcontrol.FabControlDemoActivity
 
 
 class MainActivity : AppCompatActivity(), PermissionCallback {
-    private val permissions = Permissions(this, this, arrayOf(
+    private val permissions = PermissionsImpl(this, this, arrayOf(
             WRITE_EXTERNAL_STORAGE
     ))
 
@@ -32,7 +33,9 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 arrayOf(
                         "Color fragment",
                         "Request permissions",
-                        "FabControl Demo"
+                        "FabControl Demo",
+                        "AuraActivity: Permission request",
+                        "AuraFragment: Permission request"
                 ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -44,6 +47,12 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 }
                 2 -> {
                     startActivity(Intent(this, FabControlDemoActivity::class.java))
+                }
+                3 -> {
+                    startActivity(Intent(this, PermissionRequestAuraActivity::class.java))
+                }
+                4 -> {
+                    startActivity(Intent(this, AuraFragmentPermissionActivity::class.java))
                 }
             }
         }

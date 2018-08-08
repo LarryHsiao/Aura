@@ -1,9 +1,12 @@
-package com.silverhetch.aura.permission
+package com.silverhetch.aura.permission.wrapper
 
 import android.app.Activity
 import android.content.Context
 import android.support.v4.app.ActivityCompat
 
+/**
+ * Wrapper for Activity
+ */
 internal class ActivityPermission(private val activity: Activity) : PermissionAPI {
     override fun context(): Context {
         return activity

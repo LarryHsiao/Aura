@@ -1,8 +1,11 @@
-package com.silverhetch.aura.permission
+package com.silverhetch.aura.permission.wrapper
 
 import android.content.Context
 import android.support.v4.app.Fragment
 
+/**
+ * Wrapper for Fragment
+ */
 internal class FragmentPermission(private val fragment: Fragment) : PermissionAPI {
     override fun context(): Context {
         return fragment.context!!

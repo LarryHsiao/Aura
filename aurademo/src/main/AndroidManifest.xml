@@ -21,6 +21,8 @@
 
         <activity android:name=".ColorFragmentDemoActivity" />
         <activity android:name=".fabcontrol.FabControlDemoActivity" />
+        <activity android:name=".PermissionRequestAuraActivity" />
+        <activity android:name=".AuraFragmentPermissionActivity" />
     </application>
 
 </manifest>
