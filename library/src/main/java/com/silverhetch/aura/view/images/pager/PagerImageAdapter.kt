@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.ImageView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.squareup.picasso.Picasso
 
 /**
@@ -22,7 +23,9 @@ class PagerImageAdapter(private val uris: ArrayList<String>) : PagerAdapter() {
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val image = ImageView(container.context)
         image.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
-        Picasso.get().load(uris[position]).into(image)
+        val placeHolder = CircularProgressDrawable(container.context)
+        placeHolder.setStyle(CircularProgressDrawable.DEFAULT)
+        Picasso.get().load(uris[position]).placeholder(placeHolder).into(image)
         container.addView(image)
         return image
     }
