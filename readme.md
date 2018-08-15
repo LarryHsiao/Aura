@@ -25,7 +25,8 @@ Currently this library has no implementation plans, just develop what I need in 
 Application Module [aurademo][1] have some implementation with Aura for development purpose, which you can fire it up to see the result with this library.
 
 ### Permission granting <a name="permission-granting"/>
-TODO 
+
+
 
 
 

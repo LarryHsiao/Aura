@@ -51,7 +51,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.0-rc01'
     implementation 'com.google.android.material:material:1.0.0-rc01'
     implementation 'androidx.recyclerview:recyclerview:1.0.0-rc01'
-    implementation 'com.silverhetch:clotho:1.0.0-5105197'
+    implementation 'com.silverhetch:clotho:1.0.5114329'
     implementation 'com.google.code.gson:gson:2.8.5'
     testImplementation 'junit:junit:4.12'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -62,7 +62,20 @@ apply plugin: 'jacoco'
 jacoco {
     toolVersion = "0.7.9"
 }
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
 
+task javadoc(type:Javadoc){
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    from javadoc.destinationDir
+    classifier = 'javadoc'
+}
 project.afterEvaluate {
     android.libraryVariants.all { variant ->
         def name = variant.name
@@ -132,6 +145,8 @@ publishing {
     publications {
         release(MavenPublication) {
             from components.android
+            artifact sourcesJar
+            artifact javadocJar
             groupId 'com.silverhetch'
             artifactId 'aura'
             version auraVersionName
