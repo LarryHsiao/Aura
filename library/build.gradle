@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'maven'
+apply plugin: 'org.sonarqube'
 
 def auraVersionCode = (int) (new Date().getTime() / 300000)
 def auraVersionName = '1.0.' + String.valueOf(auraVersionCode)
