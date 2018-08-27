@@ -165,8 +165,7 @@ sonarqube {
         property 'sonar.sources', 'src/main/java'
         property "sonar.tests", "src/test/java"
 
-
-        property "sonar.java.binaries", "build/tmp/kotlin-classes/debug"
+//        property "sonar.java.binaries", "build/tmp/kotlin-classes/debug"
 
         property "sonar.java.coveragePlugin", "jacoco"
         property "sonar.android.lint.report", "build/reports/lint-results.xml"
