@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'maven'
-apply plugin: 'org.sonarqube'
 
 def auraVersionCode = (int) (new Date().getTime() / 300000)
 def auraVersionName = '1.0.' + String.valueOf(auraVersionCode)
@@ -152,5 +151,26 @@ publishing {
             artifactId 'aura'
             version auraVersionName
         }
+    }
+}
+
+apply plugin: 'org.sonarqube'
+sonarqube {
+    properties {
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.organization", "larryhsiao-github"
+        property "sonar.projectName", "Aura"
+        property "sonar.projectVersion", "${auraVersionName}"
+
+        property 'sonar.sources', 'src/main/java'
+        property "sonar.tests", "src/test/java"
+
+
+        property "sonar.java.binaries", "build/tmp/kotlin-classes/debug"
+
+        property "sonar.java.coveragePlugin", "jacoco"
+        property "sonar.android.lint.report", "build/reports/lint-results.xml"
+        property "sonar.jacoco.reportPaths","build/jacoco/testDebugUnitTest.exec"
+        property "sonar.junit.reportPahts","build/test-results/testDebugUnitTest"
     }
 }
