@@ -157,8 +157,6 @@ publishing {
 apply plugin: 'org.sonarqube'
 sonarqube {
     properties {
-        property "sonar.host.url", "https://sonarcloud.io"
-        property "sonar.organization", "larryhsiao-github"
         property "sonar.projectName", "Aura"
         property "sonar.projectVersion", "${auraVersionName}"
 
