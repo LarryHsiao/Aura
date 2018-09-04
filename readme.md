@@ -1,7 +1,7 @@
 Aura
 ----
 
-Utilities for Android for projects.
+Utilities for Android projects.
 
 Utilities for pure Java/Kotlin [Clotho][2]
 
