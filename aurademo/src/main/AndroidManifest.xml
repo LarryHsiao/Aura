@@ -23,6 +23,7 @@
         <activity android:name=".fabcontrol.FabControlDemoActivity" />
         <activity android:name=".PermissionRequestAuraActivity" />
         <activity android:name=".AuraFragmentPermissionActivity" />
+        <activity android:name=".LogDemoActivity"/>
     </application>
 
 </manifest>
