@@ -43,18 +43,18 @@ repositories {
 
 dependencies {
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-alpha3')
-    provided('com.squareup.picasso:picasso:2.71828') {
+    implementation('com.squareup.picasso:picasso:2.71828') {
         // find compatible one to remove exclude
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.android.support', module: 'exifinterface'
     }
-    provided 'androidx.fragment:fragment:1.0.0'
-    provided 'androidx.appcompat:appcompat:1.0.0'
-    provided 'com.google.android.material:material:1.0.0'
-    provided 'androidx.recyclerview:recyclerview:1.0.0'
-    provided 'com.silverhetch:clotho:1.0.5123583'
-    provided 'com.google.code.gson:gson:2.8.5'
-    provided "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.fragment:fragment:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'com.silverhetch:clotho:1.0.5123583'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.12'
 }
 
