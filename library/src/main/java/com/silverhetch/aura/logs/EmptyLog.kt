@@ -11,11 +11,11 @@ class EmptyLog : Log {
     }
 
     override fun debug(s: String) {
-
+        // just leave it empty
     }
 
     override fun warning(s: String) {
-
+        // just leave it empty
     }
 
     override fun error(s: String) {

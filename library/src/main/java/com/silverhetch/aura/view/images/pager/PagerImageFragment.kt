@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import com.silverhetch.aura.AuraFragment
 
+/**
+ * Fragment that shows image with given uri.
+ */
 class PagerImageFragment : AuraFragment() {
     companion object {
         private const val URI_IMAGE = "URI_IMAGE"
