@@ -18,7 +18,7 @@ import android.os.Build.VERSION_CODES.LOLLIPOP
 import android.view.Gravity
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 
-internal class LogView : LinearLayout, Observer {
+class LogView : LinearLayout, Observer {
     private lateinit var textView: TextView
 
     constructor(context: Context) : super(context) {
