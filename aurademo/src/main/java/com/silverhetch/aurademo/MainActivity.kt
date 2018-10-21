@@ -5,20 +5,23 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import android.view.ViewGroup.LayoutParams
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import android.widget.*
-import com.silverhetch.aura.permission.PermissionsImpl
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.silverhetch.aura.permission.PermissionCallback
+import com.silverhetch.aura.permission.PermissionsImpl
 import com.silverhetch.aura.view.images.pager.PagerImageActivity
 import com.silverhetch.aurademo.fabcontrol.FabControlDemoActivity
 
 
 class MainActivity : AppCompatActivity(), PermissionCallback {
     private val permissions = PermissionsImpl(this, this, arrayOf(
-        WRITE_EXTERNAL_STORAGE
+            WRITE_EXTERNAL_STORAGE
     ))
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,17 +31,18 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
         setContentView(listview)
 
         listview.adapter = ArrayAdapter<String>(
-            this,
-            android.R.layout.simple_list_item_1,
-            arrayOf(
-                "Color fragment",
-                "Request permissions",
-                "FabControl Demo",
-                "AuraActivity: Permission request",
-                "AuraFragment: Permission request",
-                "Remote image pager",
-                "Log View demo"
-            ))
+                this,
+                android.R.layout.simple_list_item_1,
+                arrayOf(
+                        "Color fragment",
+                        "Request permissions",
+                        "FabControl Demo",
+                        "AuraActivity: Permission request",
+                        "AuraFragment: Permission request",
+                        "Remote image pager",
+                        "Log View demo",
+                        "Blur Effect"
+                ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
                 0 -> {
@@ -58,17 +62,20 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 }
                 5 -> {
                     startActivity(PagerImageActivity.newIntent(this, arrayListOf(
-                        "https://dummyimage.com/600x400/000/fff",
-                        "https://dummyimage.com/600x400/fff/000",
-                        "https://dummyimage.com/600x400/000/fff",
-                        "https://dummyimage.com/600x400/fff/000",
-                        "https://dummyimage.com/600x400/000/fff",
-                        "https://dummyimage.com/600x400/fff/000",
-                        "https://dummyimage.com/600x400/000/fff"
+                            "https://dummyimage.com/600x400/000/fff",
+                            "https://dummyimage.com/600x400/fff/000",
+                            "https://dummyimage.com/600x400/000/fff",
+                            "https://dummyimage.com/600x400/fff/000",
+                            "https://dummyimage.com/600x400/000/fff",
+                            "https://dummyimage.com/600x400/fff/000",
+                            "https://dummyimage.com/600x400/000/fff"
                     )))
                 }
                 6 -> {
                     startActivity(Intent(this@MainActivity, LogDemoActivity::class.java))
+                }
+                7-> {
+                    startActivity(Intent(this@MainActivity, BlurImageDemoActivity::class.java))
                 }
             }
         }
@@ -85,11 +92,11 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
 
     override fun showPermissionRationale(permission: Array<String>) {
         AlertDialog.Builder(this)
-            .setMessage("Permission required!")
-            .setPositiveButton("OK") { _, _ ->
-                permissions.requestPermissions()
-            }.setNegativeButton("Cancel") { _, _ ->
-            }.create().show()
+                .setMessage("Permission required!")
+                .setPositiveButton("OK") { _, _ ->
+                    permissions.requestPermissions()
+                }.setNegativeButton("Cancel") { _, _ ->
+                }.create().show()
     }
 
     override fun onPermissionPermanentlyDecline(permission: Array<String>) {

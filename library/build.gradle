@@ -10,13 +10,12 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-        minSdkVersion 15
+        minSdkVersion 17
         targetSdkVersion 28
         versionCode auraVersionCode
         versionName auraVersionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
     }
     buildTypes {
         release {
@@ -38,7 +37,8 @@ android {
 
 repositories {
     mavenCentral()
-    maven{url = "http://172.104.79.18K1:81/repository/Elizabeth/"}
+    google()
+    maven { url = "http://172.104.79.18K1:81/repository/Elizabeth/" }
 }
 
 dependencies {
@@ -50,6 +50,7 @@ dependencies {
     }
     implementation 'androidx.fragment:fragment:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.core:core:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.silverhetch:clotho:1.0.5123583'
@@ -68,7 +69,7 @@ task sourcesJar(type: Jar) {
     classifier = 'sources'
 }
 
-task javadoc(type:Javadoc){
+task javadoc(type: Javadoc) {
     excludes = ['**/*.kt']
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
@@ -95,7 +96,7 @@ project.afterEvaluate {
                                '**/*$ViewBinder*.*',
                                '**/BuildConfig.*',
                                '**/Manifest*.*']
-            )+fileTree(
+            ) + fileTree(
                     dir: "${project.buildDir}/tmp/kotlin-classes/$name",
                     includes: ['**/com/silverhetch/aura/**'],
                     excludes: ['**/R.class',
@@ -106,7 +107,7 @@ project.afterEvaluate {
                                '**/Manifest*.*']
             )
 
-            sourceDirectories = files(["${project.projectDir}/src/main/java","${project.projectDir}/src/${variant.flavorName}/java"].plus(android.sourceSets[name].java.srcDirs))
+            sourceDirectories = files(["${project.projectDir}/src/main/java", "${project.projectDir}/src/${variant.flavorName}/java"].plus(android.sourceSets[name].java.srcDirs))
             executionData = files("${project.buildDir}/jacoco/${testTaskName}.exec")
 
             reports {
@@ -133,7 +134,7 @@ bintray {
         vcsUrl = 'https://github.com/LarryHsiao/Aura.git'
         version {
             name = auraVersionName
-            gpg{
+            gpg {
                 sign = true
                 passphrase = System.getenv('BINTRAY_PASSPHRASE')
             }
@@ -168,7 +169,7 @@ sonarqube {
 
         property "sonar.java.coveragePlugin", "jacoco"
         property "sonar.android.lint.report", "build/reports/lint-results.xml"
-        property "sonar.jacoco.reportPaths","build/jacoco/testDebugUnitTest.exec"
-        property "sonar.junit.reportPahts","build/test-results/testDebugUnitTest"
+        property "sonar.jacoco.reportPaths", "build/jacoco/testDebugUnitTest.exec"
+        property "sonar.junit.reportPahts", "build/test-results/testDebugUnitTest"
     }
 }
