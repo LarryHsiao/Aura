@@ -34,7 +34,7 @@ class BlurImageDemoActivity : AuraActivity() {
                                         this@BlurImageDemoActivity,
                                         CroppedImage(
                                                 original,
-                                                Rect(50, 50, 500, 500)
+                                                Rect(50, 50, 99999, 9999)
                                         ),
                                         25f
                                 ), 50, 50).fetch()

@@ -9,12 +9,21 @@ import com.silverhetch.clotho.Source
  */
 class CroppedImage(private val source: Source<Bitmap>, private val rect: Rect) : Source<Bitmap> {
     override fun fetch(): Bitmap {
+        val bitmap = source.fetch()
         return Bitmap.createBitmap(
-                source.fetch(),
+                bitmap,
                 rect.left,
                 rect.top,
-                rect.width(),
-                rect.height()
+                if(rect.left + rect.width() <= bitmap.width) {
+                    rect.width()
+                }else{
+                    bitmap.width - rect.left
+                },
+                if (rect.top + rect.height() <= bitmap.height) {
+                    rect.height()
+                }else{
+                    bitmap.height - rect.top
+                }
         )
     }
 }
