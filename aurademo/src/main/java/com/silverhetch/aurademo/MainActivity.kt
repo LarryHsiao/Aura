@@ -41,7 +41,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                         "AuraFragment: Permission request",
                         "Remote image pager",
                         "Log View demo",
-                        "Blur Effect"
+                        "Blur Effect",
+                        "Media Player"
                 ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -74,8 +75,11 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 6 -> {
                     startActivity(Intent(this@MainActivity, LogDemoActivity::class.java))
                 }
-                7-> {
+                7 -> {
                     startActivity(Intent(this@MainActivity, BlurImageDemoActivity::class.java))
+                }
+                8 -> {
+                    startActivity(Intent(this@MainActivity, MediaPlayerDemoActivity::class.java))
                 }
             }
         }

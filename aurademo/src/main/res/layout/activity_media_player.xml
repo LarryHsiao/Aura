@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <SurfaceView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/mediaPlayer_display"
+    />
+
+    <ProgressBar android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 tools:progress="20"
+                 tools:secondaryProgress="40"
+                 android:id="@+id/mediaPlayer_progress"
+                 android:max="100"
+                 android:layout_margin="16dp"
+                 android:layout_above="@id/mediaPlayer_controlPanel"
+                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+    />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_margin="16dp"
+            android:id="@+id/mediaPlayer_controlPanel"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+        <View android:layout_width="55dp"
+              android:id="@+id/mediaPlayer_previous"
+              android:layout_height="55dp"
+              android:background="@android:drawable/ic_media_previous"/>
+
+        <View android:layout_width="55dp"
+              android:id="@+id/mediaPlayer_play"
+              android:layout_height="55dp"
+              android:background="@android:drawable/ic_media_play"/>
+
+        <View android:layout_width="55dp"
+              android:id="@+id/mediaPlayer_pause"
+              android:layout_height="55dp"
+              android:background="@android:drawable/ic_media_pause"/>
+
+        <View android:layout_width="55dp"
+              android:id="@+id/mediaPlayer_next"
+              android:layout_height="55dp"
+              android:background="@android:drawable/ic_media_next"/>
+    </LinearLayout>
+
+</RelativeLayout>
