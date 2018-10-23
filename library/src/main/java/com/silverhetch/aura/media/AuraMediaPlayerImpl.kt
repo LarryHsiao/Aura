@@ -1,6 +1,7 @@
 package com.silverhetch.aura.media
 
 import android.content.Context
+import android.graphics.Point
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Handler
@@ -14,7 +15,7 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
     private val duration = MutableLiveData<Int>().apply { value = 0 }
     private val progress = MutableLiveData<Int>().apply { value = 0 }
     private val buffered = MutableLiveData<Int>().apply { value = 0 }
-    private val videoSize = MutableLiveData<Size>().apply { value = Size(0, 0) }
+    private val videoSize = MutableLiveData<Point>().apply { value = Point(0, 0) }
     private val handler = Handler()
     private val mediaPlayer: MediaPlayer = MediaPlayer()
     private val progressRunnable = object : Runnable {
@@ -30,7 +31,7 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
         mediaPlayer.reset()
         mediaPlayer.setDataSource(context, Uri.parse(uri))
         mediaPlayer.setOnVideoSizeChangedListener { mp, width, height ->
-            videoSize.value = Size(width, height)
+            videoSize.value = Point(width, height)
         }
         mediaPlayer.setOnBufferingUpdateListener { mp, percent ->
             buffered.value = percent
@@ -66,7 +67,7 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
         return buffered
     }
 
-    override fun videoSize(): LiveData<Size> {
+    override fun videoSize(): LiveData<Point> {
         return videoSize
     }
 

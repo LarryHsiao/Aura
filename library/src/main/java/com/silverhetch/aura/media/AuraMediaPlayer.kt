@@ -1,5 +1,6 @@
 package com.silverhetch.aura.media
 
+import android.graphics.Point
 import android.util.Size
 import android.view.SurfaceHolder
 import androidx.lifecycle.LiveData
@@ -46,7 +47,7 @@ interface AuraMediaPlayer {
     /**
      * Current loaded media video frame width and height.
      */
-    fun videoSize(): LiveData<Size>
+    fun videoSize(): LiveData<Point>
 
     /**
      * Attach video onto views
