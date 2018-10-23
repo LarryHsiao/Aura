@@ -11,7 +11,7 @@
             android:id="@+id/mediaPlayer_display"
     />
 
-    <ProgressBar android:layout_width="match_parent"
+    <SeekBar android:layout_width="match_parent"
                  android:layout_height="wrap_content"
                  tools:progress="20"
                  tools:secondaryProgress="40"

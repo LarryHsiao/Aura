@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.Bundle
 import android.os.IBinder
+import android.widget.SeekBar
 import androidx.lifecycle.Observer
 import com.silverhetch.aura.AuraActivity
 import com.silverhetch.aura.media.AuraMediaPlayer
@@ -50,6 +51,19 @@ class MediaPlayerDemoActivity : AuraActivity(), ServiceConnection {
         })
         mediaPlayer.duration().observe(this, Observer {
             mediaPlayer_progress.max = it
+        })
+        mediaPlayer_progress.setOnSeekBarChangeListener(object:SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                if (fromUser) {
+                    mediaPlayer.seekTo(progress)
+                }
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            }
         })
 
         mediaPlayer_play.setOnClickListener { mediaPlayer.play() }
