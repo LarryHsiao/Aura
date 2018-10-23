@@ -13,6 +13,11 @@ class MediaPlayerService : Service() {
         mediaPlayer = AuraMediaPlayerImpl(this)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaPlayer.release()
+    }
+
     override fun onBind(intent: Intent?): IBinder? {
         return binder
     }

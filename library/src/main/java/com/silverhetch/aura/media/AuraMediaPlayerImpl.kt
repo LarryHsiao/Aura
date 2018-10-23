@@ -8,34 +8,38 @@ import android.util.Size
 import android.view.SurfaceHolder
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import java.util.concurrent.TimeUnit
+import java.util.concurrent.TimeUnit.SECONDS
 
 class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
-
+    private val duration = MutableLiveData<Int>().apply { value = 0 }
     private val progress = MutableLiveData<Int>().apply { value = 0 }
     private val buffered = MutableLiveData<Int>().apply { value = 0 }
     private val videoSize = MutableLiveData<Size>().apply { value = Size(0, 0) }
     private val handler = Handler()
     private val mediaPlayer: MediaPlayer = MediaPlayer()
+    private val progressRunnable = object : Runnable {
+        override fun run() {
+            if (mediaPlayer.duration != 0) {
+                progress.value = mediaPlayer.currentPosition
+            }
+            handler.postDelayed(this, SECONDS.toMillis(1))
+        }
+    }
 
-    override fun load(url: String) {
+    override fun load(uri: String) {
         mediaPlayer.reset()
-        mediaPlayer.setDataSource(context, Uri.parse(url))
+        mediaPlayer.setDataSource(context, Uri.parse(uri))
         mediaPlayer.setOnVideoSizeChangedListener { mp, width, height ->
             videoSize.value = Size(width, height)
         }
         mediaPlayer.setOnBufferingUpdateListener { mp, percent ->
             buffered.value = percent
         }
+        mediaPlayer.setOnPreparedListener {
+            duration.value = mediaPlayer.duration
+        }
         mediaPlayer.prepareAsync()
-        handler.postDelayed(object : Runnable {
-            override fun run() {
-                if (mediaPlayer.duration != 0) {
-                    progress.value = (mediaPlayer.currentPosition.toFloat() / mediaPlayer.duration.toFloat() * 100f).toInt()
-                }
-                handler.postDelayed(this, TimeUnit.SECONDS.toMillis(1))
-            }
-        }, TimeUnit.SECONDS.toMillis(1))
+        handler.postDelayed(progressRunnable, SECONDS.toMillis(1))
     }
 
     override fun play() {
@@ -54,11 +58,15 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
         return progress
     }
 
+    override fun duration(): LiveData<Int> {
+        return duration
+    }
+
     override fun buffered(): LiveData<Int> {
         return buffered
     }
 
-    override fun size(): LiveData<Size> {
+    override fun videoSize(): LiveData<Size> {
         return videoSize
     }
 
@@ -69,4 +77,10 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
     override fun detachDisplay() {
         mediaPlayer.setDisplay(null)
     }
+
+    override fun release() {
+        handler.removeCallbacks(progressRunnable)
+        mediaPlayer.release()
+    }
+
 }
