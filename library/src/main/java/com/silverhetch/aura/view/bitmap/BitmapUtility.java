@@ -1,4 +1,4 @@
-package com.silverhetch.aura.view;
+package com.silverhetch.aura.view.bitmap;
 
 import android.content.Context;
 import android.graphics.Bitmap;

@@ -42,7 +42,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                         "Remote image pager",
                         "Log View demo",
                         "Blur Effect",
-                        "Media Player"
+                        "Media Player",
+                        "Fullscreen Demo"
                 ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -80,6 +81,9 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 }
                 8 -> {
                     startActivity(Intent(this@MainActivity, MediaPlayerDemoActivity::class.java))
+                }
+                9 -> {
+                    startActivity(Intent(this@MainActivity, FullScreenActivity::class.java))
                 }
             }
         }
