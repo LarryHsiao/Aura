@@ -53,10 +53,12 @@ dependencies {
     implementation 'androidx.core:core:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'com.silverhetch:clotho:1.0.5123583'
+    implementation 'com.silverhetch:clotho:1.0.5137398'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.12'
+    testImplementation 'org.robolectric:robolectric:4.0-alpha-3'
+    testImplementation 'org.robolectric:shadows-multidex:4.0-alpha-3'
 }
 
 
