@@ -49,7 +49,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'exifinterface'
     }
     implementation 'androidx.fragment:fragment:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.1'
     implementation 'androidx.core:core:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'

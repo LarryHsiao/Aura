@@ -43,7 +43,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                         "Log View demo",
                         "Blur Effect",
                         "Media Player",
-                        "Fullscreen Demo"
+                        "Fullscreen Demo",
+                        "Overlay Demo"
                 ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -84,6 +85,9 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 }
                 9 -> {
                     startActivity(Intent(this@MainActivity, FullScreenActivity::class.java))
+                }
+                10->{
+                    startActivity(Intent(this@MainActivity, OverlayPermissionDemoActivity::class.java))
                 }
             }
         }

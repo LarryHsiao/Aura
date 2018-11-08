@@ -2,6 +2,9 @@ package com.silverhetch.aura.permission
 
 import android.app.Activity
 
+/**
+ * General purpose permissions which defined in Android manifest xml.
+ */
 interface Permissions {
 
     /**
