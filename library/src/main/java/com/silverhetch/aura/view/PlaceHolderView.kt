@@ -15,6 +15,20 @@ import androidx.asynclayoutinflater.view.AsyncLayoutInflater
 
 /**
  * Simple view for loading complex layout. Which will show given view as PlaceHolder until the layout is inflated.
+ *
+ * ```
+ * class PlaceHolderViewDemoActivity : AppCompatActivity() {
+ *  override fun onCreate(savedInstanceState: Bundle?) {
+ *      super.onCreate(savedInstanceState)
+ *      setContentView(PlaceHolderView(this).apply {
+ *          layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
+ *          loadUp(R.layout.activity_place_holder) {
+ *              // View loaded
+ *          }
+ *      })
+ *  }
+ *}
+ * ```
  */
 class PlaceHolderView : FrameLayout {
     private var loaded = false
