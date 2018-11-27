@@ -49,16 +49,16 @@ dependencies {
         exclude group: 'com.android.support', module: 'exifinterface'
     }
     implementation 'androidx.fragment:fragment:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.0.1'
-    implementation 'androidx.core:core:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.core:core:1.0.1'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'com.silverhetch:clotho:1.0.5139937'
+    implementation 'com.silverhetch:clotho:1.1.2'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.robolectric:robolectric:4.0-alpha-3'
-    testImplementation 'org.robolectric:shadows-multidex:4.0-alpha-3'
+    testImplementation 'org.robolectric:robolectric:4.0.2'
+    testImplementation 'org.robolectric:shadows-multidex:4.0.2'
 }
 
 

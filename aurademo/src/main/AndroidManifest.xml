@@ -45,7 +45,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".FullScreenActivity"
-        android:label="Fullscreen Demo"
+                  android:label="Fullscreen Demo"
         >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -55,6 +55,13 @@
         <activity android:name=".OverlayPermissionDemoActivity"
                   android:screenOrientation="portrait"
         />
+        <activity android:name=".PlaceHolderViewDemoActivity"
+                  android:label="Place Holder">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
