@@ -13,6 +13,9 @@ import android.widget.ProgressBar
 import androidx.annotation.LayoutRes
 import androidx.asynclayoutinflater.view.AsyncLayoutInflater
 
+/**
+ * Simple view for loading complex layout. Which will show given view as PlaceHolder until the layout is inflated.
+ */
 class PlaceHolderView : FrameLayout {
     private var loaded = false
 
@@ -55,13 +58,21 @@ class PlaceHolderView : FrameLayout {
         addView(newPlaceHolder)
     }
 
-    fun loadUp(@LayoutRes id: Int) {
+    fun loadUp(@LayoutRes id: Int, callback: (view: View) -> Unit) {
         AsyncLayoutInflater(context).inflate(id, this) { view: View, _: Int, _: ViewGroup? ->
             removeAllViews()
             addView(view)
             loaded = true
+            callback(view)
         }
     }
 
-    fun isLoaded(): Boolean = loaded
+    fun isLoaded() = loaded
+
+    fun loadedView() = if (childCount > 0) {
+        getChildAt(0)
+    } else {
+        View(context)
+    }
+
 }
