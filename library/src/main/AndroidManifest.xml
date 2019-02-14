@@ -7,6 +7,7 @@
         android:supportsRtl="true">
 
         <activity android:name=".view.images.pager.PagerImageActivity" />
+        <service android:name=".media.MediaPlayerService"/>
     </application>
 
 </manifest>
