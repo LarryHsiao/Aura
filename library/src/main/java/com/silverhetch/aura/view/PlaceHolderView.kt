@@ -66,12 +66,18 @@ class PlaceHolderView : FrameLayout {
         })
     }
 
+    /**
+     * Set up this place holder content
+     */
     fun setup(newPlaceHolder: View) {
         loaded = false
         removeAllViews()
         addView(newPlaceHolder)
     }
 
+    /**
+     * Loads the heavy loading layout.
+     */
     fun loadUp(@LayoutRes id: Int, callback: (view: View) -> Unit) {
         AsyncLayoutInflater(context).inflate(id, this) { view: View, _: Int, _: ViewGroup? ->
             removeAllViews()
@@ -81,8 +87,14 @@ class PlaceHolderView : FrameLayout {
         }
     }
 
+    /**
+     * Is this view loaded?
+     */
     fun isLoaded() = loaded
 
+    /**
+     * The view loaded.
+     */
     fun loadedView() = if (childCount > 0) {
         getChildAt(0)
     } else {

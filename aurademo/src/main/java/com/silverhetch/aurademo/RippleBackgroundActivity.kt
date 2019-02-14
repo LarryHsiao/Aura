@@ -17,19 +17,21 @@ import com.silverhetch.aura.view.measures.ScaleIndependentPixels
 class RippleBackgroundActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(FrameLayout(this).apply {
-            layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
-            addView(ImageView(this@RippleBackgroundActivity).apply {
-                layoutParams = FrameLayout.LayoutParams(
-                        ScaleIndependentPixels(context, 50).px(),
-                        ScaleIndependentPixels(context, 50).px()
+        setContentView(FrameLayout(this).let { root ->
+            root.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
+            root.addView(ImageView(this).let { imageView ->
+                imageView.layoutParams = FrameLayout.LayoutParams(
+                        ScaleIndependentPixels(this, 50).px(),
+                        ScaleIndependentPixels(this, 50).px()
                 ).apply { gravity = Gravity.CENTER }
-                isClickable = true
-                setImageResource(android.R.drawable.alert_dark_frame)
-                setBackgroundResource(
-                        RippleBackgroundBorderless(this@RippleBackgroundActivity).fetch()
+                imageView.isClickable = true
+                imageView.setImageResource(android.R.drawable.alert_dark_frame)
+                imageView.setBackgroundResource(
+                        RippleBackgroundBorderless(this).fetch()
                 )
+                imageView
             })
+            root
         })
     }
 }

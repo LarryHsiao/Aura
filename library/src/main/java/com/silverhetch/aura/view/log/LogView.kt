@@ -18,6 +18,9 @@ import android.os.Build.VERSION_CODES.LOLLIPOP
 import android.view.Gravity
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 
+/**
+ * View to shows logs which may be html.
+ */
 class LogView : LinearLayout, Observer {
     private lateinit var textView: TextView
 

@@ -7,14 +7,16 @@ import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.ImageView
 import com.silverhetch.aura.AuraActivity
-import com.silverhetch.aura.clotho.ConstSource
 import com.silverhetch.aura.view.bitmap.BlurImage
 import com.silverhetch.aura.view.bitmap.CroppedImage
 import com.silverhetch.aura.view.bitmap.MergedImage
+import com.silverhetch.clotho.source.ConstSource
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
-
+/**
+ * Demo activity to show the result of blur image
+ */
 class BlurImageDemoActivity : AuraActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +29,9 @@ class BlurImageDemoActivity : AuraActivity() {
                 .load("https://images.freeimages.com/images/large-previews/a0d/autumn-tree-1382832.jpg")
                 .into(imageView, object : Callback {
                     override fun onSuccess() {
+                        if (imageView.drawable !is BitmapDrawable) {
+                            return
+                        }
                         val original = ConstSource((imageView.drawable as BitmapDrawable).bitmap)
                         val result = MergedImage(
                                 original,

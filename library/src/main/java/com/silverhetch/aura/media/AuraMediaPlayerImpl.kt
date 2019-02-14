@@ -11,6 +11,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import java.util.concurrent.TimeUnit.SECONDS
 
+/**
+ * Implementation of [AuraMediaPlayer]
+ */
 class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
     private val duration = MutableLiveData<Int>().apply { value = 0 }
     private val progress = MutableLiveData<Int>().apply { value = 0 }

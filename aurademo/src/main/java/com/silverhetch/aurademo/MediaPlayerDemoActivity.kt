@@ -13,6 +13,11 @@ import com.silverhetch.aura.media.AuraMediaPlayer
 import com.silverhetch.aura.media.MediaPlayerService
 import kotlinx.android.synthetic.main.activity_media_player.*
 
+/**
+ * Demo activity for media [MediaPlayerService]
+ *
+ * @todo #2 review this class to determine if this class is finish.
+ */
 class MediaPlayerDemoActivity : AuraActivity(), ServiceConnection {
     private lateinit var mediaPlayer: AuraMediaPlayer
     override fun onCreate(savedInstanceState: Bundle?) {
