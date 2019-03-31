@@ -1,10 +1,22 @@
+buildscript{
+    repositories{
+        maven { url "https://dl.bintray.com/larryhsiao/Elizabeth" }
+    }
+}
+
+plugins{
+    id 'com.silverhetch.thea' version '1.2.1'
+}
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven'
 
-def auraVersionCode = (int) (new Date().getTime() / 300000)
-def auraVersionName = '1.0.' + String.valueOf(auraVersionCode)
+def auraVersionCode = thea.version.versionByFlavor("").versionCode()
+def auraVersionName = thea.version.versionByFlavor("").versionName()
+
+println(thea.versionIndicator.apply(""))
 
 android {
     compileSdkVersion 28
@@ -53,7 +65,7 @@ dependencies {
     implementation 'androidx.core:core:1.0.1'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'com.silverhetch:clotho:1.1.2'
+    implementation 'com.silverhetch:clotho:1.3.7'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.12'
