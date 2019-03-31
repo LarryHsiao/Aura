@@ -27,7 +27,7 @@ class RippleBackgroundActivity : Activity() {
                 imageView.isClickable = true
                 imageView.setImageResource(android.R.drawable.alert_dark_frame)
                 imageView.setBackgroundResource(
-                        RippleBackgroundBorderless(this).fetch()
+                        RippleBackgroundBorderless(this).value()
                 )
                 imageView
             })

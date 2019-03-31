@@ -36,7 +36,7 @@ class FileLog : Log {
                     BufferedWriter(
                             FileWriter(
                                     File(getExternalStorageDirectory(), "General.log"), true)))
-            writer.println(LogString(message).fetch())
+            writer.println(LogString(message).value())
             writer.close()
         } catch (ex: IOException) {
             android.util.Log.e("FileLog", "STORING LOG Error cause $ex")

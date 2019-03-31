@@ -8,8 +8,8 @@ import com.silverhetch.clotho.Source
  * Crop a [Bitmap] with given coordinator.
  */
 class CroppedImage(private val source: Source<Bitmap>, private val rect: Rect) : Source<Bitmap> {
-    override fun fetch(): Bitmap {
-        val bitmap = source.fetch()
+    override fun value(): Bitmap {
+        val bitmap = source.value()
         return Bitmap.createBitmap(
                 bitmap,
                 rect.left,

@@ -10,6 +10,6 @@ import com.silverhetch.aura.view.activity.Fullscreen
 class FullScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Fullscreen(this).fetch()
+        Fullscreen(this).value()
     }
 }

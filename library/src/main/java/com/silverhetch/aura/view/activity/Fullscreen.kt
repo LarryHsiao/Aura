@@ -11,7 +11,7 @@ import com.silverhetch.clotho.Source
  * Source that adjust given [Activity] window params to fullscreen.
  */
 class Fullscreen(private val activity: Activity) : Source<Unit> {
-    override fun fetch() {
+    override fun value() {
         var flags = (SYSTEM_UI_FLAG_LAYOUT_STABLE
                 or SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 or SYSTEM_UI_FLAG_FULLSCREEN)

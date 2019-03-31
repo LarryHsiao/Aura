@@ -12,8 +12,8 @@ import com.silverhetch.clotho.Source
  * Image source that apply BLur effect to given [Bitmap].
  */
 class BlurImage(private val context: Context, private val source: Source<Bitmap>, private val radius: Float = 25f) : Source<Bitmap> {
-    override fun fetch(): Bitmap {
-        val image = source.fetch()
+    override fun value(): Bitmap {
+        val image = source.value()
         val inputBitmap = Bitmap.createScaledBitmap(image, image.width, image.height, false)
         val outputBitmap = Bitmap.createBitmap(inputBitmap)
         val rs = RenderScript.create(context)

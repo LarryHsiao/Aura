@@ -12,7 +12,7 @@ import com.silverhetch.clotho.Source
  */
 class RippleBackgroundBorderless(private val context: Context) : Source<Int> {
     @DrawableRes
-    override fun fetch(): Int {
+    override fun value(): Int {
         val outValue = TypedValue()
         context.theme.resolveAttribute(
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

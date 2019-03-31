@@ -42,7 +42,7 @@ class BlurImageDemoActivity : AuraActivity() {
                                                 Rect(50, 50, 99999, 9999)
                                         ),
                                         25f
-                                ), 50, 50).fetch()
+                                ), 50, 50).value()
                         imageView.setImageBitmap(result)
                     }
 

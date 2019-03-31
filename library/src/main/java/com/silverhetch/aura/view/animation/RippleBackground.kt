@@ -11,7 +11,7 @@ import com.silverhetch.clotho.Source
  */
 class RippleBackground(private val context: Context) : Source<Int> {
     @DrawableRes
-    override fun fetch(): Int {
+    override fun value(): Int {
         val outValue = TypedValue()
         context.theme.resolveAttribute(android.R.attr.selectableItemBackground, outValue, true)
         return outValue.resourceId
