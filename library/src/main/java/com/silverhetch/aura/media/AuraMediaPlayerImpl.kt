@@ -66,6 +66,10 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
         return duration
     }
 
+    override fun isPlaying(): Boolean {
+        return mediaPlayer.isPlaying
+    }
+
     override fun buffered(): LiveData<Int> {
         return buffered
     }
