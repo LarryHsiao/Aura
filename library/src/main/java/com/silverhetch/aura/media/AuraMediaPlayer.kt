@@ -20,6 +20,11 @@ interface AuraMediaPlayer {
     fun play()
 
     /**
+     * Determine if this media player is playing something.
+     */
+    fun isPlaying(): Boolean
+
+    /**
      * Trigger pause
      */
     fun pause()

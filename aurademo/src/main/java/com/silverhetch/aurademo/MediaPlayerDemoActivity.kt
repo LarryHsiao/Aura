@@ -4,6 +4,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
+import android.graphics.Point
 import android.os.Bundle
 import android.os.IBinder
 import android.widget.SeekBar
@@ -27,6 +28,7 @@ class MediaPlayerDemoActivity : AuraActivity(), ServiceConnection {
 
     override fun onResume() {
         super.onResume()
+        startService(Intent(this, MediaPlayerService::class.java))
         bindService(
                 Intent(this, MediaPlayerService::class.java),
                 this,
@@ -44,20 +46,31 @@ class MediaPlayerDemoActivity : AuraActivity(), ServiceConnection {
 
     override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
         mediaPlayer = (service as MediaPlayerService.Binder).mediaPlayer()
-        mediaPlayer.load("https://www.radiantmediaplayer.com/media/bbb-360p.mp4")
+        if (!mediaPlayer.isPlaying()) {
+            mediaPlayer.load("https://www.radiantmediaplayer.com/media/bbb-360p.mp4")
+        }
         mediaPlayer.attachDisplay(mediaPlayer_display.holder)
+        mediaPlayer.videoSize().observe(this, Observer {
+            mediaPlayer_display.layoutParams = mediaPlayer_display.layoutParams.apply {
+                width = Point().run {
+                    windowManager.defaultDisplay.getSize(this)
+                    x
+                }
+                height = ((it.y.toFloat() / it.x.toFloat()) * width).toInt()
+            }
+        })
         mediaPlayer.buffered().observe(this, Observer {
-            mediaPlayer_progress.secondaryProgress = ((it/100f) * mediaPlayer_progress.max).toInt()
+            mediaPlayer_progress.secondaryProgress = ((it / 100f) * mediaPlayer_progress.max).toInt()
         })
         mediaPlayer.progress().observe(this, Observer {
             runOnUiThread {
-                mediaPlayer_progress.progress =it
+                mediaPlayer_progress.progress = it
             }
         })
         mediaPlayer.duration().observe(this, Observer {
             mediaPlayer_progress.max = it
         })
-        mediaPlayer_progress.setOnSeekBarChangeListener(object:SeekBar.OnSeekBarChangeListener{
+        mediaPlayer_progress.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (fromUser) {
                     mediaPlayer.seekTo(progress)
