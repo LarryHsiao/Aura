@@ -45,7 +45,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                         "Media Player",
                         "Fullscreen Demo",
                         "Overlay Demo",
-                        "Ripple Demo"
+                        "Ripple Demo",
+                        "Brightness Demo"
                 ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -92,6 +93,9 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 }
                 11 -> {
                     startActivity(Intent(this@MainActivity, RippleBackgroundActivity::class.java))
+                }
+                12 -> {
+                    startActivity(Intent(this@MainActivity, BrightnessDemoActivity::class.java))
                 }
             }
         }
