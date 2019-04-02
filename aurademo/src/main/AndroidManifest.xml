@@ -63,6 +63,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".RippleBackgroundActivity" />
+        <activity android:name=".BrightnessDemoActivity" />
     </application>
 
 </manifest>
