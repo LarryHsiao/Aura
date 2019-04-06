@@ -5,7 +5,6 @@ import android.graphics.Point
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Handler
-import android.util.Size
 import android.view.SurfaceHolder
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -22,6 +21,7 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
     private val handler = Handler()
     private var mediaPlayer: MediaPlayer = MediaPlayer()
     private var attemptPlay = false
+    private lateinit var dataSource: Uri
     private val progressRunnable = object : Runnable {
         override fun run() {
             if (mediaPlayer.duration != 0) {
@@ -32,9 +32,10 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
     }
 
     override fun load(uri: String) {
+        dataSource =Uri.parse(uri)
         mediaPlayer.reset()
         mediaPlayer.setDisplay(null)
-        mediaPlayer.setDataSource(context, Uri.parse(uri))
+        mediaPlayer.setDataSource(context, dataSource)
         mediaPlayer.setOnVideoSizeChangedListener { mp, width, height ->
             videoSize.value = Point(width, height)
         }
@@ -87,6 +88,10 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
 
     override fun attachDisplay(surfaceHolder: SurfaceHolder) {
         mediaPlayer.setDisplay(surfaceHolder)
+        if (!mediaPlayer.isPlaying && ::dataSource.isInitialized){
+            // To draw current frame on surface
+            mediaPlayer.seekTo(mediaPlayer.currentPosition)
+        }
     }
 
     override fun detachDisplay() {
