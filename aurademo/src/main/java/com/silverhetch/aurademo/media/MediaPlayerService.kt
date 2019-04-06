@@ -6,7 +6,6 @@ import android.os.IBinder
 
 /**
  * Media player service for general purpose media playback.
- * @todo #2 review this class
  */
 class MediaPlayerService : Service() {
     private val binder = Binder()

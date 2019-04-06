@@ -17,6 +17,7 @@ import com.silverhetch.aura.permission.PermissionCallback
 import com.silverhetch.aura.permission.PermissionsImpl
 import com.silverhetch.aura.view.images.pager.PagerImageActivity
 import com.silverhetch.aurademo.fabcontrol.FabControlDemoActivity
+import com.silverhetch.aurademo.media.MediaPlayerDemoActivity
 
 
 class MainActivity : AppCompatActivity(), PermissionCallback {

@@ -1,4 +1,4 @@
-package com.silverhetch.aurademo
+package com.silverhetch.aurademo.media
 
 import android.content.ComponentName
 import android.content.Context
@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import com.silverhetch.aura.AuraActivity
 import com.silverhetch.aura.media.AuraMediaPlayer
 import com.silverhetch.aura.media.MediaPlayerService
+import com.silverhetch.aurademo.R
 import kotlinx.android.synthetic.main.activity_media_player.*
 
 /**
