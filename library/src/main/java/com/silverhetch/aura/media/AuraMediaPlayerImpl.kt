@@ -20,7 +20,8 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
     private val buffered = MutableLiveData<Int>().apply { value = 0 }
     private val videoSize = MutableLiveData<Point>().apply { value = Point(0, 0) }
     private val handler = Handler()
-    private val mediaPlayer: MediaPlayer = MediaPlayer()
+    private var mediaPlayer: MediaPlayer = MediaPlayer()
+    private var attemptPlay = false
     private val progressRunnable = object : Runnable {
         override fun run() {
             if (mediaPlayer.duration != 0) {
@@ -32,6 +33,7 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
 
     override fun load(uri: String) {
         mediaPlayer.reset()
+        mediaPlayer.setDisplay(null)
         mediaPlayer.setDataSource(context, Uri.parse(uri))
         mediaPlayer.setOnVideoSizeChangedListener { mp, width, height ->
             videoSize.value = Point(width, height)
@@ -41,16 +43,21 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
         }
         mediaPlayer.setOnPreparedListener {
             duration.value = mediaPlayer.duration
+            if (attemptPlay){
+                mediaPlayer.start()
+            }
         }
         mediaPlayer.prepareAsync()
         handler.postDelayed(progressRunnable, SECONDS.toMillis(1))
     }
 
     override fun play() {
+        attemptPlay = true
         mediaPlayer.start()
     }
 
     override fun pause() {
+        attemptPlay = false
         mediaPlayer.pause()
     }
 
@@ -87,6 +94,7 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
     }
 
     override fun release() {
+        attemptPlay = false
         handler.removeCallbacks(progressRunnable)
         mediaPlayer.release()
     }

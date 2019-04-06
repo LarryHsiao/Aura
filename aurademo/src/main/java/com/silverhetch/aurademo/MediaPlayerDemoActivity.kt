@@ -47,7 +47,8 @@ class MediaPlayerDemoActivity : AuraActivity(), ServiceConnection {
     override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
         mediaPlayer = (service as MediaPlayerService.Binder).mediaPlayer()
         if (!mediaPlayer.isPlaying()) {
-            mediaPlayer.load("https://www.radiantmediaplayer.com/media/bbb-360p.mp4")
+            mediaPlayer.load("https://sample-videos.com/video123/mp4/480/big_buck_bunny_480p_10mb.mp4")
+            mediaPlayer.play()
         }
         mediaPlayer.attachDisplay(mediaPlayer_display.holder)
         mediaPlayer.videoSize().observe(this, Observer {
