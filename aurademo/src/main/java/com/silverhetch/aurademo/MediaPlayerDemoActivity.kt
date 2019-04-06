@@ -7,6 +7,7 @@ import android.content.ServiceConnection
 import android.graphics.Point
 import android.os.Bundle
 import android.os.IBinder
+import android.view.SurfaceHolder
 import android.widget.SeekBar
 import androidx.lifecycle.Observer
 import com.silverhetch.aura.AuraActivity
@@ -21,9 +22,14 @@ import kotlinx.android.synthetic.main.activity_media_player.*
  */
 class MediaPlayerDemoActivity : AuraActivity(), ServiceConnection {
     private lateinit var mediaPlayer: AuraMediaPlayer
+    private var pendingPlay = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_media_player)
+
+
+        pendingPlay = savedInstanceState == null && intent?.data != null
     }
 
     override fun onResume() {
@@ -46,11 +52,24 @@ class MediaPlayerDemoActivity : AuraActivity(), ServiceConnection {
 
     override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
         mediaPlayer = (service as MediaPlayerService.Binder).mediaPlayer()
-        if (!mediaPlayer.isPlaying()) {
-            mediaPlayer.load("https://sample-videos.com/video123/mp4/480/big_buck_bunny_480p_10mb.mp4")
+        if (pendingPlay) {
+            mediaPlayer.load(intent?.data.toString())
             mediaPlayer.play()
+            mediaPlayer_display.holder.addCallback(object: SurfaceHolder.Callback{
+                override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {
+                }
+
+                override fun surfaceDestroyed(holder: SurfaceHolder?) {
+                }
+
+                override fun surfaceCreated(holder: SurfaceHolder?) {
+                    mediaPlayer.attachDisplay(mediaPlayer_display.holder)
+                }
+            })
+        }else{
+            mediaPlayer.attachDisplay(mediaPlayer_display.holder)
         }
-        mediaPlayer.attachDisplay(mediaPlayer_display.holder)
+
         mediaPlayer.videoSize().observe(this, Observer {
             mediaPlayer_display.layoutParams = mediaPlayer_display.layoutParams.apply {
                 width = Point().run {
