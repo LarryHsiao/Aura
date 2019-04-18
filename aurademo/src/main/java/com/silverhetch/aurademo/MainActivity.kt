@@ -15,6 +15,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.silverhetch.aura.permission.PermissionCallback
 import com.silverhetch.aura.permission.PermissionsImpl
+import com.silverhetch.aura.view.images.ImageActivity
 import com.silverhetch.aura.view.images.pager.PagerImageActivity
 import com.silverhetch.aurademo.fabcontrol.FabControlDemoActivity
 import com.silverhetch.aurademo.media.MediaPlayerDemoActivity
@@ -47,7 +48,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                         "Fullscreen Demo",
                         "Overlay Demo",
                         "Ripple Demo",
-                        "Brightness Demo"
+                        "Brightness Demo",
+                        "Image demo"
                 ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -97,6 +99,9 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 }
                 12 -> {
                     startActivity(Intent(this@MainActivity, BrightnessDemoActivity::class.java))
+                }
+                13->{
+                    startActivity(ImageActivity.newIntent(this@MainActivity, "https://dummyimage.com/600x400/000/fff"))
                 }
             }
         }
