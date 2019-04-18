@@ -3,6 +3,7 @@ package com.silverhetch.aura.view.images
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
@@ -30,5 +31,9 @@ class ImageActivity : AppCompatActivity() {
                     setStyle(CircularProgressDrawable.DEFAULT)
                 }
         ).into(findViewById<ImageView>(R.id.image))
+
+        findViewById<View>(R.id.close_button).setOnClickListener {
+            finish()
+        }
     }
 }
