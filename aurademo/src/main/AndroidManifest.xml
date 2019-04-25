@@ -71,6 +71,7 @@
         </activity>
         <activity android:name=".RippleBackgroundActivity" />
         <activity android:name=".BrightnessDemoActivity" />
+        <activity android:name=".ConstructingActivity" />
     </application>
 
 </manifest>

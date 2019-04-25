@@ -49,7 +49,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                         "Overlay Demo",
                         "Ripple Demo",
                         "Brightness Demo",
-                        "Image demo"
+                        "Image demo",
+                        "Constructing Fragment"
                 ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -100,8 +101,11 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 12 -> {
                     startActivity(Intent(this@MainActivity, BrightnessDemoActivity::class.java))
                 }
-                13->{
+                13 -> {
                     startActivity(ImageActivity.newIntent(this@MainActivity, "https://dummyimage.com/600x400/000/fff"))
+                }
+                14 -> {
+                    startActivity(Intent(this@MainActivity, ConstructingActivity::class.java))
                 }
             }
         }
