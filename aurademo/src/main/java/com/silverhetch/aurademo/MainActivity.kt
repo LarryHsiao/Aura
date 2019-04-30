@@ -15,6 +15,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.silverhetch.aura.permission.PermissionCallback
 import com.silverhetch.aura.permission.PermissionsImpl
+import com.silverhetch.aura.view.dialog.FullScreenDialogFragment
 import com.silverhetch.aura.view.images.ImageActivity
 import com.silverhetch.aura.view.images.pager.PagerImageActivity
 import com.silverhetch.aurademo.fabcontrol.FabControlDemoActivity
@@ -50,7 +51,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                         "Ripple Demo",
                         "Brightness Demo",
                         "Image demo",
-                        "Constructing Fragment"
+                        "Constructing Fragment",
+                        "Full screen dialog"
                 ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -106,6 +108,9 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 }
                 14 -> {
                     startActivity(Intent(this@MainActivity, ConstructingActivity::class.java))
+                }
+                15 -> {
+                    SampleFullScreenDialogFragment().show(supportFragmentManager, null)
                 }
             }
         }
