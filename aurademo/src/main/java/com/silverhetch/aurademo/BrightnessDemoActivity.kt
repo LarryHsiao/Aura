@@ -1,19 +1,16 @@
 package com.silverhetch.aurademo
 
 import android.os.Bundle
-import android.view.Gravity
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.LinearLayout
 import android.widget.LinearLayout.LayoutParams
 import android.widget.LinearLayout.VERTICAL
-import android.widget.ProgressBar
 import android.widget.SeekBar
-import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import com.silverhetch.aura.view.activity.brightness.InAppBrightness
-import com.silverhetch.aura.view.measures.DensityIndependentPixels
+import com.silverhetch.aura.view.measures.DP
 
 /**
  * Demo for []
@@ -27,8 +24,8 @@ class BrightnessDemoActivity : AppCompatActivity() {
             orientation = VERTICAL
             addView(SeekBar(context).apply {
                 layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT).apply {
-                    marginStart = DensityIndependentPixels(context, 16).px()
-                    marginEnd = DensityIndependentPixels(context, 16).px()
+                    marginStart = DP(context, 16f).px().toInt()
+                    marginEnd = DP(context, 16f).px().toInt()
                 }
                 max = 100
                 setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {

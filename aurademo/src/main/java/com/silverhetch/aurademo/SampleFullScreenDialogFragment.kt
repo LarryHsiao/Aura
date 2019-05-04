@@ -12,7 +12,7 @@ import android.widget.FrameLayout
 import android.widget.FrameLayout.LayoutParams
 import android.widget.ImageView
 import com.silverhetch.aura.view.dialog.FullScreenDialogFragment
-import com.silverhetch.aura.view.measures.DensityIndependentPixels
+import com.silverhetch.aura.view.measures.DP
 
 /**
  * A sample bottom dialog implemented with [FullScreenDialogFragment].
@@ -26,7 +26,7 @@ class SampleFullScreenDialogFragment : FullScreenDialogFragment() {
         return FrameLayout(inflater.context).apply {
             addView(
                     FrameLayout(inflater.context).apply {
-                        layoutParams = LayoutParams(MATCH_PARENT, DensityIndependentPixels(context!!, 200).px(), BOTTOM)
+                        layoutParams = LayoutParams(MATCH_PARENT, DP(context!!, 200f).px().toInt(), BOTTOM)
                         setBackgroundColor(Color.WHITE)
                         ImageView(inflater.context).apply {
                             layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT, TOP or END)

@@ -9,7 +9,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import com.silverhetch.aura.view.animation.RippleBackground
 import com.silverhetch.aura.view.animation.RippleBackgroundBorderless
-import com.silverhetch.aura.view.measures.ScaleIndependentPixels
+import com.silverhetch.aura.view.measures.SP
 
 /**
  * Demo ripple effect which fetch the resource id from [RippleBackground].
@@ -21,8 +21,8 @@ class RippleBackgroundActivity : Activity() {
             root.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
             root.addView(ImageView(this).let { imageView ->
                 imageView.layoutParams = FrameLayout.LayoutParams(
-                        ScaleIndependentPixels(this, 50).px(),
-                        ScaleIndependentPixels(this, 50).px()
+                        SP(this, 50f).px().toInt(),
+                        SP(this, 50f).px().toInt()
                 ).apply { gravity = Gravity.CENTER }
                 imageView.isClickable = true
                 imageView.setImageResource(android.R.drawable.alert_dark_frame)

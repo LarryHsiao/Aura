@@ -19,11 +19,7 @@ class SPCeresTest {
     fun simple() {
         SPCeres(RuntimeEnvironment.application.getSharedPreferences("test", Context.MODE_PRIVATE)).let {
             it.store("Key", "value")
-
-            Assert.assertEquals(
-                    "value",
-                    it.get("Key")
-            )
+            Assert.assertEquals("value", it.get("Key"))
         }
     }
 }
