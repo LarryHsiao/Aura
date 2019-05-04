@@ -17,9 +17,11 @@ Utilities for regular Java/Kotlin [Clotho][2]
 
 Currently this library has no implementation plans, just develop what I need in my projects to reuse them.
 
-#### Features
-
- - [Permission granting][4]
+#### Components
+##### System
+ - [Permission granting](docs/permission_granting.md)
+##### UI
+ - [AuraProgressBar](docs/aura_progress_bar.md)
 
 ## Quick start
 
@@ -39,4 +41,3 @@ Application Module [aurademo][1] have some implementation with Aura for developm
 [1]: https://github.com/LarryHsiao/Aura/tree/master/aurnademo
 [2]: https://github.com/LarryHsiao/Clotho
 [3]: https://github.com/LarryHsiao/Aura/blob/master/library/src/main/java/com/silverhetch/aura/permission/PermissionsImpl.kt
-[4]: docs/permission-granting.md
