@@ -9,25 +9,25 @@ import android.util.TypedValue;
  */
 
 public class SP {
-    private final float sp;
+    private final float value;
     private final float px;
 
-    public SP(Context context, float sp) {
-        this(context.getResources().getDisplayMetrics(), sp);
+    public SP(Context context, float value) {
+        this(context.getResources().getDisplayMetrics(), value);
     }
 
-    public SP(DisplayMetrics displayMetrics, float sp) {
-        this.sp = sp;
+    public SP(DisplayMetrics displayMetrics, float value) {
+        this.value = value;
         this.px = TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_SP,
-                sp,
+                value,
                 displayMetrics
         );
 
     }
 
     public float sp() {
-        return sp;
+        return value;
     }
 
     public float px() {

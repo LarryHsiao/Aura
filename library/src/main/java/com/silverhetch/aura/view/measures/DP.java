@@ -9,21 +9,21 @@ import static android.util.TypedValue.applyDimension;
  * Created by mikes on 10/23/2017.
  */
 public class DP {
-    private final float dp;
+    private final float value;
     private final float px;
 
-    public DP(Context context, float dp) {
-        this.dp = dp;
+    public DP(Context context, float value) {
+        this.value = value;
         this.px = applyDimension(
                 COMPLEX_UNIT_DIP,
-                dp,
+                value,
                 context.getResources().getDisplayMetrics()
         );
 
     }
 
     public float dp() {
-        return dp;
+        return value;
     }
 
     public float px() {
