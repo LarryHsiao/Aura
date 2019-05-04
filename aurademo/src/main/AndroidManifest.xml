@@ -71,7 +71,7 @@
         <activity android:name=".RippleBackgroundActivity" />
         <activity android:name=".BrightnessDemoActivity" />
         <activity android:name=".ConstructingActivity" />
-        <activity android:name=".FullScreenDialogActivity" />
+        <activity android:name=".AuraProgressBarActivity" />
     </application>
 
 </manifest>

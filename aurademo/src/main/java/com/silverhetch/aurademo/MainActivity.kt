@@ -52,7 +52,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                         "Brightness Demo",
                         "Image demo",
                         "Constructing Fragment",
-                        "Full screen dialog"
+                        "Full screen dialog",
+                        "Aura Progress bar"
                 ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -111,6 +112,9 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 }
                 15 -> {
                     SampleFullScreenDialogFragment().show(supportFragmentManager, null)
+                }
+                16 -> {
+                    startActivity(Intent(this@MainActivity, AuraProgressBarActivity::class.java))
                 }
             }
         }

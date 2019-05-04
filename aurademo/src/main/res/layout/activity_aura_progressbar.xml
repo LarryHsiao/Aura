@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.silverhetch.aura.view.progressbar.AuraProgressBar
+        android:id="@+id/auraProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bgColor="#000"
+        app:progress="0.7"
+        app:progressColor="@android:color/holo_red_dark" />
+</LinearLayout>
