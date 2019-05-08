@@ -12,6 +12,8 @@ import com.silverhetch.aura.R
 
 /**
  * A handy fragment that shows webView by given url.
+ *
+ * Note that the vertical scroll is provided by ScrollView.
  */
 class WebViewFragment : Fragment() {
     companion object {
