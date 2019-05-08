@@ -15,7 +15,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.silverhetch.aura.permission.PermissionCallback
 import com.silverhetch.aura.permission.PermissionsImpl
-import com.silverhetch.aura.view.dialog.FullScreenDialogFragment
 import com.silverhetch.aura.view.images.ImageActivity
 import com.silverhetch.aura.view.images.pager.PagerImageActivity
 import com.silverhetch.aurademo.fabcontrol.FabControlDemoActivity
@@ -53,7 +52,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                         "Image demo",
                         "Constructing Fragment",
                         "Full screen dialog",
-                        "Aura Progress bar"
+                        "Aura Progress bar",
+                        "WebView "
                 ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -115,6 +115,9 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 }
                 16 -> {
                     startActivity(Intent(this@MainActivity, AuraProgressBarActivity::class.java))
+                }
+                17 -> {
+                    startActivity(Intent(this@MainActivity, WebViewDemoActivity::class.java))
                 }
             }
         }
