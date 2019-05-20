@@ -28,7 +28,7 @@ abstract class AuraActivity : AppCompatActivity(), FabControl, PermissionCallbac
 
     override fun onBackPressed() {
         supportFragmentManager.fragments.forEach {
-            if (it is Events && it.isVisible && it.onBackPress()) {
+            if (it is BackControl && it.isVisible && it.onBackPress()) {
                 return
             }
         }

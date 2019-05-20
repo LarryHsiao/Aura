@@ -1,9 +1,9 @@
 package com.silverhetch.aura
 
 /**
- * Events class
+ * Object that handles the back press event.
  */
-interface Events {
+interface BackControl {
     /**
      * Deliver back press event.
      */

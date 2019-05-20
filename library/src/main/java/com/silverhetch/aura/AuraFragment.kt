@@ -16,7 +16,7 @@ import com.silverhetch.aura.view.fab.PhantomFabControl
 /**
  * Convenient Fragment class to inherit all Aura style interfaces.
  */
-abstract class AuraFragment : Fragment(), Events, PermissionCallback {
+abstract class AuraFragment : Fragment(), BackControl, PermissionCallback {
     private companion object {
         private const val REQUEST_CODE_PERMISSION_SETTING_REDIRECT = 4521
     }
@@ -25,7 +25,7 @@ abstract class AuraFragment : Fragment(), Events, PermissionCallback {
     private var permissionObj: Permissions = PhantomPermission()
     override fun onBackPress(): Boolean {
         childFragmentManager.fragments.forEach {
-            if (it is Events && it.isVisible && it.onBackPress()) {
+            if (it is BackControl && it.isVisible && it.onBackPress()) {
                 return true
             }
         }
