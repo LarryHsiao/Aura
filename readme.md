@@ -22,6 +22,7 @@ Currently this library has no implementation plans, just develop what I need in 
  - [Permission granting](docs/permission_granting.md)
 ##### UI
  - [AuraProgressBar](docs/aura_progress_bar.md)
+ - [StatusBarColor](docs/StatusBarColor.md)
 
 ## Quick start
 

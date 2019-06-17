@@ -2,6 +2,7 @@ package com.silverhetch.aurademo
 
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.silverhetch.aura.permission.PermissionCallback
 import com.silverhetch.aura.permission.PermissionsImpl
+import com.silverhetch.aura.view.activity.statusbar.StatusBarColor
 import com.silverhetch.aura.view.images.ImageActivity
 import com.silverhetch.aura.view.images.pager.PagerImageActivity
 import com.silverhetch.aurademo.fabcontrol.FabControlDemoActivity
@@ -53,7 +55,9 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                         "Constructing Fragment",
                         "Full screen dialog",
                         "Aura Progress bar",
-                        "WebView "
+                        "WebView ",
+                        "Status bar color light",
+                        "Status bar color dark"
                 ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -118,6 +122,12 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 }
                 17 -> {
                     startActivity(Intent(this@MainActivity, WebViewDemoActivity::class.java))
+                }
+                18 ->{
+                    StatusBarColor(window, Color.parseColor("#ffffff")).value()
+                }
+                19 -> {
+                    StatusBarColor(window, Color.parseColor("#000000")).value()
                 }
             }
         }
