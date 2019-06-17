@@ -1,7 +1,7 @@
 Status bar color
 ---
 
-This utility changes the status bar`s color and set the icon color theme to dark or by luminance(threshold 0.5).
+This utility changes the status bar`s color and set the icon color theme to dark or light by luminance(threshold 0.5).
 
 
 ```kotlin
