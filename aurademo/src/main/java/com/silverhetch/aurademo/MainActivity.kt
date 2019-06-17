@@ -124,7 +124,7 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                     startActivity(Intent(this@MainActivity, WebViewDemoActivity::class.java))
                 }
                 18 ->{
-                    StatusBarColor(window, Color.parseColor("#ffffff")).value()
+                    StatusBarColor(window, Color.parseColor("#03A9F4"),0.6).value()
                 }
                 19 -> {
                     StatusBarColor(window, Color.parseColor("#000000")).value()
