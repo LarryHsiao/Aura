@@ -39,6 +39,9 @@ class WebViewFragment : Fragment() {
             webChromeClient = WebChromeClient()
             webViewClient = WebViewClient()
             settings.javaScriptEnabled = true
+            settings.domStorageEnabled = true
+            settings.loadWithOverviewMode = true
+            settings.useWideViewPort = true
             loadUrl(arguments?.getString(ARG_URL) ?: "")
         }
     }
