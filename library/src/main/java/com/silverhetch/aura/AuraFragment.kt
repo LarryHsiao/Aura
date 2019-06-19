@@ -32,7 +32,7 @@ abstract class AuraFragment : Fragment(), BackControl, PermissionCallback {
         return false
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         activity.let {
             if (it is FabControl) {

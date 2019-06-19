@@ -35,11 +35,11 @@ abstract class AuraActivity : AppCompatActivity(), FabControl, PermissionCallbac
         super.onBackPressed()
     }
 
-    override fun attachFab(fabBehavior: FabBehavior?) {
+    override fun attachFab(fabBehavior: FabBehavior) {
         fabControl.attachFab(fabBehavior)
     }
 
-    override fun detachFab(fabBehavior: FabBehavior?) {
+    override fun detachFab(fabBehavior: FabBehavior) {
         fabControl.detachFab(fabBehavior)
     }
 
