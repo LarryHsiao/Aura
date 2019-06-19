@@ -7,6 +7,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
+import com.silverhetch.aura.view.measures.DP
 import java.lang.RuntimeException
 
 /**
@@ -44,12 +45,14 @@ class InputDialog : DialogFragment() {
         val inputField = EditText(context!!)
         return AlertDialog.Builder(context!!)
             .setTitle(arguments?.getString(ARG_TITLE, "") ?: "")
-            .setView(inputField)
             .setPositiveButton(android.R.string.ok) { dialog, which ->
                 result(Activity.RESULT_OK, inputField.text.toString())
             }.setNegativeButton(android.R.string.no) { dialog, which ->
                 result(Activity.RESULT_CANCELED, "")
-            }.create()
+            }.create().apply {
+                val padding = DP(context, 16f).px().toInt()
+                setView(inputField, padding, 0, padding, 0)
+            }
     }
 
     private fun result(result: Int, field: String) {
