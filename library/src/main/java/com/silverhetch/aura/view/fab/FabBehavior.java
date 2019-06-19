@@ -3,11 +3,17 @@ package com.silverhetch.aura.view.fab;
 import androidx.annotation.DrawableRes;
 
 /**
- * Created by larryhsiao on 2017/6/12.
+ * Object to represent a behavior of a floating action button,
  */
-
 public interface FabBehavior {
+    /**
+     * The drawable resource id, it is better to square.
+     */
     @DrawableRes
     int icon();
+
+    /**
+     * The clicked event.
+     */
     void onClick();
 }

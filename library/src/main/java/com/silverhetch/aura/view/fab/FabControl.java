@@ -1,10 +1,16 @@
 package com.silverhetch.aura.view.fab;
 
 /**
- * Created by mikes on 9/24/2017.
+ * Object that controls a floating action button on screen.
  */
-
 public interface FabControl {
+    /**
+     * Attach a new behavior with new [FabBehavior]
+     */
     void attachFab(FabBehavior fabBehavior);
+
+    /**
+     * Detach from fab.
+     */
     void detachFab(FabBehavior fabBehavior);
 }

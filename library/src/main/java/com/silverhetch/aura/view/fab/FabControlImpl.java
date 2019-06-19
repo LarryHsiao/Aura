@@ -7,9 +7,10 @@ import android.widget.Toast;
 import com.silverhetch.aura.R;
 
 /**
- * Created by mikes on 9/24/2017.
+ * Implementation of [FabControl]
+ * <p>
+ * Note: This class have integrate into [AuraActivity] and [AuraFragment]. Use both abstract classes to quick start.
  */
-
 public class FabControlImpl implements FabControl {
     private final FloatingActionButton fabView;
     private FabBehavior fabBehavior;

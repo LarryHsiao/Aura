@@ -44,7 +44,9 @@ abstract class AuraActivity : AppCompatActivity(), FabControl, PermissionCallbac
     }
 
     /**
-     * Setup [FloatingActionButton] on Activity
+     * Setup fab behavior, pass the view, Aura do the rest of detail.
+     *
+     * After this setup, implement a [FabControl] and pass it to [FabControl.attachFab] to make fab available to user.
      */
     fun setupFabControl(fab: FloatingActionButton) {
         fabControl = FabControlImpl(fab)
