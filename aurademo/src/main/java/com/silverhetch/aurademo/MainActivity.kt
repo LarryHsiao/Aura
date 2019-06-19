@@ -25,7 +25,7 @@ import com.silverhetch.aurademo.media.MediaPlayerDemoActivity
 
 class MainActivity : AppCompatActivity(), PermissionCallback {
     private val permissions = PermissionsImpl(this, this, arrayOf(
-            WRITE_EXTERNAL_STORAGE
+        WRITE_EXTERNAL_STORAGE
     ))
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,30 +35,31 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
         setContentView(listview)
 
         listview.adapter = ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                arrayOf(
-                        "Color fragment",
-                        "Request permissions",
-                        "FabControl Demo",
-                        "AuraActivity: Permission request",
-                        "AuraFragment: Permission request",
-                        "Remote image pager",
-                        "Log View demo",
-                        "Blur Effect",
-                        "Media Player",
-                        "Fullscreen Demo",
-                        "Overlay Demo",
-                        "Ripple Demo",
-                        "Brightness Demo",
-                        "Image demo",
-                        "Constructing Fragment",
-                        "Full screen dialog",
-                        "Aura Progress bar",
-                        "WebView ",
-                        "Status bar color light",
-                        "Status bar color dark"
-                ))
+            this,
+            android.R.layout.simple_list_item_1,
+            arrayOf(
+                "Color fragment",
+                "Request permissions",
+                "FabControl Demo",
+                "AuraActivity: Permission request",
+                "AuraFragment: Permission request",
+                "Remote image pager",
+                "Log View demo",
+                "Blur Effect",
+                "Media Player",
+                "Fullscreen Demo",
+                "Overlay Demo",
+                "Ripple Demo",
+                "Brightness Demo",
+                "Image demo",
+                "Constructing Fragment",
+                "Full screen dialog",
+                "Aura Progress bar",
+                "WebView ",
+                "Status bar color light",
+                "Status bar color dark",
+                "Input Dialog Demo Activity"
+            ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
                 0 -> {
@@ -78,13 +79,13 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 }
                 5 -> {
                     startActivity(PagerImageActivity.newIntent(this, arrayListOf(
-                            "https://dummyimage.com/600x400/000/fff",
-                            "https://dummyimage.com/600x400/fff/000",
-                            "https://dummyimage.com/600x400/000/fff",
-                            "https://dummyimage.com/600x400/fff/000",
-                            "https://dummyimage.com/600x400/000/fff",
-                            "https://dummyimage.com/600x400/fff/000",
-                            "https://dummyimage.com/600x400/000/fff"
+                        "https://dummyimage.com/600x400/000/fff",
+                        "https://dummyimage.com/600x400/fff/000",
+                        "https://dummyimage.com/600x400/000/fff",
+                        "https://dummyimage.com/600x400/fff/000",
+                        "https://dummyimage.com/600x400/000/fff",
+                        "https://dummyimage.com/600x400/fff/000",
+                        "https://dummyimage.com/600x400/000/fff"
                     )))
                 }
                 6 -> {
@@ -123,11 +124,14 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 17 -> {
                     startActivity(Intent(this@MainActivity, WebViewDemoActivity::class.java))
                 }
-                18 ->{
-                    StatusBarColor(window, Color.parseColor("#03A9F4"),0.6).value()
+                18 -> {
+                    StatusBarColor(window, Color.parseColor("#03A9F4"), 0.6).value()
                 }
                 19 -> {
                     StatusBarColor(window, Color.parseColor("#000000")).value()
+                }
+                20 -> {
+                    startActivity(Intent(this@MainActivity, InputDialogDemoActivity::class.java))
                 }
             }
         }
@@ -144,11 +148,11 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
 
     override fun showPermissionRationale(permission: Array<String>) {
         AlertDialog.Builder(this)
-                .setMessage("Permission required!")
-                .setPositiveButton("OK") { _, _ ->
-                    permissions.requestPermissions()
-                }.setNegativeButton("Cancel") { _, _ ->
-                }.create().show()
+            .setMessage("Permission required!")
+            .setPositiveButton("OK") { _, _ ->
+                permissions.requestPermissions()
+            }.setNegativeButton("Cancel") { _, _ ->
+            }.create().show()
     }
 
     override fun onPermissionPermanentlyDecline(permission: Array<String>) {

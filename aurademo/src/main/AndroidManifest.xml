@@ -1,71 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.silverhetch.aurademo">
-
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-
-    <!-- For overlay -->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    package="com.silverhetch.aurademo">
 
     <application
-            android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme">
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".InputDialogDemoActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ColorFragmentDemoActivity" />
+        <activity android:name=".fabcontrol.FabControlDemoActivity" />
+        <activity android:name=".PermissionRequestAuraActivity" />
+        <activity android:name=".AuraFragmentPermissionActivity" />
+        <activity android:name=".LogDemoActivity" />
+        <activity
+            android:name=".BlurImageDemoActivity"
+            android:label="BlurDemo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <activity android:name=".ColorFragmentDemoActivity"/>
-        <activity android:name=".fabcontrol.FabControlDemoActivity"/>
-        <activity android:name=".PermissionRequestAuraActivity"/>
-        <activity android:name=".AuraFragmentPermissionActivity"/>
-        <activity android:name=".LogDemoActivity"/>
-        <activity android:name=".BlurImageDemoActivity"
-                  android:label="BlurDemo">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".media.MediaPlayerDemoActivity"
-                  android:label="MediaPlayerDemo"
-        >
+        <activity
+            android:name=".media.MediaPlayerDemoActivity"
+            android:label="MediaPlayerDemo">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.MAIN" />
 
-                <data android:scheme="content"
-                    android:mimeType="*/*"/>
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <data
+                    android:mimeType="*/*"
+                    android:scheme="content" />
             </intent-filter>
         </activity>
-        <activity android:name=".FullScreenActivity"
-                  android:label="Fullscreen Demo"
-        >
+        <activity
+            android:name=".FullScreenActivity"
+            android:label="Fullscreen Demo">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".OverlayPermissionDemoActivity"
-                  android:screenOrientation="portrait"
-        />
-        <activity android:name=".PlaceHolderViewDemoActivity"
-                  android:label="Place Holder">
+        <activity
+            android:name=".OverlayPermissionDemoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PlaceHolderViewDemoActivity"
+            android:label="Place Holder">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".RippleBackgroundActivity" />
@@ -74,5 +74,10 @@
         <activity android:name=".AuraProgressBarActivity" />
         <activity android:name=".WebViewDemoActivity" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- For overlay -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>
