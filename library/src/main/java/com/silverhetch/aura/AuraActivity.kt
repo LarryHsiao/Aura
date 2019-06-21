@@ -3,9 +3,11 @@ package com.silverhetch.aura
 import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
+import androidx.annotation.IdRes
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.silverhetch.aura.permission.PermissionCallback
 import com.silverhetch.aura.permission.Permissions
 import com.silverhetch.aura.permission.PermissionsImpl
@@ -14,15 +16,19 @@ import com.silverhetch.aura.view.fab.FabBehavior
 import com.silverhetch.aura.view.fab.FabControl
 import com.silverhetch.aura.view.fab.FabControlImpl
 import com.silverhetch.aura.view.fab.PhantomFabControl
+import com.silverhetch.aura.view.fragment.PageControl
+import com.silverhetch.aura.view.fragment.PageControlImpl
+import com.silverhetch.aura.view.fragment.PhantomPageControl
 
 /**
  * Aura style Activity. Inherit this class for all Aura feature.
  */
-abstract class AuraActivity : AppCompatActivity(), FabControl, PermissionCallback {
+abstract class AuraActivity : AppCompatActivity(), FabControl, PermissionCallback, PageControl {
     private companion object {
         private const val REQUEST_CODE_PERMISSION_SETTING_REDIRECT = 4521
     }
 
+    private var pageControl: PageControl = PhantomPageControl()
     private var permissionObj: Permissions = PhantomPermission()
     private var fabControl: FabControl = PhantomFabControl()
 
@@ -87,17 +93,17 @@ abstract class AuraActivity : AppCompatActivity(), FabControl, PermissionCallbac
      */
     override fun onPermissionPermanentlyDecline(permission: Array<String>) {
         AlertDialog.Builder(this)
-                .setMessage(R.string.permission_pleaseAllowPermission)
-                .setOnCancelListener { finish() }
-                .setNegativeButton(R.string.app_cancel) { _, _ ->
-                    finish()
-                }.setPositiveButton(R.string.app_confirm) { _, _ ->
-                    val intent = Intent(
-                            Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                            Uri.fromParts("package", packageName, null)
-                    )
-                    startActivityForResult(intent, REQUEST_CODE_PERMISSION_SETTING_REDIRECT)
-                }.show()
+            .setMessage(R.string.permission_pleaseAllowPermission)
+            .setOnCancelListener { finish() }
+            .setNegativeButton(R.string.app_cancel) { _, _ ->
+                finish()
+            }.setPositiveButton(R.string.app_confirm) { _, _ ->
+                val intent = Intent(
+                    Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                    Uri.fromParts("package", packageName, null)
+                )
+                startActivityForResult(intent, REQUEST_CODE_PERMISSION_SETTING_REDIRECT)
+            }.show()
     }
 
     /**
@@ -107,12 +113,29 @@ abstract class AuraActivity : AppCompatActivity(), FabControl, PermissionCallbac
      */
     override fun showPermissionRationale(permission: Array<String>) {
         AlertDialog.Builder(this)
-                .setMessage(R.string.permission_pleaseAllowPermission)
-                .setOnCancelListener { finish() }
-                .setPositiveButton(R.string.app_confirm) { _, _ ->
-                    permissionObj.requestPermissions()
-                }.setNegativeButton(R.string.app_cancel) { _, _ ->
-                    finish()
-                }.show()
+            .setMessage(R.string.permission_pleaseAllowPermission)
+            .setOnCancelListener { finish() }
+            .setPositiveButton(R.string.app_confirm) { _, _ ->
+                permissionObj.requestPermissions()
+            }.setNegativeButton(R.string.app_cancel) { _, _ ->
+                finish()
+            }.show()
+    }
+
+    override fun nextPage(fragment: Fragment) {
+        pageControl.nextPage(fragment)
+    }
+
+    override fun rootPage(fragment: Fragment) {
+        pageControl.rootPage(fragment)
+    }
+
+    /**
+     * Setup the [PageControl] of Aura to make it working.
+     *
+     * @param pageContainer the page is going to replace
+     */
+    fun setupPageControl(@IdRes pageContainer: Int) {
+        pageControl = PageControlImpl(supportFragmentManager, pageContainer)
     }
 }
