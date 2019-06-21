@@ -73,6 +73,7 @@
         <activity android:name=".ConstructingActivity" />
         <activity android:name=".AuraProgressBarActivity" />
         <activity android:name=".WebViewDemoActivity" />
+        <activity android:name=".PageControlDemoActivity" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- For overlay -->

@@ -58,7 +58,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 "WebView ",
                 "Status bar color light",
                 "Status bar color dark",
-                "Input Dialog Demo Activity"
+                "Input Dialog Demo Activity",
+                "PageControl demo Activity"
             ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -132,6 +133,9 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 }
                 20 -> {
                     startActivity(Intent(this@MainActivity, InputDialogDemoActivity::class.java))
+                }
+                21 -> {
+                    startActivity(Intent(this@MainActivity, PageControlDemoActivity::class.java))
                 }
             }
         }
