@@ -1,8 +1,7 @@
 package com.silverhetch.aura.fingerprint
 
 /**
- * Object to represent the fingerprint function. With app stored state for enable state.
- *
+ * Object to represent the fingerprint function. For determine if the fingerprint available and record the enable state.
  */
 interface Fingerprint {
     /**
@@ -12,11 +11,13 @@ interface Fingerprint {
 
     /**
      * True if fingerprint function supported and enabled.
+     * This will always false if device not supported.
      */
     fun isEnabled(): Boolean
 
     /**
-     * Enable/disable fingerprint function
+     * Enable/disable fingerprint function.
+     * This will never change the isEnable() state if device not supported.
      */
     fun enable(enable: Boolean)
 }

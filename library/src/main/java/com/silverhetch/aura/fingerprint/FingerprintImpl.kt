@@ -1,6 +1,5 @@
 package com.silverhetch.aura.fingerprint
 
-import android.content.Context
 import android.os.Build
 import androidx.core.hardware.fingerprint.FingerprintManagerCompat
 import com.silverhetch.clotho.storage.Ceres
