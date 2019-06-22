@@ -10,13 +10,4 @@
         <!-- This is important! Don't forget to set window background -->
         <item name="android:windowBackground">@android:color/white</item>
     </style>
-
-    <style name="Transparent" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowFullscreen">false</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowAnimationStyle">@null</item>
-    </style>
 </resources>
