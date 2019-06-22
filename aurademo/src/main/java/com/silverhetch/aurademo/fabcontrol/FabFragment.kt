@@ -41,11 +41,11 @@ class FabFragment : AuraFragment(), FabBehavior {
 
     override fun onPause() {
         super.onPause()
-        fabControl().detachFab(this)
+        detachFab(this)
     }
 
     override fun onResume() {
         super.onResume()
-        fabControl().attachFab(this)
+        attachFab(this)
     }
 }

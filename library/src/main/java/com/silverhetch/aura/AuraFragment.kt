@@ -10,6 +10,7 @@ import com.silverhetch.aura.permission.PermissionCallback
 import com.silverhetch.aura.permission.Permissions
 import com.silverhetch.aura.permission.PermissionsImpl
 import com.silverhetch.aura.permission.PhantomPermission
+import com.silverhetch.aura.view.fab.FabBehavior
 import com.silverhetch.aura.view.fab.FabControl
 import com.silverhetch.aura.view.fab.PhantomFabControl
 import com.silverhetch.aura.view.fragment.PageControl
@@ -17,7 +18,7 @@ import com.silverhetch.aura.view.fragment.PageControl
 /**
  * Convenient Fragment class to inherit all Aura style interfaces.
  */
-abstract class AuraFragment : Fragment(), BackControl, PermissionCallback, PageControl {
+abstract class AuraFragment : Fragment(), BackControl, PermissionCallback, PageControl, FabControl {
     private companion object {
         private const val REQUEST_CODE_PERMISSION_SETTING_REDIRECT = 4521
     }
@@ -46,8 +47,6 @@ abstract class AuraFragment : Fragment(), BackControl, PermissionCallback, PageC
         super.onDetach()
         fabControl = PhantomFabControl()
     }
-
-    fun fabControl() = fabControl
 
     /**
      * Convenient method for requesting permissions implemented with [PermissionsImpl].
@@ -123,5 +122,13 @@ abstract class AuraFragment : Fragment(), BackControl, PermissionCallback, PageC
         if (activity is PageControl) {
             (activity as PageControl).rootPage(fragment)
         }
+    }
+
+    override fun attachFab(fabBehavior: FabBehavior) {
+        fabControl.attachFab(fabBehavior)
+    }
+
+    override fun detachFab(fabBehavior: FabBehavior) {
+        fabControl.detachFab(fabBehavior)
     }
 }
