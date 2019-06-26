@@ -59,7 +59,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 "Status bar color light",
                 "Status bar color dark",
                 "Input Dialog Demo Activity",
-                "PageControl demo Activity"
+                "PageControl demo Activity",
+                "Mneme ImageGrid demo"
             ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -136,6 +137,9 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 }
                 21 -> {
                     startActivity(Intent(this@MainActivity, PageControlDemoActivity::class.java))
+                }
+                22->{
+                    startActivity(Intent(this@MainActivity, MnemeImageGridDemoActivity::class.java))
                 }
             }
         }

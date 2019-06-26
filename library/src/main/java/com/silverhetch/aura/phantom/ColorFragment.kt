@@ -1,11 +1,11 @@
 package com.silverhetch.aura.phantom
 
-import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.silverhetch.aura.view.RandomColors
 
 /**
  * Created by Larry.H on 4/2/2018.
@@ -13,13 +13,8 @@ import android.view.ViewGroup
 class ColorFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = View(activity)
-        val index = Any().hashCode() % COLORS.size
-        view.setBackgroundColor(COLORS[index])
-        return view
-    }
-
-    companion object {
-        private val COLORS = intArrayOf(Color.BLACK, Color.YELLOW, Color.GRAY, Color.BLUE, Color.RED, Color.DKGRAY, Color.CYAN)
+        return View(activity).apply {
+            setBackgroundColor(RandomColors().value())
+        }
     }
 }
