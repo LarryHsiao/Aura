@@ -11,8 +11,6 @@ interface FabControl {
 
     /**
      * Detach from fab.
-     *
-     * @todo #0 consider to remove the detachFab() parameter which is redundant
      */
-    fun detachFab(fabBehavior: FabBehavior)
+    fun detachFab()
 }

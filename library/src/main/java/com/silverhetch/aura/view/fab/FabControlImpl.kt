@@ -20,9 +20,6 @@ class FabControlImpl(private val fabView: FloatingActionButton) : FabControl {
     }
 
     override fun attachFab(fabBehavior: FabBehavior) {
-        if (this.fabBehavior != null) {
-            throw RuntimeException("The previous fab not detach yet.")
-        }
         this.fabBehavior = fabBehavior
         if (fabView.scaleY == 1.0f) {
             showFabAfterDetachAnimation(fabBehavior)
@@ -31,10 +28,7 @@ class FabControlImpl(private val fabView: FloatingActionButton) : FabControl {
         }
     }
 
-    override fun detachFab(fabBehavior: FabBehavior) {
-        if (this.fabBehavior !== fabBehavior) {
-            throw RuntimeException("fab not matched when detaching")
-        }
+    override fun detachFab() {
         this.fabBehavior = null
         fabView.hide()
         fabView.setOnClickListener(null)

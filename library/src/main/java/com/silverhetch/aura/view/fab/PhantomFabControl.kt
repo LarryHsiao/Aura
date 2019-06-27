@@ -8,7 +8,7 @@ class PhantomFabControl : FabControl {
         // leave it empty
     }
 
-    override fun detachFab(fabBehavior: FabBehavior) {
+    override fun detachFab() {
         // leave it empty
     }
 }

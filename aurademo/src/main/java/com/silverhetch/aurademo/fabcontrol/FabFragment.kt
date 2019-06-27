@@ -41,7 +41,7 @@ class FabFragment : AuraFragment(), FabBehavior {
 
     override fun onPause() {
         super.onPause()
-        detachFab(this)
+        detachFab()
     }
 
     override fun onResume() {

@@ -128,7 +128,7 @@ abstract class AuraFragment : Fragment(), BackControl, PermissionCallback, PageC
         fabControl.attachFab(fabBehavior)
     }
 
-    override fun detachFab(fabBehavior: FabBehavior) {
-        fabControl.detachFab(fabBehavior)
+    override fun detachFab() {
+        fabControl.detachFab()
     }
 }
