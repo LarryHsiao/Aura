@@ -7,6 +7,8 @@ import androidx.lifecycle.LiveData
 
 /**
  * Aura style of Media Player
+ *
+ * @todo #refactor reduce method numbers.
  */
 interface AuraMediaPlayer {
     /**

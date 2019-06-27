@@ -22,7 +22,9 @@ import com.silverhetch.aura.view.images.pager.PagerImageActivity
 import com.silverhetch.aurademo.fabcontrol.FabControlDemoActivity
 import com.silverhetch.aurademo.media.MediaPlayerDemoActivity
 
-
+/**
+ * Entry point of demo app.
+ */
 class MainActivity : AppCompatActivity(), PermissionCallback {
     private val permissions = PermissionsImpl(this, this, arrayOf(
         WRITE_EXTERNAL_STORAGE

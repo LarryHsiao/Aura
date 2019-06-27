@@ -8,25 +8,34 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
 import org.robolectric.annotation.Config
 
+/**
+ * Test for [SP]
+ */
 @RunWith(RobolectricTestRunner::class)
 class SPTest {
+    /**
+     * Check result in xhdpi
+     */
     @Test
     @Config(qualifiers = "xhdpi")
-    fun simple() {
+    fun value_xhdpi() {
         Assert.assertEquals(
-                25f,
-                SP(DisplayMetrics().apply {
-                    scaledDensity = 2.5f
-                }, 10f).px()
+            25f,
+            SP(DisplayMetrics().apply {
+                scaledDensity = 2.5f
+            }, 10f).px()
         )
 
     }
 
+    /**
+     * Check result in mdpi.
+     */
     @Test
     fun originalValue() {
         Assert.assertEquals(
-                10f,
-                SP(RuntimeEnvironment.application, 10f).sp()
+            10f,
+            SP(RuntimeEnvironment.application, 10f).sp()
         )
     }
 }

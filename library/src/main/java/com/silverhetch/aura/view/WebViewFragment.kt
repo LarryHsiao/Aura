@@ -18,6 +18,9 @@ import com.silverhetch.aura.R
 class WebViewFragment : Fragment() {
     companion object {
         private const val ARG_URL = "ARG_URL"
+        /**
+         * Factory method
+         */
         fun newInstance(url: String): Fragment {
             return WebViewFragment().apply {
                 arguments = Bundle().apply {

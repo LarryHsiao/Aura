@@ -14,6 +14,9 @@ import com.silverhetch.aura.AuraFragment
 import com.silverhetch.aura.view.fab.FabBehavior
 import com.silverhetch.aurademo.R
 
+/**
+ * Demo fragment for demo Fab.
+ */
 class FabFragment : AuraFragment(), FabBehavior {
     override fun icon(): Int {
         return android.R.drawable.stat_sys_warning

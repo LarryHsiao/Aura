@@ -24,8 +24,8 @@ class AuraProgressBar : View {
         private const val HEIGHT_DP_MAX = 40f
     }
 
-    private val heightPxMax by lazy { DP(context!!, HEIGHT_DP_MAX).px() }
-    private val radius by lazy { DP(context!!, 20f).px() }
+    private val heightPxMax: Float
+    private val radius: Float
     private val bgRectF by lazy { RectF(0f, 0f, width.toFloat(), height.toFloat()) }
     private val progressSrc: Rect
     private val progressDst = Rect()
@@ -38,7 +38,7 @@ class AuraProgressBar : View {
         Paint().apply {
             color = TRANSPARENT
             xfermode = PorterDuffXfermode(
-                    CLEAR
+                CLEAR
             )
             isAntiAlias = true
         }
@@ -50,10 +50,12 @@ class AuraProgressBar : View {
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         val style = context.obtainStyledAttributes(
-                attrs,
-                R.styleable.AuraProgressBar,
-                0, 0
+            attrs,
+            R.styleable.AuraProgressBar,
+            0, 0
         )
+        heightPxMax = DP(context, HEIGHT_DP_MAX).px()
+        radius = DP(context, 20f).px()
         bgPaint = Paint().apply {
             color = style.getColor(R.styleable.AuraProgressBar_bgColor, GRAY)
             isAntiAlias = true
@@ -98,12 +100,12 @@ class AuraProgressBar : View {
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         setMeasuredDimension(
-                getDefaultSize(suggestedMinimumWidth, widthMeasureSpec),
-                if(layoutParams.height == WRAP_CONTENT){
-                    heightPxMax.toInt()
-                }else{
-                    getDefaultSize(heightPxMax.toInt(), heightMeasureSpec)
-                }
+            getDefaultSize(suggestedMinimumWidth, widthMeasureSpec),
+            if (layoutParams.height == WRAP_CONTENT) {
+                heightPxMax.toInt()
+            } else {
+                getDefaultSize(heightPxMax.toInt(), heightMeasureSpec)
+            }
         )
     }
 

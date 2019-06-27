@@ -19,7 +19,9 @@ import com.silverhetch.aura.R
 class PagerImageActivity : AuraActivity() {
     companion object {
         private const val URI_IMAGE = "URI_IMAGE"
-
+        /**
+         * Factory method for the [Intent]
+         */
         @JvmStatic
         fun newIntent(context: Context, list: ArrayList<String>): Intent {
             val intent = Intent(context, PagerImageActivity::class.java)
