@@ -22,7 +22,8 @@ Currently this library has no implementation plans, just develop what I need in 
 #### Components
 ##### System
  - [Permission granting](docs/permission_granting.md)
-##### UI
+ - [ChooserIntent](docs/chooser_intent.md) : System promoted action chooser.
+##### UI Component
  - [AuraProgressBar](docs/aura_progress_bar.md)
  - [StatusBarColor](docs/StatusBarColor.md)
 

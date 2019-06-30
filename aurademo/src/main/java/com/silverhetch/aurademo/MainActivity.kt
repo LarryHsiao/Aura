@@ -2,9 +2,11 @@ package com.silverhetch.aurademo
 
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.content.Intent
+import android.content.Intent.*
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.provider.Settings
 import android.view.ViewGroup.LayoutParams
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
@@ -14,6 +16,7 @@ import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.silverhetch.aura.intent.ChooserIntent
 import com.silverhetch.aura.permission.PermissionCallback
 import com.silverhetch.aura.permission.PermissionsImpl
 import com.silverhetch.aura.view.activity.statusbar.StatusBarColor
@@ -62,7 +65,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 "Status bar color dark",
                 "Input Dialog Demo Activity",
                 "PageControl demo Activity",
-                "Mneme ImageGrid demo"
+                "Mneme ImageGrid demo",
+                "Multi purpose Chooser"
             ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -140,8 +144,17 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 21 -> {
                     startActivity(Intent(this@MainActivity, PageControlDemoActivity::class.java))
                 }
-                22->{
+                22 -> {
                     startActivity(Intent(this@MainActivity, MnemeImageGridDemoActivity::class.java))
+                }
+                23 -> {
+                    startActivity(ChooserIntent(
+                        "Title here",
+                        Intent(MediaStore.ACTION_IMAGE_CAPTURE),
+                        Intent(ACTION_GET_CONTENT).also{
+                            it.type = "images/*"
+                        }
+                    ).value())
                 }
             }
         }
