@@ -59,14 +59,14 @@ class MnemeImageGrid : GridLayout {
                     }
                 })
             }
-            initImages(*list.toTypedArray())
+            initImages(list)
         }
     }
 
     /**
      * Load up the images.
      */
-    fun initImages(vararg sources: Source<Drawable>) {
+    fun initImages(sources: List<Source<Drawable>>) {
         post {
             removeAllViews()
             sources.forEach { source ->
