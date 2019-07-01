@@ -5,11 +5,9 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Bitmap.*
 import android.graphics.Bitmap.Config.*
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup.LayoutParams
 import android.widget.GridLayout
@@ -17,7 +15,6 @@ import android.widget.ImageView
 import com.silverhetch.aura.R
 import com.silverhetch.aura.view.RandomColors
 import com.silverhetch.aura.view.measures.DP
-import com.silverhetch.clotho.Source
 
 /**
  * Simple architecture grid view for viewing ImageView and an adding button at last.
@@ -31,8 +28,8 @@ class MnemeImageGrid : GridLayout {
     }
     private var addIcon: Drawable? = null
     private var itemSize = 0
-    private val drawables = ArrayList<MnemeItem>()
-    private var callback: (index: Int, isAddButton: Boolean) -> Unit = { _, _ -> }
+    private val imageMap = LinkedHashMap<String, MnemeItem>()
+    private var callback: (item: MnemeItem, isAddButton: Boolean) -> Unit = { _, _ -> }
     private var addable = false
 
     constructor(context: Context) : super(context) {
@@ -86,10 +83,10 @@ class MnemeImageGrid : GridLayout {
     fun initImages(newDrawables: List<MnemeItem>) {
         post {
             itemSize = (measuredWidth.toFloat() / columnCount).toInt()
-            drawables.clear()
+            imageMap.clear()
             removeAllViews()
-            drawables.addAll(newDrawables)
             newDrawables.forEach { source ->
+                imageMap[source.id()] = source
                 itemView(source.icon())
             }
         }
@@ -100,16 +97,18 @@ class MnemeImageGrid : GridLayout {
      */
     fun addImage(source: MnemeItem) {
         post {
-            drawables.add(source)
-            itemView(source.icon())
+            if (imageMap.containsKey(source.id()).not()) {
+                imageMap[source.id()] = source
+                itemView(source.icon())
+            }
         }
     }
 
     /**
      * Sources on view
      */
-    fun sources(): List<MnemeItem> {
-        return ArrayList(drawables)
+    fun sources(): Map<String, MnemeItem> {
+        return LinkedHashMap(imageMap)
     }
 
     /**
@@ -130,7 +129,7 @@ class MnemeImageGrid : GridLayout {
     /**
      * Listener the item click event.
      */
-    fun setCallback(newCallback: (index: Int, isAddingButton: Boolean) -> Unit) {
+    fun setCallback(newCallback: (item: MnemeItem, isAddingButton: Boolean) -> Unit) {
         callback = newCallback
     }
 
@@ -146,7 +145,10 @@ class MnemeImageGrid : GridLayout {
                 R.id.itemImageWithCross_imageView
             ).setImageResource(R.drawable.ic_plus)
             itemView.setOnClickListener { view ->
-                callback(-1, true)
+                callback(BitmapItem(
+                    context,
+                    createBitmap(1, 1, ARGB_8888)
+                ), true)
             }
             itemView.findViewById<View>(
                 R.id.itemImageWithCross_delete
@@ -172,17 +174,25 @@ class MnemeImageGrid : GridLayout {
             itemView.findViewById<ImageView>(R.id.itemImageWithCross_imageView).setImageDrawable(drawable)
             itemView.setOnClickListener { view ->
                 val index = indexOfChild(view)
-                callback(index, addable && index == childCount - 1)
+                callback(getItem(index), addable && index == childCount - 1)
             }
             itemView.findViewById<View>(R.id.itemImageWithCross_delete).setOnClickListener { closeButton ->
                 val index = indexOfChild(itemView)
                 removeViewAt(index)
-                drawables.removeAt(index)
+                imageMap.remove(ArrayList(imageMap.keys)[index])
             }
         }, if (addable) {
             childCount - 1
         } else {
             childCount
         })
+    }
+
+    private fun getItem(index: Int): MnemeItem {
+        return imageMap[ArrayList(imageMap.keys)[index]]
+            ?: BitmapItem(
+                context,
+                createBitmap(1, 1, ARGB_8888)
+            )
     }
 }

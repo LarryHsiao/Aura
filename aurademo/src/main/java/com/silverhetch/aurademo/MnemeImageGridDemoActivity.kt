@@ -35,7 +35,7 @@ class MnemeImageGridDemoActivity : AppCompatActivity() {
             ))
         }
         mnemeImage.initImages(list)
-        mnemeImage.setCallback { index, isAddingButton ->
+        mnemeImage.setCallback { item, isAddingButton ->
             if (isAddingButton) {
                 Toast.makeText(
                     this,
@@ -50,7 +50,7 @@ class MnemeImageGridDemoActivity : AppCompatActivity() {
                     1000
                 )
             } else {
-                Toast.makeText(this, "Index: $index", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Item: ${item.id()}", Toast.LENGTH_SHORT).show()
             }
         }
         Handler().apply {
