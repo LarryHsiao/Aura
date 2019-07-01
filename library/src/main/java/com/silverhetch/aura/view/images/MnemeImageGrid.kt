@@ -3,10 +3,13 @@ package com.silverhetch.aura.view.images
 import android.annotation.TargetApi
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.Bitmap.*
+import android.graphics.Bitmap.Config.*
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup.LayoutParams
 import android.widget.GridLayout
@@ -28,7 +31,7 @@ class MnemeImageGrid : GridLayout {
     }
     private var addIcon: Drawable? = null
     private var itemSize = 0
-    private val drawables = ArrayList<Source<Drawable>>()
+    private val drawables = ArrayList<MnemeItem>()
     private var callback: (index: Int, isAddButton: Boolean) -> Unit = { _, _ -> }
     private var addable = false
 
@@ -36,31 +39,42 @@ class MnemeImageGrid : GridLayout {
         init(context)
     }
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
+    constructor(
+        context: Context,
+        attrs: AttributeSet
+    ) : super(context, attrs) {
         init(context)
     }
 
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(
+        context: Context,
+        attrs: AttributeSet,
+        defStyleAttr: Int
+    ) : super(context, attrs, defStyleAttr) {
         init(context)
     }
 
     @TargetApi(21)
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes) {
+    constructor(
+        context: Context,
+        attrs: AttributeSet,
+        defStyleAttr: Int,
+        defStyleRes: Int
+    ) : super(context, attrs, defStyleAttr, defStyleRes) {
         init(context)
     }
 
     private fun init(context: Context) {
         columnCount = 3
         if (isInEditMode) {
-            val list = ArrayList<Source<Drawable>>()
+            val list = ArrayList<MnemeItem>()
             for (i in 0..2) {
-                list.add(object : Source<Drawable> {
-                    override fun value(): Drawable {
-                        return BitmapDrawable(resources, Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888).also {
-                            it.eraseColor(RandomColors().value())
-                        })
-                    }
-                })
+                list.add(BitmapItem(
+                    context,
+                    createBitmap(1, 1, ARGB_8888).also {
+                        it.eraseColor(RandomColors().value())
+                    })
+                )
             }
             initImages(list)
         }
@@ -69,14 +83,14 @@ class MnemeImageGrid : GridLayout {
     /**
      * Load up the images.
      */
-    fun initImages(newDrawables: List<Source<Drawable>>) {
+    fun initImages(newDrawables: List<MnemeItem>) {
         post {
             itemSize = (measuredWidth.toFloat() / columnCount).toInt()
             drawables.clear()
             removeAllViews()
             drawables.addAll(newDrawables)
             newDrawables.forEach { source ->
-                itemView(source.value())
+                itemView(source.icon())
             }
         }
     }
@@ -84,17 +98,17 @@ class MnemeImageGrid : GridLayout {
     /**
      * Add a Image to view.
      */
-    fun addImage(source: Source<Drawable>) {
+    fun addImage(source: MnemeItem) {
         post {
             drawables.add(source)
-            itemView(source.value())
+            itemView(source.icon())
         }
     }
 
     /**
      * Sources on view
      */
-    fun sources(): List<Source<Drawable>> {
+    fun sources(): List<MnemeItem> {
         return ArrayList(drawables)
     }
 
