@@ -6,6 +6,8 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup.LayoutParams
 import android.widget.GridLayout
 import android.widget.ImageView
@@ -25,7 +27,8 @@ class MnemeImageGrid : GridLayout {
         DP(context, 8f).px().toInt()
     }
     private var addIcon: Drawable? = null
-
+    private var itemSize = 0
+    private val drawables = ArrayList<Source<Drawable>>()
     private var callback: (index: Int, isAddButton: Boolean) -> Unit = { _, _ -> }
     private var addable = false
 
@@ -66,17 +69,33 @@ class MnemeImageGrid : GridLayout {
     /**
      * Load up the images.
      */
-    fun initImages(sources: List<Source<Drawable>>) {
+    fun initImages(newDrawables: List<Source<Drawable>>) {
         post {
+            itemSize = (measuredWidth.toFloat() / columnCount).toInt()
+            drawables.clear()
             removeAllViews()
-            sources.forEach { source ->
-                addItem(source.value())
-            }
-
-            if (addable) {
-                addButtonItem()
+            drawables.addAll(newDrawables)
+            newDrawables.forEach { source ->
+                itemView(source.value())
             }
         }
+    }
+
+    /**
+     * Add a Image to view.
+     */
+    fun addImage(source: Source<Drawable>) {
+        post {
+            drawables.add(source)
+            itemView(source.value())
+        }
+    }
+
+    /**
+     * Sources on view
+     */
+    fun sources(): List<Source<Drawable>> {
+        return ArrayList(drawables)
     }
 
     /**
@@ -87,7 +106,7 @@ class MnemeImageGrid : GridLayout {
             addable = new
 
             if (addable) {
-                addButtonItem()
+                addButtonView()
             } else {
                 removeViewAt(childCount - 1)
             }
@@ -101,8 +120,24 @@ class MnemeImageGrid : GridLayout {
         callback = newCallback
     }
 
-    private fun addButtonItem() {
-        addItem(addIcon ?: resources.getDrawable(R.drawable.ic_image_plus))
+    private fun addButtonView() {
+        addView(LayoutInflater.from(context).inflate(
+            R.layout.item_image_with_cross,
+            this,
+            false
+        ).also { itemView ->
+            itemView.layoutParams = LayoutParams(itemSize, itemSize)
+            itemView.setPadding(padding, padding, padding, padding)
+            itemView.findViewById<ImageView>(
+                R.id.itemImageWithCross_imageView
+            ).setImageResource(R.drawable.ic_plus)
+            itemView.setOnClickListener { view ->
+                callback(-1, true)
+            }
+            itemView.findViewById<View>(
+                R.id.itemImageWithCross_delete
+            ).visibility = View.GONE
+        }, childCount)
     }
 
     /**
@@ -112,20 +147,28 @@ class MnemeImageGrid : GridLayout {
         addIcon = newIcon
     }
 
-    private fun addItem(drawable: Drawable) {
-        val itemSize = (measuredWidth.toFloat() / columnCount).toInt()
-        addView(
-            ImageView(context).also {
-                it.layoutParams = LayoutParams(
-                    LayoutParams(itemSize, itemSize)
-                )
-                it.setPadding(padding, padding, padding, padding)
-                it.setImageDrawable(drawable)
-                it.setOnClickListener { view ->
-                    val index = indexOfChild(view)
-                    callback(index, addable && index == childCount - 1)
-                }
+    private fun itemView(drawable: Drawable) {
+        addView(LayoutInflater.from(context).inflate(
+            R.layout.item_image_with_cross,
+            this,
+            false
+        ).also { itemView ->
+            itemView.layoutParams = LayoutParams(itemSize, itemSize)
+            itemView.setPadding(padding, padding, padding, padding)
+            itemView.findViewById<ImageView>(R.id.itemImageWithCross_imageView).setImageDrawable(drawable)
+            itemView.setOnClickListener { view ->
+                val index = indexOfChild(view)
+                callback(index, addable && index == childCount - 1)
             }
-        )
+            itemView.findViewById<View>(R.id.itemImageWithCross_delete).setOnClickListener { closeButton ->
+                val index = indexOfChild(itemView)
+                removeViewAt(index)
+                drawables.removeAt(index)
+            }
+        }, if (addable) {
+            childCount - 1
+        } else {
+            childCount
+        })
     }
 }

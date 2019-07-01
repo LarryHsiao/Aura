@@ -11,4 +11,7 @@
 
     <!-- Application error -->
     <string name="appError_unknown">Oops! Something bad happened. Make sure the operation result is correct.</string>
+
+    <string name="delete_button">Delete Button</string>
+    <string name="item_image">Item Image</string>
 </resources>

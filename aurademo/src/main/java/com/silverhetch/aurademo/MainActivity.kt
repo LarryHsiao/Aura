@@ -87,12 +87,6 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 }
                 5 -> {
                     startActivity(PagerImageActivity.newIntent(this, arrayListOf(
-                        "https://dummyimage.com/600x400/000/fff",
-                        "https://dummyimage.com/600x400/fff/000",
-                        "https://dummyimage.com/600x400/000/fff",
-                        "https://dummyimage.com/600x400/fff/000",
-                        "https://dummyimage.com/600x400/000/fff",
-                        "https://dummyimage.com/600x400/fff/000",
                         "https://dummyimage.com/600x400/000/fff"
                     )))
                 }

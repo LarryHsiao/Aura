@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:background="#00ff00"
+    tools:layout_width="150dp"
+    tools:layout_height="150dp"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:contentDescription="@string/item_image"
+        android:layout_width="match_parent"
+        android:id="@+id/itemImageWithCross_imageView"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:id="@+id/itemImageWithCross_delete"
+        android:layout_gravity="end|top"
+        android:src="@drawable/ic_cross"
+        android:contentDescription="@string/delete_button"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="8dp"
+        android:layout_height="40dp" />
+</FrameLayout>
