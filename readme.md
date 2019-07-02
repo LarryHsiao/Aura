@@ -9,6 +9,8 @@ Wraps APIs into Object-oriented style of code, or we can say, Aura`s style. Whic
 
 Utilities for regular Java/Kotlin [Clotho][2]
 
+[![PDD status](http://www.0pdd.com/svg?name=LarryHsiao/Aura)](http://www.0pdd.com/p?name=LarryHsiao/Aura)
+
 [![We recommend IntelliJ IDEA](http://www.elegantobjects.org/intellij-idea.svg)](https://www.jetbrains.com/idea/)
 
 [![Build Status](https://travis-ci.org/LarryHsiao/Aura.svg?branch=master)](https://travis-ci.org/LarryHsiao/Aura)
