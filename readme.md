@@ -1,3 +1,6 @@
+@todo #new-1 Component Internal Storage
+@todo #new-2 Component Transfer file with progress
+
 Aura
 ----
 
