@@ -3,12 +3,16 @@
 There are two ways of permission granting utility in Aura.
 
 ###### AuraFragment/AuraActivity
-
 ```kotlin
 class PermissionRequestAuraActivity : AuraActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestPermissionsByObj(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE))
+    }
+    
+    override fun onPermissionGranted() {
+        // Success, If you want to handle the UI promotion yourself
+        // you can overrid showPermissionRationale(), onPermissionPermanentlyDecline()
     }
 }
 ```
