@@ -4,8 +4,7 @@
 Aura
 ----
 
-Utilities for Android projects.
-Wraps APIs into Object-oriented style of code, or we can say, Aura`s style. Which I know a little.
+Utility objects for Android projects.
 
 Utilities for regular Java/Kotlin [Clotho][2]
 
