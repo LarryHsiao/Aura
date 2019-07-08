@@ -24,6 +24,7 @@ import com.silverhetch.aura.view.images.ImageActivity
 import com.silverhetch.aura.view.images.pager.PagerImageActivity
 import com.silverhetch.aurademo.fabcontrol.FabControlDemoActivity
 import com.silverhetch.aurademo.media.MediaPlayerDemoActivity
+import com.silverhetch.aurademo.resultpipe.FragmentResultDemoActivity
 
 /**
  * Entry point of demo app.
@@ -66,7 +67,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 "Input Dialog Demo Activity",
                 "PageControl demo Activity",
                 "Mneme ImageGrid demo",
-                "Multi purpose Chooser"
+                "Multi purpose Chooser",
+                "FragmentResult"
             ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -145,10 +147,18 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                     startActivity(ChooserIntent(
                         "Title here",
                         Intent(MediaStore.ACTION_IMAGE_CAPTURE),
-                        Intent(ACTION_GET_CONTENT).also{
+                        Intent(ACTION_GET_CONTENT).also {
                             it.type = "images/*"
                         }
                     ).value())
+                }
+                24 ->{
+                    startActivity(
+                        Intent(
+                            this@MainActivity,
+                            FragmentResultDemoActivity::class.java
+                        )
+                    )
                 }
             }
         }

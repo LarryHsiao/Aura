@@ -75,6 +75,7 @@
         <activity android:name=".AuraProgressBarActivity" />
         <activity android:name=".WebViewDemoActivity" />
         <activity android:name=".PageControlDemoActivity" />
+        <activity android:name=".resultpipe.FragmentResultDemoActivity" />
     </application>
     <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- For overlay -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
