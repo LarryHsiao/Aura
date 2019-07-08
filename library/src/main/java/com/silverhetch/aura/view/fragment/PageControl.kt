@@ -1,8 +1,8 @@
 package com.silverhetch.aura.view.fragment
 
 import androidx.fragment.app.Fragment
-import com.silverhetch.aura.AuraFragment
 import com.silverhetch.aura.AuraActivity
+import com.silverhetch.aura.AuraFragment
 
 /**
  * Fragment page control, this class used for changing the main fragment on screen.
