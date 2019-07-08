@@ -15,7 +15,6 @@ import com.silverhetch.aura.AuraFragment
  *
  * @see AuraActivity
  * @see AuraFragment
- * @todo #ResultPipe-2 Default implementation of [ResultPipe]
  */
 interface ResultPipe {
     /**

@@ -15,6 +15,7 @@ import com.silverhetch.aura.view.fab.FabBehavior
 import com.silverhetch.aura.view.fab.FabControl
 import com.silverhetch.aura.view.fab.PhantomFabControl
 import com.silverhetch.aura.view.fragment.PageControl
+import com.silverhetch.aura.view.fragment.callback.FragmentResult
 import com.silverhetch.aura.view.fragment.callback.ResultPipe
 
 /**
@@ -25,11 +26,11 @@ abstract class AuraFragment : Fragment(),
         PermissionCallback,
         PageControl,
         FabControl,
-        ResultPipe {
+        ResultPipe{
     private companion object {
         private const val REQUEST_CODE_PERMISSION_SETTING_REDIRECT = 4521
     }
-
+    private val fragmentResult = FragmentResult(this)
     private var fabControl: FabControl = PhantomFabControl()
     private var permissionObj: Permissions = PhantomPermission()
     override fun onBackPress(): Boolean {
@@ -74,7 +75,11 @@ abstract class AuraFragment : Fragment(),
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+            requestCode: Int,
+            permissions: Array<out String>,
+            grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         permissionObj.handleResult(requestCode, permissions, grantResults)
     }
@@ -97,9 +102,16 @@ abstract class AuraFragment : Fragment(),
                 }.setPositiveButton(R.string.app_confirm) { _, _ ->
                     val intent = Intent(
                             Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                            Uri.fromParts("package", activity!!.packageName, null)
+                            Uri.fromParts(
+                                    "package",
+                                    activity!!.packageName,
+                                    null
+                            )
                     )
-                    startActivityForResult(intent, REQUEST_CODE_PERMISSION_SETTING_REDIRECT)
+                    startActivityForResult(
+                            intent,
+                            REQUEST_CODE_PERMISSION_SETTING_REDIRECT
+                    )
                 }.show()
     }
 
@@ -141,7 +153,6 @@ abstract class AuraFragment : Fragment(),
     }
 
     override fun sendResult(requestCode: Int, resultCode: Int, data: Intent) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        // @todo #ResultPipe-1 implemented this
+        fragmentResult.sendResult(requestCode, resultCode, data)
     }
 }
