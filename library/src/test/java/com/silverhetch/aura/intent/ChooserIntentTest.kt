@@ -1,6 +1,7 @@
 package com.silverhetch.aura.intent
 
 import android.content.Intent
+import androidx.test.core.app.ApplicationProvider
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -17,6 +18,7 @@ class ChooserIntentTest {
         assertEquals(
             1,
             ChooserIntent(
+                ApplicationProvider.getApplicationContext(),
                 "title",
                 Intent(Intent.ACTION_VIEW),
                 Intent("ACTION")
@@ -30,6 +32,7 @@ class ChooserIntentTest {
         assertEquals(
             0,
             ChooserIntent(
+                ApplicationProvider.getApplicationContext(),
                 "title",
                 Intent(Intent.ACTION_VIEW)
             ).value().getParcelableArrayExtra(Intent.EXTRA_INITIAL_INTENTS).size
