@@ -44,6 +44,7 @@ class MnemeImageGridDemoActivity : AppCompatActivity() {
                 ).show()
                 startActivityForResult(
                     ChooserIntent(
+                        this,
                         "",
                         Intent(Intent.ACTION_GET_CONTENT).also { it.type = "image/*" }
                     ).value(),

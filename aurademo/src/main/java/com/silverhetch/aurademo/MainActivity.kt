@@ -145,6 +145,7 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 }
                 23 -> {
                     startActivity(ChooserIntent(
+                        this@MainActivity,
                         "Title here",
                         Intent(MediaStore.ACTION_IMAGE_CAPTURE),
                         Intent(ACTION_GET_CONTENT).also {
