@@ -3,21 +3,16 @@ package com.silverhetch.aurademo
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.Bitmap.Config.*
-import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Bitmap.Config.ARGB_8888
 import android.os.Bundle
 import android.os.Handler
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.silverhetch.aura.intent.ChooserIntent
 import com.silverhetch.aura.view.RandomColors
 import com.silverhetch.aura.view.images.BitmapItem
 import com.silverhetch.aura.view.images.CRImage
 import com.silverhetch.aura.view.images.MnemeItem
-import com.silverhetch.clotho.Source
-import com.silverhetch.clotho.source.ConstSource
 import kotlinx.android.synthetic.main.activity_mneme_image_grid.*
 
 class MnemeImageGridDemoActivity : AppCompatActivity() {
@@ -34,7 +29,7 @@ class MnemeImageGridDemoActivity : AppCompatActivity() {
                 }
             ))
         }
-        mnemeImage.initImages(list)
+        mnemeImage.initImages(list,true)
         mnemeImage.setCallback { item, isAddingButton ->
             if (isAddingButton) {
                 Toast.makeText(

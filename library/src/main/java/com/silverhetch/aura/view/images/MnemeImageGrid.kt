@@ -73,14 +73,14 @@ class MnemeImageGrid : GridLayout {
                     })
                 )
             }
-            initImages(list)
+            initImages(list,true)
         }
     }
 
     /**
      * Load up the images.
      */
-    fun initImages(newDrawables: List<MnemeItem>) {
+    fun initImages(newDrawables: List<MnemeItem>, editable:Boolean) {
         post {
             itemSize = (measuredWidth.toFloat() / columnCount).toInt()
             imageMap.clear()
@@ -89,6 +89,7 @@ class MnemeImageGrid : GridLayout {
                 imageMap[source.id()] = source
                 itemView(source.icon())
             }
+            addable(editable)
         }
     }
 
