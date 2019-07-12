@@ -123,6 +123,12 @@ class MnemeImageGrid : GridLayout {
             } else {
                 removeViewAt(childCount - 1)
             }
+
+            for (i in 0 until if (addable) childCount - 1 else childCount) {
+                getChildAt(i).findViewById<View>(
+                    R.id.itemImageWithCross_delete
+                ).visibility = if (addable) View.VISIBLE else View.GONE
+            }
         }
     }
 
@@ -176,10 +182,13 @@ class MnemeImageGrid : GridLayout {
                 val index = indexOfChild(view)
                 callback(getItem(index), addable && index == childCount - 1)
             }
-            itemView.findViewById<View>(R.id.itemImageWithCross_delete).setOnClickListener { closeButton ->
-                val index = indexOfChild(itemView)
-                removeViewAt(index)
-                imageMap.remove(ArrayList(imageMap.keys)[index])
+            itemView.findViewById<View>(R.id.itemImageWithCross_delete).also {
+                it.visibility = if (addable) VISIBLE else GONE
+                it.setOnClickListener {
+                    val index = indexOfChild(itemView)
+                    removeViewAt(index)
+                    imageMap.remove(ArrayList(imageMap.keys)[index])
+                }
             }
         }, if (addable) {
             childCount - 1
