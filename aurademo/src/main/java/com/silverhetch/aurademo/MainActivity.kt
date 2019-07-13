@@ -17,14 +17,19 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.silverhetch.aura.intent.ChooserIntent
+import com.silverhetch.aura.media.BitmapStream
 import com.silverhetch.aura.permission.PermissionCallback
 import com.silverhetch.aura.permission.PermissionsImpl
+import com.silverhetch.aura.view.TintDrawable
 import com.silverhetch.aura.view.activity.statusbar.StatusBarColor
+import com.silverhetch.aura.view.bitmap.DrawableBitmap
 import com.silverhetch.aura.view.images.ImageActivity
 import com.silverhetch.aura.view.images.pager.PagerImageActivity
 import com.silverhetch.aurademo.fabcontrol.FabControlDemoActivity
 import com.silverhetch.aurademo.media.MediaPlayerDemoActivity
 import com.silverhetch.aurademo.resultpipe.FragmentResultDemoActivity
+import com.silverhetch.clotho.file.ToFile
+import java.io.File
 
 /**
  * Entry point of demo app.
@@ -68,7 +73,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 "PageControl demo Activity",
                 "Mneme ImageGrid demo",
                 "Multi purpose Chooser",
-                "FragmentResult"
+                "FragmentResult",
+                "Tint Dot Demo"
             ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -153,11 +159,32 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                         }
                     ).value())
                 }
-                24 ->{
+                24 -> {
                     startActivity(
                         Intent(
                             this@MainActivity,
                             FragmentResultDemoActivity::class.java
+                        )
+                    )
+                }
+                25 -> {
+                    startActivity(
+                        ImageActivity.newIntent(
+                            this@MainActivity,
+                            File(
+                                filesDir,
+                                "tempImage"
+                            ).also { dest ->
+                                ToFile(
+                                    BitmapStream(
+                                        DrawableBitmap(TintDrawable(
+                                            resources.getDrawable(R.drawable.ic_cross),
+                                            Color.CYAN
+                                        ).value()).value()
+                                    ).value(),
+                                    dest
+                                ){}.fire()
+                            }.toURI().toString()
                         )
                     )
                 }
