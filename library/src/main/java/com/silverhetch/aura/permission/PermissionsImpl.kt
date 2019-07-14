@@ -11,6 +11,8 @@ import java.util.*
 
 /**
  * Utility class for checking permission
+ *
+ * @todo #permission request code for granting permission.
  */
 class PermissionsImpl : Permissions {
     companion object {
