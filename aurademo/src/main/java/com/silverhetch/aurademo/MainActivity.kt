@@ -74,7 +74,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 "Mneme ImageGrid demo",
                 "Multi purpose Chooser",
                 "FragmentResult",
-                "Tint Dot Demo"
+                "Tint Dot Demo",
+                "Audio Recording"
             ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -183,8 +184,16 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                                         ).value()).value()
                                     ).value(),
                                     dest
-                                ){}.fire()
+                                ) {}.fire()
                             }.toURI().toString()
+                        )
+                    )
+                }
+                26 -> {
+                    startActivity(
+                        Intent(
+                            this@MainActivity,
+                            AudioRecordingActivity::class.java
                         )
                     )
                 }
