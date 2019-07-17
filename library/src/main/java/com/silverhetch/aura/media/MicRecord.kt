@@ -1,6 +1,5 @@
 package com.silverhetch.aura.media
 
-import android.Manifest
 import android.Manifest.permission.RECORD_AUDIO
 import android.media.AudioFormat.CHANNEL_IN_MONO
 import android.media.AudioFormat.ENCODING_PCM_16BIT
@@ -9,11 +8,11 @@ import android.media.MediaRecorder.AudioSource.MIC
 import androidx.annotation.RequiresPermission
 
 /**
- * Recorder that records audio received by phone`s microphone.
+ * Object records audio received by phone`s microphone.
  *
  * This class use guaranteed work parameters for [AudioRecord].
  */
-class MicRecord(private val onRecorded: (buffer: ByteArray, read: Int) -> Unit) : Recorder {
+class MicRecord(private val onRecorded: (buffer: ByteArray, read: Int) -> Unit) : Record {
     private val bufferSize by lazy {
         AudioRecord.getMinBufferSize(
             44100,
@@ -54,5 +53,9 @@ class MicRecord(private val onRecorded: (buffer: ByteArray, read: Int) -> Unit) 
         recording = false
         recorder.stop()
         recorder.release()
+    }
+
+    override fun running(): Boolean {
+        return recording
     }
 }

@@ -3,7 +3,7 @@ package com.silverhetch.aura.media
 /**
  * Represent a Media recorder
  */
-interface Recorder {
+interface Record {
     /**
      * Start recording
      */
@@ -13,4 +13,9 @@ interface Recorder {
      * End recording
      */
     fun stop()
+
+    /**
+     * Determine if this instance is till running.
+     */
+    fun running():Boolean
 }
