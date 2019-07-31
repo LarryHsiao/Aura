@@ -22,10 +22,14 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.yalantis:eqwaves:1.0.1'
     implementation 'androidx.fragment:fragment:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.0.2'

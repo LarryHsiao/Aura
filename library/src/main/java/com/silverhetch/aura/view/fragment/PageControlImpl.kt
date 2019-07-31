@@ -17,7 +17,7 @@ class PageControlImpl(private val manager: FragmentManager, @IdRes private val c
 
     override fun rootPage(fragment: Fragment) {
         while (manager.backStackEntryCount > 0) {
-            manager.popBackStack()
+            manager.popBackStackImmediate()
         }
         manager.beginTransaction()
             .replace(containerId, fragment)
