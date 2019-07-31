@@ -24,6 +24,9 @@ class UriMimeTypeTest {
         assertTrue(true)
     }
 
+    /**
+     * Empty string if input not a uri
+     */
     @Test
     fun invalidedUri() {
         assertEquals(
