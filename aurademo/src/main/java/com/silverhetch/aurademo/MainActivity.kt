@@ -20,6 +20,7 @@ import com.silverhetch.aura.intent.ChooserIntent
 import com.silverhetch.aura.media.BitmapStream
 import com.silverhetch.aura.permission.PermissionCallback
 import com.silverhetch.aura.permission.PermissionsImpl
+import com.silverhetch.aura.uri.UriMimeType
 import com.silverhetch.aura.view.TintDrawable
 import com.silverhetch.aura.view.activity.statusbar.StatusBarColor
 import com.silverhetch.aura.view.bitmap.DrawableBitmap
@@ -35,6 +36,9 @@ import java.io.File
  * Entry point of demo app.
  */
 class MainActivity : AppCompatActivity(), PermissionCallback {
+    companion object{
+        private const val REQUEST_CODE_SHOW_MIME_TYPE = 1000
+    }
     private val permissions = PermissionsImpl(this, this, arrayOf(
         WRITE_EXTERNAL_STORAGE
     ))
@@ -75,7 +79,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 "Multi purpose Chooser",
                 "FragmentResult",
                 "Tint Dot Demo",
-                "Audio Recording"
+                "Audio Recording",
+                "UriMimeType"
             ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -197,6 +202,15 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                         )
                     )
                 }
+                27 -> {
+                    startActivityForResult(
+                        Intent(Intent.ACTION_GET_CONTENT).also {
+                            it.type = "image/*"
+                            it.putExtra(EXTRA_MIME_TYPES, arrayOf("image/*", "video/*", "audio/*"))
+                        },
+                        REQUEST_CODE_SHOW_MIME_TYPE
+                    )
+                }
             }
         }
     }
@@ -225,5 +239,17 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
         val uri = Uri.fromParts("package", packageName, null)
         intent.data = uri
         startActivity(intent)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_SHOW_MIME_TYPE){
+            val mimeType = UriMimeType(this, data?.data?.toString()?:"").value()
+            Toast.makeText(
+                this,
+                "MimeType: $mimeType" ,
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 }
