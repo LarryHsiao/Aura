@@ -1,10 +1,16 @@
 package com.silverhetch.aura.view.activity.statusbar
 
 import android.os.Build
+import android.os.Build.VERSION.SDK_INT
+import android.os.Build.VERSION_CODES.M
 import android.view.View
+import android.view.View.*
 import android.view.Window
 import android.view.WindowManager
+import android.view.WindowManager.LayoutParams.*
 import androidx.annotation.ColorInt
+import androidx.annotation.FloatRange
+import com.silverhetch.clotho.Action
 import com.silverhetch.clotho.Source
 import com.silverhetch.clotho.utility.color.LuminanceByColor
 
@@ -15,17 +21,22 @@ import com.silverhetch.clotho.utility.color.LuminanceByColor
  *
  * @param threshold use light theme if the luminance is grater then this value.
  */
-class StatusBarColor(private val window: Window, @ColorInt private val color: Int, private val threshold:Double = 0.5) : Source<Unit> {
-    override fun value() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+class StatusBarColor(
+    private val window: Window,
+    @ColorInt private val color: Int,
+    @FloatRange(from = 0.0, to = 1.0)
+    private val threshold: Float = 0.5f
+) : Action {
+    override fun fire() {
+        if (SDK_INT >= M) {
+            window.clearFlags(FLAG_TRANSLUCENT_STATUS);
+            window.addFlags(FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.statusBarColor = color
             window.decorView.systemUiVisibility = if (LuminanceByColor(color.toLong()).value() > threshold) {
-                window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                window.decorView.systemUiVisibility or SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             } else {
                 // first or gate to make sure the light status is enable
-                window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR xor View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                window.decorView.systemUiVisibility or SYSTEM_UI_FLAG_LIGHT_STATUS_BAR xor SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             }
         }
     }
