@@ -9,6 +9,7 @@ import com.silverhetch.clotho.Action
 
 /**
  * Change system UI color
+ * @todo #1 Remove duplicate requesting window flags in NavigationBarColor and StatusBarColor.
  */
 class SystemUIColor(
     private val window: Window,
