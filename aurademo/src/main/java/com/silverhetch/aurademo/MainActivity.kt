@@ -22,6 +22,8 @@ import com.silverhetch.aura.permission.PermissionCallback
 import com.silverhetch.aura.permission.PermissionsImpl
 import com.silverhetch.aura.uri.UriMimeType
 import com.silverhetch.aura.view.TintDrawable
+import com.silverhetch.aura.view.activity.SystemUIColor
+import com.silverhetch.aura.view.activity.navigationbar.NavigationBarColor
 import com.silverhetch.aura.view.activity.statusbar.StatusBarColor
 import com.silverhetch.aura.view.bitmap.DrawableBitmap
 import com.silverhetch.aura.view.images.ImageActivity
@@ -80,7 +82,9 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 "FragmentResult",
                 "Tint Dot Demo",
                 "Audio Recording",
-                "UriMimeType"
+                "UriMimeType",
+                "System UI color light",
+                "System UI color dark"
             ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -141,10 +145,10 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                     startActivity(Intent(this@MainActivity, WebViewDemoActivity::class.java))
                 }
                 18 -> {
-                    StatusBarColor(window, Color.parseColor("#03A9F4"), 0.6).value()
+                    StatusBarColor(window, Color.parseColor("#03A9F4"), 0.6f).fire()
                 }
                 19 -> {
-                    StatusBarColor(window, Color.parseColor("#000000")).value()
+                    StatusBarColor(window, Color.parseColor("#000000")).fire()
                 }
                 20 -> {
                     startActivity(Intent(this@MainActivity, InputDialogDemoActivity::class.java))
@@ -210,6 +214,12 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                         },
                         REQUEST_CODE_SHOW_MIME_TYPE
                     )
+                }
+                28->{
+                    SystemUIColor(window,Color.WHITE).fire()
+                }
+                29->{
+                    SystemUIColor(window,Color.BLACK).fire()
                 }
             }
         }
