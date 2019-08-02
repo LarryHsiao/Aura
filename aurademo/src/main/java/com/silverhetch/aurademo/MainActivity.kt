@@ -38,9 +38,10 @@ import java.io.File
  * Entry point of demo app.
  */
 class MainActivity : AppCompatActivity(), PermissionCallback {
-    companion object{
+    companion object {
         private const val REQUEST_CODE_SHOW_MIME_TYPE = 1000
     }
+
     private val permissions = PermissionsImpl(this, this, arrayOf(
         WRITE_EXTERNAL_STORAGE
     ))
@@ -84,7 +85,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 "Audio Recording",
                 "UriMimeType",
                 "System UI color light",
-                "System UI color dark"
+                "System UI color dark",
+                "BioAuth"
             ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {
@@ -215,11 +217,16 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                         REQUEST_CODE_SHOW_MIME_TYPE
                     )
                 }
-                28->{
-                    SystemUIColor(window,Color.WHITE).fire()
+                28 -> {
+                    SystemUIColor(window, Color.WHITE).fire()
                 }
-                29->{
-                    SystemUIColor(window,Color.BLACK).fire()
+                29 -> {
+                    SystemUIColor(window, Color.BLACK).fire()
+                }
+                30 -> {
+                    startActivity(
+                        Intent(this@MainActivity, BioAuthDemoActivity::class.java)
+                    )
                 }
             }
         }
@@ -253,11 +260,12 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE_SHOW_MIME_TYPE){
-            val mimeType = UriMimeType(this, data?.data?.toString()?:"").value()
+        if (requestCode == REQUEST_CODE_SHOW_MIME_TYPE) {
+            val mimeType = UriMimeType(this, data?.data?.toString()
+                ?: "").value()
             Toast.makeText(
                 this,
-                "MimeType: $mimeType" ,
+                "MimeType: $mimeType",
                 Toast.LENGTH_LONG
             ).show()
         }

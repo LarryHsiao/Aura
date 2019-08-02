@@ -7,8 +7,9 @@ import android.graphics.drawable.Drawable;
 
 /**
  * Created by larryhsiao on 2017/10/16.
+ *
+ * @todo #10 BitmapUtility: replaced with objects.
  */
-
 public class BitmapUtility {
     public static Bitmap obtainBitmapFromVectorDrawable(Context context, int drawableId) {
         try {
