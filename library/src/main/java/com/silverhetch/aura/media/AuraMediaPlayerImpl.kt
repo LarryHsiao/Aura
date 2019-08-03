@@ -9,46 +9,49 @@ import android.view.SurfaceHolder
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import java.util.concurrent.TimeUnit.SECONDS
+import kotlin.math.abs
 
 /**
  * Implementation of [AuraMediaPlayer]
  */
-class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
-    private val isPlaying = MutableLiveData<Boolean>().apply { value = false }
-    private val duration = MutableLiveData<Int>().apply { value = 0 }
-    private val progress = MutableLiveData<Int>().apply { value = 0 }
-    private val buffered = MutableLiveData<Int>().apply { value = 0 }
-    private val videoSize = MutableLiveData<Point>().apply { value = Point(0, 0) }
+class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer, PlaybackControl {
+    private val state = MutableLiveData<State>().apply {
+        value = ConstState()
+    }
+    private var buffered: Int = 0
+    private var completed: Boolean = false // Note: this state will be publish only one time if true
+    private var videoSize = MutableLiveData<Point>().apply { Point(0, 0) }
     private val handler = Handler()
     private var mediaPlayer: MediaPlayer = MediaPlayer()
     private var attemptPlay = false
     private lateinit var dataSource: Uri
     private val progressRunnable = object : Runnable {
         override fun run() {
-            if (mediaPlayer.duration != 0) {
-                progress.value = mediaPlayer.currentPosition
-            }
-            isPlaying.value = mediaPlayer.isPlaying
+            state.value = ConstState(
+                mediaPlayer.isPlaying || attemptPlay,
+                if (mediaPlayer.duration != 0) mediaPlayer.duration else 0,
+                buffered,
+                if (mediaPlayer.currentPosition != 0) mediaPlayer.currentPosition else 0,
+                completed
+            )
+            completed = false
             handler.postDelayed(this, SECONDS.toMillis(1))
         }
     }
 
     override fun load(uri: String) {
         dataSource = Uri.parse(uri)
-        mediaPlayer.reset()
-        mediaPlayer.setDisplay(null)
+        mediaPlayer.stop()
+        mediaPlayer.release()
+        mediaPlayer = MediaPlayer()
         mediaPlayer.setDataSource(context, dataSource)
-        mediaPlayer.setOnVideoSizeChangedListener { mp, width, height ->
-            videoSize.value = Point(width, height)
-        }
-        mediaPlayer.setOnBufferingUpdateListener { mp, percent ->
-            buffered.value = percent
-        }
+        mediaPlayer.setOnVideoSizeChangedListener { _, width, height -> videoSize.value = Point(width, height) }
+        mediaPlayer.setOnBufferingUpdateListener { _, percent -> buffered = percent }
         mediaPlayer.setOnPreparedListener {
-            duration.value = mediaPlayer.duration
             if (attemptPlay) {
                 mediaPlayer.start()
             }
+            mediaPlayer.setOnCompletionListener { completed = true }
         }
         mediaPlayer.prepareAsync()
         handler.postDelayed(progressRunnable, SECONDS.toMillis(1))
@@ -68,24 +71,8 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
         mediaPlayer.seekTo(position)
     }
 
-    override fun progress(): LiveData<Int> {
-        return progress
-    }
-
-    override fun duration(): LiveData<Int> {
-        return duration
-    }
-
-    override fun isPlaying(): LiveData<Boolean> {
-        return isPlaying
-    }
-
-    override fun buffered(): LiveData<Int> {
-        return buffered
-    }
-
-    override fun videoSize(): LiveData<Point> {
-        return videoSize
+    override fun state(): LiveData<State> {
+        return state
     }
 
     override fun attachDisplay(surfaceHolder: SurfaceHolder) {
@@ -104,6 +91,14 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
         attemptPlay = false
         handler.removeCallbacks(progressRunnable)
         mediaPlayer.release()
+    }
+
+    override fun videoSize(): LiveData<Point> {
+        return videoSize
+    }
+
+    override fun playback(): PlaybackControl {
+        return this
     }
 
 }

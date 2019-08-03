@@ -12,49 +12,19 @@ import androidx.lifecycle.LiveData
  */
 interface AuraMediaPlayer {
     /**
+     * Current state of this player
+     */
+    fun state(): LiveData<State>
+
+    /**
+     * Object for control play back
+     */
+    fun playback(): PlaybackControl
+
+    /**
      * Load the media by uri
      */
     fun load(uri: String)
-
-    /**
-     * Trigger play
-     */
-    fun play()
-
-    /**
-     * Determine if this media player is playing something.
-     */
-    fun isPlaying():LiveData<Boolean>
-
-    /**
-     * Trigger pause
-     */
-    fun pause()
-
-    /**
-     * Seek to target position.
-     */
-    fun seekTo(position: Int)
-
-    /**
-     * Current loaded media duration in milliseconds.
-     */
-    fun duration(): LiveData<Int>
-
-    /**
-     * Current playing progress in milliseconds.
-     */
-    fun progress(): LiveData<Int>
-
-    /**
-     * Current loaded media streams buffered percentage.
-     */
-    fun buffered(): LiveData<Int>
-
-    /**
-     * Current loaded media video frame width and height.
-     */
-    fun videoSize(): LiveData<Point>
 
     /**
      * Attach video onto views
@@ -67,7 +37,14 @@ interface AuraMediaPlayer {
     fun detachDisplay()
 
     /**
+     * Current loaded media video frame width and height.
+     */
+    fun videoSize(): LiveData<Point>
+
+
+    /**
      * Release holding resources.
      */
     fun release()
+
 }
