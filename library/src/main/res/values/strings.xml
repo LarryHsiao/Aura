@@ -15,4 +15,6 @@
     <string name="delete_button">Delete Button</string>
     <string name="item_image">Item Image</string>
     <string name="debug_long_string">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in felis vel felis consectetur suscipit scelerisque eget libero. Suspendisse nunc mauris, molestie vel nulla eu, hendrerit lobortis ipsum. Nulla scelerisque semper dapibus. Nullam eleifend, massa eu varius porttitor, neque justo hendrerit purus, a venenatis orci ex quis lacus. Maecenas at tortor id nisi egestas pellentesque eu a libero. Donec porta, orci ac molestie mollis, augue enim ullamcorper sapien, eu pellentesque lectus diam a magna. Phasellus suscipit ullamcorper porta.</string>
+    <string name="cancel">Cancel</string>
+    <string name="authorization">Authorization</string>
 </resources>

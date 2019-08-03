@@ -4,7 +4,7 @@
 Aura
 ----
 
-Utility objects for Android projects.
+Utility objects for speeding up Android project`s development process. 
 
 Utilities for regular Java/Kotlin [Clotho][2]
 

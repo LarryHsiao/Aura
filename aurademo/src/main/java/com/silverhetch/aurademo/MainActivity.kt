@@ -38,9 +38,10 @@ import java.io.File
  * Entry point of demo app.
  */
 class MainActivity : AppCompatActivity(), PermissionCallback {
-    companion object{
+    companion object {
         private const val REQUEST_CODE_SHOW_MIME_TYPE = 1000
     }
+
     private val permissions = PermissionsImpl(this, this, arrayOf(
         WRITE_EXTERNAL_STORAGE
     ))
@@ -84,9 +85,10 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 "Audio Recording",
                 "UriMimeType",
                 "System UI color light",
-                "System UI color dark"
+                "System UI color dark",
+                "BioAuth"
             ))
-        listview.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
+        listview.onItemClickListener = AdapterView.OnItemClickListener { _, view, position, _ ->
             when (position) {
                 0 -> {
                     startActivity(Intent(this, ColorFragmentDemoActivity::class.java))
@@ -109,40 +111,40 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                     )))
                 }
                 6 -> {
-                    startActivity(Intent(this@MainActivity, LogDemoActivity::class.java))
+                    startActivity(Intent(view.context, LogDemoActivity::class.java))
                 }
                 7 -> {
-                    startActivity(Intent(this@MainActivity, BlurImageDemoActivity::class.java))
+                    startActivity(Intent(view.context, BlurImageDemoActivity::class.java))
                 }
                 8 -> {
-                    startActivity(Intent(this@MainActivity, MediaPlayerDemoActivity::class.java))
+                    startActivity(Intent(view.context, MediaPlayerDemoActivity::class.java))
                 }
                 9 -> {
-                    startActivity(Intent(this@MainActivity, FullScreenActivity::class.java))
+                    startActivity(Intent(view.context, FullScreenActivity::class.java))
                 }
                 10 -> {
-                    startActivity(Intent(this@MainActivity, OverlayPermissionDemoActivity::class.java))
+                    startActivity(Intent(view.context, OverlayPermissionDemoActivity::class.java))
                 }
                 11 -> {
-                    startActivity(Intent(this@MainActivity, RippleBackgroundActivity::class.java))
+                    startActivity(Intent(view.context, RippleBackgroundActivity::class.java))
                 }
                 12 -> {
-                    startActivity(Intent(this@MainActivity, BrightnessDemoActivity::class.java))
+                    startActivity(Intent(view.context, BrightnessDemoActivity::class.java))
                 }
                 13 -> {
-                    startActivity(ImageActivity.newIntent(this@MainActivity, "https://dummyimage.com/600x400/000/fff"))
+                    startActivity(ImageActivity.newIntent(view.context, "https://dummyimage.com/600x400/000/fff"))
                 }
                 14 -> {
-                    startActivity(Intent(this@MainActivity, ConstructingActivity::class.java))
+                    startActivity(Intent(view.context, ConstructingActivity::class.java))
                 }
                 15 -> {
                     SampleFullScreenDialogFragment().show(supportFragmentManager, null)
                 }
                 16 -> {
-                    startActivity(Intent(this@MainActivity, AuraProgressBarActivity::class.java))
+                    startActivity(Intent(view.context, AuraProgressBarActivity::class.java))
                 }
                 17 -> {
-                    startActivity(Intent(this@MainActivity, WebViewDemoActivity::class.java))
+                    startActivity(Intent(view.context, WebViewDemoActivity::class.java))
                 }
                 18 -> {
                     StatusBarColor(window, Color.parseColor("#03A9F4"), 0.6f).fire()
@@ -151,17 +153,17 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                     StatusBarColor(window, Color.parseColor("#000000")).fire()
                 }
                 20 -> {
-                    startActivity(Intent(this@MainActivity, InputDialogDemoActivity::class.java))
+                    startActivity(Intent(view.context, InputDialogDemoActivity::class.java))
                 }
                 21 -> {
-                    startActivity(Intent(this@MainActivity, PageControlDemoActivity::class.java))
+                    startActivity(Intent(view.context, PageControlDemoActivity::class.java))
                 }
                 22 -> {
-                    startActivity(Intent(this@MainActivity, MnemeImageGridDemoActivity::class.java))
+                    startActivity(Intent(view.context, MnemeImageGridDemoActivity::class.java))
                 }
                 23 -> {
                     startActivity(ChooserIntent(
-                        this@MainActivity,
+                        view.context,
                         "Title here",
                         Intent(MediaStore.ACTION_IMAGE_CAPTURE),
                         Intent(ACTION_GET_CONTENT).also {
@@ -172,7 +174,7 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 24 -> {
                     startActivity(
                         Intent(
-                            this@MainActivity,
+                            view.context,
                             FragmentResultDemoActivity::class.java
                         )
                     )
@@ -180,7 +182,7 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 25 -> {
                     startActivity(
                         ImageActivity.newIntent(
-                            this@MainActivity,
+                            view.context,
                             File(
                                 filesDir,
                                 "tempImage"
@@ -201,7 +203,7 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 26 -> {
                     startActivity(
                         Intent(
-                            this@MainActivity,
+                            view.context,
                             AudioRecordingActivity::class.java
                         )
                     )
@@ -215,11 +217,17 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                         REQUEST_CODE_SHOW_MIME_TYPE
                     )
                 }
-                28->{
-                    SystemUIColor(window,Color.WHITE).fire()
+                28 -> {
+                    SystemUIColor(window, Color.WHITE).fire()
                 }
-                29->{
-                    SystemUIColor(window,Color.BLACK).fire()
+                29 -> {
+                    SystemUIColor(window, Color.BLACK).fire()
+                }
+                30 -> {
+                    startActivity(
+                        Intent(view.context, BioAuthDemoActivity::class.java)
+
+                    )
                 }
             }
         }
@@ -253,11 +261,12 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE_SHOW_MIME_TYPE){
-            val mimeType = UriMimeType(this, data?.data?.toString()?:"").value()
+        if (requestCode == REQUEST_CODE_SHOW_MIME_TYPE) {
+            val mimeType = UriMimeType(this, data?.data?.toString()
+                ?: "").value()
             Toast.makeText(
                 this,
-                "MimeType: $mimeType" ,
+                "MimeType: $mimeType",
                 Toast.LENGTH_LONG
             ).show()
         }
