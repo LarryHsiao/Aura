@@ -117,7 +117,9 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                     startActivity(Intent(view.context, BlurImageDemoActivity::class.java))
                 }
                 8 -> {
-                    startActivity(Intent(view.context, MediaPlayerDemoActivity::class.java))
+                    startActivity(Intent(view.context, MediaPlayerDemoActivity::class.java).apply{
+                        data = Uri.parse("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4")
+                    })
                 }
                 9 -> {
                     startActivity(Intent(view.context, FullScreenActivity::class.java))
