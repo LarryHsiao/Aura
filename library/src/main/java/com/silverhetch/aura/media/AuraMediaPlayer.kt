@@ -24,7 +24,7 @@ interface AuraMediaPlayer {
     /**
      * Determine if this media player is playing something.
      */
-    fun isPlaying(): Boolean
+    fun isPlaying():LiveData<Boolean>
 
     /**
      * Trigger pause

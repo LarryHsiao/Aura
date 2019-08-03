@@ -1,8 +1,10 @@
-package com.silverhetch.aura.media
+package com.silverhetch.aurademo.media
 
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
+import com.silverhetch.aura.media.AuraMediaPlayer
+import com.silverhetch.aura.media.AuraMediaPlayerImpl
 
 /**
  * Media player service for general purpose media playback.

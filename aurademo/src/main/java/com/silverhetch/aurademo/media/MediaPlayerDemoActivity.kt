@@ -12,7 +12,6 @@ import android.widget.SeekBar
 import androidx.lifecycle.Observer
 import com.silverhetch.aura.AuraActivity
 import com.silverhetch.aura.media.AuraMediaPlayer
-import com.silverhetch.aura.media.MediaPlayerService
 import com.silverhetch.aurademo.R
 import kotlinx.android.synthetic.main.activity_media_player.*
 
@@ -22,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_media_player.*
  * @todo #2 review this class to determine if this class is finish.
  */
 class MediaPlayerDemoActivity : AuraActivity() {
+    private val owner = this
     private lateinit var mediaPlayer: AuraMediaPlayer
     private var pendingPlay = false
     private val connection = object : ServiceConnection {
@@ -35,7 +35,7 @@ class MediaPlayerDemoActivity : AuraActivity() {
                 mediaPlayer.play()
             }
             mediaPlayer.attachDisplay(mediaPlayer_display.holder)
-            mediaPlayer.videoSize().observe(this@MediaPlayerDemoActivity, Observer {
+            mediaPlayer.videoSize().observe(owner, Observer {
                 mediaPlayer_display.layoutParams = mediaPlayer_display.layoutParams.apply {
                     width = Point().run {
                         windowManager.defaultDisplay.getSize(this)
@@ -44,16 +44,19 @@ class MediaPlayerDemoActivity : AuraActivity() {
                     height = ((it.y.toFloat() / it.x.toFloat()) * width).toInt()
                 }
             })
-            mediaPlayer.buffered().observe(this@MediaPlayerDemoActivity, Observer {
+            mediaPlayer.buffered().observe(owner, Observer {
                 mediaPlayer_progress.secondaryProgress = ((it / 100f) * mediaPlayer_progress.max).toInt()
             })
-            mediaPlayer.progress().observe(this@MediaPlayerDemoActivity, Observer {
+            mediaPlayer.progress().observe(owner, Observer {
                 runOnUiThread {
                     mediaPlayer_progress.progress = it
                 }
             })
-            mediaPlayer.duration().observe(this@MediaPlayerDemoActivity, Observer {
+            mediaPlayer.duration().observe(owner, Observer {
                 mediaPlayer_progress.max = it
+            })
+            mediaPlayer.isPlaying().observe(owner, Observer {
+                updateButton()
             })
             mediaPlayer_progress.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -69,8 +72,22 @@ class MediaPlayerDemoActivity : AuraActivity() {
                 }
             })
 
-            mediaPlayer_play.setOnClickListener { mediaPlayer.play() }
-            mediaPlayer_pause.setOnClickListener { mediaPlayer.pause() }
+        }
+    }
+
+    private fun updateButton() {
+        if (mediaPlayer.isPlaying().value == true) {
+            mediaPlayer_play.setBackgroundResource(android.R.drawable.ic_media_pause)
+            mediaPlayer_play.setOnClickListener {
+                mediaPlayer.pause()
+                mediaPlayer_play.setBackgroundResource(android.R.drawable.ic_media_play)
+            }
+        } else {
+            mediaPlayer_play.setBackgroundResource(android.R.drawable.ic_media_play)
+            mediaPlayer_play.setOnClickListener {
+                mediaPlayer.play()
+                mediaPlayer_play.setBackgroundResource(android.R.drawable.ic_media_pause)
+            }
         }
     }
 
@@ -88,11 +105,11 @@ class MediaPlayerDemoActivity : AuraActivity() {
             }
 
             override fun surfaceCreated(holder: SurfaceHolder?) {
-                startService(Intent(this@MediaPlayerDemoActivity, MediaPlayerService::class.java))
+                startService(Intent(owner, MediaPlayerService::class.java))
                 bindService(
-                        Intent(this@MediaPlayerDemoActivity, MediaPlayerService::class.java),
-                        connection,
-                        Context.BIND_AUTO_CREATE
+                    Intent(owner, MediaPlayerService::class.java),
+                    connection,
+                    Context.BIND_AUTO_CREATE
                 )
             }
         })

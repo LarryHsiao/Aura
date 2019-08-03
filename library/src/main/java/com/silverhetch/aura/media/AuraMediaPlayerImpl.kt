@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit.SECONDS
  * Implementation of [AuraMediaPlayer]
  */
 class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
+    private val isPlaying = MutableLiveData<Boolean>().apply { value = false }
     private val duration = MutableLiveData<Int>().apply { value = 0 }
     private val progress = MutableLiveData<Int>().apply { value = 0 }
     private val buffered = MutableLiveData<Int>().apply { value = 0 }
@@ -27,12 +28,13 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
             if (mediaPlayer.duration != 0) {
                 progress.value = mediaPlayer.currentPosition
             }
+            isPlaying.value = mediaPlayer.isPlaying
             handler.postDelayed(this, SECONDS.toMillis(1))
         }
     }
 
     override fun load(uri: String) {
-        dataSource =Uri.parse(uri)
+        dataSource = Uri.parse(uri)
         mediaPlayer.reset()
         mediaPlayer.setDisplay(null)
         mediaPlayer.setDataSource(context, dataSource)
@@ -44,7 +46,7 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
         }
         mediaPlayer.setOnPreparedListener {
             duration.value = mediaPlayer.duration
-            if (attemptPlay){
+            if (attemptPlay) {
                 mediaPlayer.start()
             }
         }
@@ -74,8 +76,8 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
         return duration
     }
 
-    override fun isPlaying(): Boolean {
-        return mediaPlayer.isPlaying
+    override fun isPlaying(): LiveData<Boolean> {
+        return isPlaying
     }
 
     override fun buffered(): LiveData<Int> {
@@ -88,7 +90,7 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
 
     override fun attachDisplay(surfaceHolder: SurfaceHolder) {
         mediaPlayer.setDisplay(surfaceHolder)
-        if (!mediaPlayer.isPlaying && ::dataSource.isInitialized){
+        if (!mediaPlayer.isPlaying && ::dataSource.isInitialized) {
             // To draw current frame on surface
             mediaPlayer.seekTo(mediaPlayer.currentPosition)
         }
