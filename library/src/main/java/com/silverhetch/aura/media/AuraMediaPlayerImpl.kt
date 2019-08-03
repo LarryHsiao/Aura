@@ -28,9 +28,7 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer {
             if (mediaPlayer.duration != 0) {
                 progress.value = mediaPlayer.currentPosition
             }
-            if (isPlaying.value != mediaPlayer.isPlaying){
-                isPlaying.value = mediaPlayer.isPlaying
-            }
+            isPlaying.value = mediaPlayer.isPlaying
             handler.postDelayed(this, SECONDS.toMillis(1))
         }
     }

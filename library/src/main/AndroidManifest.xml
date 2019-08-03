@@ -9,7 +9,6 @@
         <activity android:name=".view.images.pager.PagerImageActivity" />
         <activity android:name=".view.images.ImageActivity" />
 
-        <service android:name=".media.MediaPlayerService"/>
     </application>
 
 </manifest>
