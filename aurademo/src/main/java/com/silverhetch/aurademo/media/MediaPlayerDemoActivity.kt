@@ -55,6 +55,9 @@ class MediaPlayerDemoActivity : AuraActivity() {
             mediaPlayer.duration().observe(this@MediaPlayerDemoActivity, Observer {
                 mediaPlayer_progress.max = it
             })
+            mediaPlayer.isPlaying().observe(this@MediaPlayerDemoActivity, Observer {
+                updateButton()
+            })
             mediaPlayer_progress.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                     if (fromUser) {
@@ -69,8 +72,22 @@ class MediaPlayerDemoActivity : AuraActivity() {
                 }
             })
 
-            mediaPlayer_play.setOnClickListener { mediaPlayer.play() }
-            mediaPlayer_pause.setOnClickListener { mediaPlayer.pause() }
+        }
+    }
+
+    private fun updateButton() {
+        if (mediaPlayer.isPlaying().value == true) {
+            mediaPlayer_play.setBackgroundResource(android.R.drawable.ic_media_pause)
+            mediaPlayer_play.setOnClickListener {
+                mediaPlayer.pause()
+                mediaPlayer_play.setBackgroundResource(android.R.drawable.ic_media_play)
+            }
+        } else {
+            mediaPlayer_play.setBackgroundResource(android.R.drawable.ic_media_play)
+            mediaPlayer_play.setOnClickListener {
+                mediaPlayer.play()
+                mediaPlayer_play.setBackgroundResource(android.R.drawable.ic_media_pause)
+            }
         }
     }
 
@@ -90,9 +107,9 @@ class MediaPlayerDemoActivity : AuraActivity() {
             override fun surfaceCreated(holder: SurfaceHolder?) {
                 startService(Intent(this@MediaPlayerDemoActivity, MediaPlayerService::class.java))
                 bindService(
-                        Intent(this@MediaPlayerDemoActivity, MediaPlayerService::class.java),
-                        connection,
-                        Context.BIND_AUTO_CREATE
+                    Intent(this@MediaPlayerDemoActivity, MediaPlayerService::class.java),
+                    connection,
+                    Context.BIND_AUTO_CREATE
                 )
             }
         })
