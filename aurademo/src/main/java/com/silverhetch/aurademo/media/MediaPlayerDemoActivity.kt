@@ -106,6 +106,4 @@ class MediaPlayerDemoActivity : AuraActivity() {
         super.onPause()
         unbindService(connection)
     }
-
-
 }
