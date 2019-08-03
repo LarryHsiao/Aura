@@ -32,7 +32,7 @@ class MediaPlayerDemoActivity : AuraActivity() {
             mediaPlayer = (service as MediaPlayerService.Binder).mediaPlayer()
             if (pendingPlay) {
                 mediaPlayer.load(intent?.data.toString())
-                mediaPlayer.play()
+                mediaPlayer.playback().play()
             }
             mediaPlayer.attachDisplay(mediaPlayer_display.holder)
             mediaPlayer.videoSize().observe(owner, Observer {
@@ -44,24 +44,21 @@ class MediaPlayerDemoActivity : AuraActivity() {
                     height = ((it.y.toFloat() / it.x.toFloat()) * width).toInt()
                 }
             })
-            mediaPlayer.buffered().observe(owner, Observer {
-                mediaPlayer_progress.secondaryProgress = ((it / 100f) * mediaPlayer_progress.max).toInt()
-            })
-            mediaPlayer.progress().observe(owner, Observer {
-                runOnUiThread {
-                    mediaPlayer_progress.progress = it
+            mediaPlayer.state().observe(owner, Observer {
+                mediaPlayer_progress.secondaryProgress = ((it.buffered() / 100f) * mediaPlayer_progress.max).toInt()
+                mediaPlayer_progress.progress = it.progress()
+                mediaPlayer_progress.max = it.duration()
+                updateButton(it.isPlaying())
+                if (it.completed()) {
+                    mediaPlayer.load(intent?.data.toString())
+                    mediaPlayer.attachDisplay(mediaPlayer_display.holder)
+                    mediaPlayer.playback().play()
                 }
-            })
-            mediaPlayer.duration().observe(owner, Observer {
-                mediaPlayer_progress.max = it
-            })
-            mediaPlayer.isPlaying().observe(owner, Observer {
-                updateButton()
             })
             mediaPlayer_progress.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                     if (fromUser) {
-                        mediaPlayer.seekTo(progress)
+                        mediaPlayer.playback().seekTo(progress)
                     }
                 }
 
@@ -71,21 +68,20 @@ class MediaPlayerDemoActivity : AuraActivity() {
                 override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 }
             })
-
         }
     }
 
-    private fun updateButton() {
-        if (mediaPlayer.isPlaying().value == true) {
+    private fun updateButton(playing: Boolean) {
+        if (playing) {
             mediaPlayer_play.setBackgroundResource(android.R.drawable.ic_media_pause)
             mediaPlayer_play.setOnClickListener {
-                mediaPlayer.pause()
+                mediaPlayer.playback().pause()
                 mediaPlayer_play.setBackgroundResource(android.R.drawable.ic_media_play)
             }
         } else {
             mediaPlayer_play.setBackgroundResource(android.R.drawable.ic_media_play)
             mediaPlayer_play.setOnClickListener {
-                mediaPlayer.play()
+                mediaPlayer.playback().play()
                 mediaPlayer_play.setBackgroundResource(android.R.drawable.ic_media_pause)
             }
         }
@@ -98,12 +94,8 @@ class MediaPlayerDemoActivity : AuraActivity() {
         pendingPlay = savedInstanceState == null && intent?.data != null
 
         mediaPlayer_display.holder.addCallback(object : SurfaceHolder.Callback {
-            override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {
-            }
-
-            override fun surfaceDestroyed(holder: SurfaceHolder?) {
-            }
-
+            override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {}
+            override fun surfaceDestroyed(holder: SurfaceHolder?) {}
             override fun surfaceCreated(holder: SurfaceHolder?) {
                 startService(Intent(owner, MediaPlayerService::class.java))
                 bindService(
