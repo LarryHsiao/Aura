@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 }
                 8 -> {
                     startActivity(Intent(view.context, MediaPlayerDemoActivity::class.java).apply{
-                        data = Uri.parse("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
+                        data = Uri.parse("https://larryhsiao.com:13000/sample.mkv")
                     })
                 }
                 9 -> {
