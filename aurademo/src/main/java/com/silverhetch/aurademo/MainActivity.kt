@@ -17,6 +17,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.silverhetch.aura.intent.ChooserIntent
+import com.silverhetch.aura.intent.PickerIntent
 import com.silverhetch.aura.media.BitmapStream
 import com.silverhetch.aura.permission.PermissionCallback
 import com.silverhetch.aura.permission.PermissionsImpl
@@ -86,7 +87,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 "UriMimeType",
                 "System UI color light",
                 "System UI color dark",
-                "BioAuth"
+                "BioAuth",
+                "PcikerMultipleMimeType"
             ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, view, position, _ ->
             when (position) {
@@ -117,7 +119,7 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                     startActivity(Intent(view.context, BlurImageDemoActivity::class.java))
                 }
                 8 -> {
-                    startActivity(Intent(view.context, MediaPlayerDemoActivity::class.java).apply{
+                    startActivity(Intent(view.context, MediaPlayerDemoActivity::class.java).apply {
                         data = Uri.parse("https://larryhsiao.com:13000/sample.mkv")
                     })
                 }
@@ -229,6 +231,15 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                     startActivity(
                         Intent(view.context, BioAuthDemoActivity::class.java)
 
+                    )
+                }
+                31 -> {
+                    startActivity(
+                        PickerIntent(
+                            "image/*",
+                            "audio/*",
+                            "video/*"
+                        ).value()
                     )
                 }
             }
