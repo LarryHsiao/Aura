@@ -12,6 +12,10 @@ import org.robolectric.RobolectricTestRunner
  */
 @RunWith(RobolectricTestRunner::class)
 class BundleStringTest {
+
+    /**
+     * Input/Output check
+     */
     @Test
     fun simple() {
         assertEquals(
