@@ -3,11 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Aura.iml" filepath="$PROJECT_DIR$/Aura.iml" />
-      <module fileurl="file://$PROJECT_DIR$/aurademo/Aura-aurademo.iml" filepath="$PROJECT_DIR$/aurademo/Aura-aurademo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/Aura-library.iml" filepath="$PROJECT_DIR$/library/Aura-library.iml" />
       <module fileurl="file://$PROJECT_DIR$/aurademo/aurademo.iml" filepath="$PROJECT_DIR$/aurademo/aurademo.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/phantom-Aura.iml" filepath="$PROJECT_DIR$/phantom-Aura.iml" />
     </modules>
   </component>
 </project>

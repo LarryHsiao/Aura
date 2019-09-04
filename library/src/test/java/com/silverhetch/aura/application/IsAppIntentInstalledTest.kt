@@ -10,7 +10,7 @@ import org.robolectric.RobolectricTestRunner
  * Tests for [com.silverhetch.aura.application.IsAppInstalled]
  */
 @RunWith(RobolectricTestRunner::class)
-class IsAppInstalledTest {
+class IsAppIntentInstalledTest {
 
     /**
      * Test the result should be false in local unit-test
