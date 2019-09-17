@@ -43,5 +43,4 @@ class OverlayPermissionImpl(private val activity: Activity, private val callback
             }
         }
     }
-
 }

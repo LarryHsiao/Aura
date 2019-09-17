@@ -1,6 +1,5 @@
 package com.silverhetch.aura.logs
 
-
 import com.silverhetch.clotho.log.Log
 
 /**

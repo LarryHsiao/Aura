@@ -15,7 +15,7 @@ class DrawableBitmap(private val drawable: Drawable) : Source<Bitmap> {
     override fun value(): Bitmap {
         val w = drawable.intrinsicWidth
         val h = drawable.intrinsicHeight
-        val bitmap = Bitmap.createBitmap(w, h,  if (drawable.opacity != OPAQUE) {
+        val bitmap = Bitmap.createBitmap(w, h, if (drawable.opacity != OPAQUE) {
             ARGB_8888
         } else {
             RGB_565
@@ -26,5 +26,4 @@ class DrawableBitmap(private val drawable: Drawable) : Source<Bitmap> {
         }
         return bitmap
     }
-
 }

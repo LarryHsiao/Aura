@@ -19,6 +19,6 @@ class EmptyLog : Log {
     }
 
     override fun error(s: String) {
-
+        // just leave it empty
     }
 }

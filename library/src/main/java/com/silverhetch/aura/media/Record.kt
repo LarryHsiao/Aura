@@ -17,5 +17,5 @@ interface Record {
     /**
      * Determine if this instance is till running.
      */
-    fun running():Boolean
+    fun running(): Boolean
 }

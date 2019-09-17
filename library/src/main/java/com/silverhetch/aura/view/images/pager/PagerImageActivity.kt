@@ -4,13 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.view.View
 import android.view.View.*
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.FrameLayout
 import com.silverhetch.aura.AuraActivity
-import com.silverhetch.aura.BuildConfig
 import com.silverhetch.aura.R
 
 /**
@@ -28,7 +26,6 @@ class PagerImageActivity : AuraActivity() {
             intent.putExtra(URI_IMAGE, list)
             return intent
         }
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +49,7 @@ class PagerImageActivity : AuraActivity() {
             visibility = visibility or SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
             visibility = visibility or SYSTEM_UI_FLAG_IMMERSIVE_STICKY
         }
-        window.decorView.systemUiVisibility = visibility;
+        window.decorView.systemUiVisibility = visibility
 
         with(supportFragmentManager.beginTransaction()) {
             replace(R.id.temp001, PagerImageFragment.newInstance(intent.getStringArrayListExtra(URI_IMAGE)))

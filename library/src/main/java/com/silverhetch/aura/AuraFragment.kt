@@ -4,9 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
-import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.silverhetch.aura.permission.PermissionCallback
 import com.silverhetch.aura.permission.Permissions
 import com.silverhetch.aura.permission.PermissionsImpl
@@ -22,14 +21,15 @@ import com.silverhetch.aura.view.fragment.callback.ResultPipe
  * Convenient Fragment class to inherit all Aura style interfaces.
  */
 abstract class AuraFragment : Fragment(),
-        BackControl,
-        PermissionCallback,
-        PageControl,
-        FabControl,
-        ResultPipe{
+    BackControl,
+    PermissionCallback,
+    PageControl,
+    FabControl,
+    ResultPipe {
     private companion object {
         private const val REQUEST_CODE_PERMISSION_SETTING_REDIRECT = 4521
     }
+
     private val fragmentResult = FragmentResult(this)
     private var fabControl: FabControl = PhantomFabControl()
     private var permissionObj: Permissions = PhantomPermission()
@@ -76,9 +76,9 @@ abstract class AuraFragment : Fragment(),
     }
 
     override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<out String>,
-            grantResults: IntArray
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         permissionObj.handleResult(requestCode, permissions, grantResults)
@@ -95,24 +95,24 @@ abstract class AuraFragment : Fragment(),
      */
     override fun onPermissionPermanentlyDecline(permission: Array<String>) {
         AlertDialog.Builder(context!!)
-                .setMessage(R.string.permission_pleaseAllowPermission)
-                .setOnCancelListener { activity!!.finish() }
-                .setNegativeButton(R.string.app_cancel) { _, _ ->
-                    activity!!.finish()
-                }.setPositiveButton(R.string.app_confirm) { _, _ ->
-                    val intent = Intent(
-                            Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                            Uri.fromParts(
-                                    "package",
-                                    activity!!.packageName,
-                                    null
-                            )
+            .setMessage(R.string.permission_pleaseAllowPermission)
+            .setOnCancelListener { activity!!.finish() }
+            .setNegativeButton(R.string.app_cancel) { _, _ ->
+                activity!!.finish()
+            }.setPositiveButton(R.string.app_confirm) { _, _ ->
+                val intent = Intent(
+                    Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                    Uri.fromParts(
+                        "package",
+                        activity!!.packageName,
+                        null
                     )
-                    startActivityForResult(
-                            intent,
-                            REQUEST_CODE_PERMISSION_SETTING_REDIRECT
-                    )
-                }.show()
+                )
+                startActivityForResult(
+                    intent,
+                    REQUEST_CODE_PERMISSION_SETTING_REDIRECT
+                )
+            }.show()
     }
 
     /**
@@ -122,13 +122,13 @@ abstract class AuraFragment : Fragment(),
      */
     override fun showPermissionRationale(permission: Array<String>) {
         AlertDialog.Builder(context!!)
-                .setMessage(R.string.permission_pleaseAllowPermission)
-                .setOnCancelListener { activity!!.finish() }
-                .setPositiveButton(R.string.app_confirm) { _, _ ->
-                    permissionObj.requestPermissions()
-                }.setNegativeButton(R.string.app_cancel) { _, _ ->
-                    activity!!.finish()
-                }.show()
+            .setMessage(R.string.permission_pleaseAllowPermission)
+            .setOnCancelListener { activity!!.finish() }
+            .setPositiveButton(R.string.app_confirm) { _, _ ->
+                permissionObj.requestPermissions()
+            }.setNegativeButton(R.string.app_cancel) { _, _ ->
+                activity!!.finish()
+            }.show()
     }
 
     override fun nextPage(fragment: Fragment) {
@@ -142,7 +142,6 @@ abstract class AuraFragment : Fragment(),
             (activity as PageControl).rootPage(fragment)
         }
     }
-
 
     override fun attachFab(fabBehavior: FabBehavior) {
         fabControl.attachFab(fabBehavior)

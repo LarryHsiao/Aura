@@ -25,7 +25,7 @@ class PagerImageFragment : AuraFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val uris= arguments!!.getStringArrayList(URI_IMAGE)
+        val uris = arguments!!.getStringArrayList(URI_IMAGE)
         val pager = ViewPager(inflater.context)
         pager.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
         pager.adapter = PagerImageAdapter(uris)

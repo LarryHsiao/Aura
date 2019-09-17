@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.ListPopupWindow.MATCH_PARENT
 import androidx.core.view.ViewCompat
 import com.silverhetch.aura.phantom.ConstructingFragment
-import com.silverhetch.aura.view.WebViewFragment
+import com.silverhetch.aura.view.fragment.WebViewFragment
 
 /**
  * Activity contains a [ConstructingFragment] for demo purpose.

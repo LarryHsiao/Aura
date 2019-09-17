@@ -41,6 +41,5 @@ class FileLog : Log {
         } catch (ex: IOException) {
             android.util.Log.e("FileLog", "STORING LOG Error cause $ex")
         }
-
     }
 }

@@ -27,7 +27,7 @@ import androidx.asynclayoutinflater.view.AsyncLayoutInflater
  *          }
  *      })
  *  }
- *}
+ * }
  * ```
  */
 class PlaceHolderView : FrameLayout {
@@ -100,5 +100,4 @@ class PlaceHolderView : FrameLayout {
     } else {
         View(context)
     }
-
 }

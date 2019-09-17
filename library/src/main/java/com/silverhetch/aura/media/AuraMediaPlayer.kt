@@ -1,7 +1,6 @@
 package com.silverhetch.aura.media
 
 import android.graphics.Point
-import android.util.Size
 import android.view.SurfaceHolder
 import androidx.lifecycle.LiveData
 
@@ -41,10 +40,8 @@ interface AuraMediaPlayer {
      */
     fun videoSize(): LiveData<Point>
 
-
     /**
      * Release holding resources.
      */
     fun release()
-
 }

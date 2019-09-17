@@ -15,5 +15,4 @@ interface MnemeItem {
      * Generate [Drawable] for imageView
      */
     fun icon(): Drawable
-
 }
