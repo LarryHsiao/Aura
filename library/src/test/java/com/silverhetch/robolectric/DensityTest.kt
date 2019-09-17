@@ -17,8 +17,8 @@ class DensityTest {
     @Config(qualifiers = "xhdpi")
     fun xhdpi() {
         Assert.assertEquals(
-                2f,
-                RuntimeEnvironment.application.resources.displayMetrics.density
+            2f,
+            RuntimeEnvironment.application.resources.displayMetrics.density
         )
     }
 
@@ -26,18 +26,17 @@ class DensityTest {
     @Config(qualifiers = "hdpi")
     fun hdpi() {
         Assert.assertEquals(
-                1.5f,
-                RuntimeEnvironment.application.resources.displayMetrics.density
+            1.5f,
+            RuntimeEnvironment.application.resources.displayMetrics.density
         )
     }
-
 
     @Test
     @Config(qualifiers = "mdpi")
     fun mdpi() {
         Assert.assertEquals(
-                1f,
-                RuntimeEnvironment.application.resources.displayMetrics.density
+            1f,
+            RuntimeEnvironment.application.resources.displayMetrics.density
         )
     }
 
@@ -45,18 +44,17 @@ class DensityTest {
     @Config(qualifiers = "ldpi")
     fun ldpi() {
         Assert.assertEquals(
-                0.75f,
-                RuntimeEnvironment.application.resources.displayMetrics.density
+            0.75f,
+            RuntimeEnvironment.application.resources.displayMetrics.density
         )
     }
-
 
     @Test
     @Config(qualifiers = "xxhdpi")
     fun xxhdpi() {
         Assert.assertEquals(
-                3f,
-                RuntimeEnvironment.application.resources.displayMetrics.density
+            3f,
+            RuntimeEnvironment.application.resources.displayMetrics.density
         )
     }
 
@@ -64,8 +62,8 @@ class DensityTest {
     @Config(qualifiers = "xxxhdpi")
     fun xxxhdpi() {
         Assert.assertEquals(
-                4f,
-                RuntimeEnvironment.application.resources.displayMetrics.density
+            4f,
+            RuntimeEnvironment.application.resources.displayMetrics.density
         )
     }
 }

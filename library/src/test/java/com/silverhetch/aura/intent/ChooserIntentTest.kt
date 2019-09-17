@@ -26,7 +26,6 @@ class ChooserIntentTest {
         )
     }
 
-
     @Test
     fun extraSize() {
         assertEquals(

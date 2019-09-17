@@ -65,6 +65,9 @@ dependencies {
     testImplementation 'org.robolectric:shadows-multidex:4.0.2'
 }
 
+afterEvaluate {
+    test.dependsOn ktlintCheck
+}
 
 apply plugin: 'jacoco'
 jacoco {

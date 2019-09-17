@@ -11,7 +11,7 @@ import org.robolectric.RobolectricTestRunner
  * Test for [FragmentResult]
  */
 @RunWith(RobolectricTestRunner::class)
-class FragmentResultTest{
+class FragmentResultTest {
 
     /**
      * Exception when no destination to deliver.
@@ -21,7 +21,7 @@ class FragmentResultTest{
         try {
             FragmentResult(Fragment()).sendResult(0, 0, Intent())
             fail()
-        }catch (e: UnsupportedOperationException){
+        } catch (e: UnsupportedOperationException) {
             assertNotNull(e.message)
         }
     }

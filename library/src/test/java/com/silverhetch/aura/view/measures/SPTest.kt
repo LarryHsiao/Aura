@@ -25,7 +25,6 @@ class SPTest {
                 scaledDensity = 2.5f
             }, 10f).px()
         )
-
     }
 
     /**
