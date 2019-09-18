@@ -16,7 +16,6 @@ class MultiLog(private vararg val logs: Log) : Log {
             android.util.Log.e("MultiLog", "Exception cause " + e +
                     "\nOriginal message: " + message)
         }
-
     }
 
     override fun warning(message: String) {
@@ -28,7 +27,6 @@ class MultiLog(private vararg val logs: Log) : Log {
             android.util.Log.e("MultiLog", "Exception cause " + e +
                     "\nOriginal message: " + message)
         }
-
     }
 
     override fun error(message: String) {
@@ -40,7 +38,6 @@ class MultiLog(private vararg val logs: Log) : Log {
             android.util.Log.e("MultiLog", "Exception cause " + e +
                     "\nOriginal message: " + message)
         }
-
     }
 
     override fun info(message: String) {
@@ -52,6 +49,5 @@ class MultiLog(private vararg val logs: Log) : Log {
             android.util.Log.e("MultiLog", "Exception cause " + e +
                     "\nOriginal message: " + message)
         }
-
     }
 }

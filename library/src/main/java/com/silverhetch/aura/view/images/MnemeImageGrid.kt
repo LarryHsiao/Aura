@@ -2,9 +2,8 @@ package com.silverhetch.aura.view.images
 
 import android.annotation.TargetApi
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Bitmap.*
-import android.graphics.Bitmap.Config.*
+import android.graphics.Bitmap.Config.ARGB_8888
+import android.graphics.Bitmap.createBitmap
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -73,14 +72,14 @@ class MnemeImageGrid : GridLayout {
                     })
                 )
             }
-            initImages(list,true)
+            initImages(list, true)
         }
     }
 
     /**
      * Load up the images.
      */
-    fun initImages(newDrawables: List<MnemeItem>, editable:Boolean) {
+    fun initImages(newDrawables: List<MnemeItem>, editable: Boolean) {
         post {
             itemSize = (measuredWidth.toFloat() / columnCount).toInt()
             imageMap.clear()

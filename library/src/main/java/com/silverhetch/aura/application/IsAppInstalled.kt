@@ -9,7 +9,8 @@ import com.silverhetch.clotho.Source
  */
 class IsAppInstalled(
     private val context: Context,
-    private val packageName: String) : Source<Boolean> {
+    private val packageName: String
+) : Source<Boolean> {
     override fun value(): Boolean {
         return try {
             context.packageManager.getApplicationInfo(packageName, 0)

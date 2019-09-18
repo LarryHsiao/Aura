@@ -14,7 +14,6 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import com.silverhetch.aura.R
 import com.silverhetch.aura.view.measures.DP
 
-
 /**
  * A simple progress bar implemented with drawing canvas.
  * Just different from vanilla one in Android Framework.
@@ -92,7 +91,7 @@ class AuraProgressBar : View {
             bgRectF.bottom = height - spacing
         }
         canvas.drawRoundRect(bgRectF, 0f, 0f, eraser)
-        canvas.drawRoundRect(bgRectF, radius, radius, bgPaint)//background
+        canvas.drawRoundRect(bgRectF, radius, radius, bgPaint) // background
         progressDst.right = (width * progress).toInt()
         progressDst.bottom = height
         canvas.drawBitmap(progressMaskBitmap, progressSrc, progressDst, progressMaskPaint)

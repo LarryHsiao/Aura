@@ -11,19 +11,19 @@ class CroppedImage(private val source: Source<Bitmap>, private val rect: Rect) :
     override fun value(): Bitmap {
         val bitmap = source.value()
         return Bitmap.createBitmap(
-                bitmap,
-                rect.left,
-                rect.top,
-                if(rect.left + rect.width() <= bitmap.width) {
-                    rect.width()
-                }else{
-                    bitmap.width - rect.left
-                },
-                if (rect.top + rect.height() <= bitmap.height) {
-                    rect.height()
-                }else{
-                    bitmap.height - rect.top
-                }
+            bitmap,
+            rect.left,
+            rect.top,
+            if (rect.left + rect.width() <= bitmap.width) {
+                rect.width()
+            } else {
+                bitmap.width - rect.left
+            },
+            if (rect.top + rect.height() <= bitmap.height) {
+                rect.height()
+            } else {
+                bitmap.height - rect.top
+            }
         )
     }
 }

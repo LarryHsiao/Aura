@@ -1,4 +1,4 @@
-package com.silverhetch.aura.view
+package com.silverhetch.aura.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

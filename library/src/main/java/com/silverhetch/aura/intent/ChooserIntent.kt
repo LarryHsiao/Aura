@@ -31,7 +31,8 @@ import java.lang.IllegalArgumentException
 class ChooserIntent(
     private val context: Context,
     private val title: String,
-    private vararg val intents: Intent) : Source<Intent> {
+    private vararg val intents: Intent
+) : Source<Intent> {
     override fun value(): Intent {
         if (intents.isEmpty()) {
             throw IllegalArgumentException("intents should not empty")

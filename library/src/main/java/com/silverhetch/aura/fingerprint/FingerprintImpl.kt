@@ -1,6 +1,7 @@
 package com.silverhetch.aura.fingerprint
 
-import android.os.Build
+import android.os.Build.VERSION.SDK_INT
+import android.os.Build.VERSION_CODES.M
 import androidx.core.hardware.fingerprint.FingerprintManagerCompat
 import com.silverhetch.clotho.storage.Ceres
 
@@ -13,14 +14,13 @@ class FingerprintImpl(private val manager: FingerprintManagerCompat, private val
     }
 
     override fun isSupported(): Boolean {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-            && manager.isHardwareDetected
+        return SDK_INT >= M && manager.isHardwareDetected
     }
 
     override fun isEnabled(): Boolean {
-        return manager.hasEnrolledFingerprints()
-            && isSupported()
-            && storage.get(KEY_FINGERPRINT_ENABLE).toLowerCase() == "true"
+        return manager.hasEnrolledFingerprints() &&
+            isSupported() &&
+            storage.get(KEY_FINGERPRINT_ENABLE).toLowerCase() == "true"
     }
 
     override fun enable(enable: Boolean) {

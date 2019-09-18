@@ -1,18 +1,14 @@
 package com.silverhetch.aura.fingerprint
 
 import android.content.Context
-import android.content.SharedPreferences
-import android.os.Build
 import android.os.Build.VERSION_CODES.*
 import androidx.core.hardware.fingerprint.FingerprintManagerCompat
 import androidx.test.core.app.ApplicationProvider
 import com.silverhetch.aura.storage.SPCeres
-import org.junit.Assert.*
-import org.junit.Before
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
-import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
 import org.robolectric.shadow.api.Shadow
 
@@ -60,7 +56,6 @@ class FingerprintImplTest {
             ).apply { enable(true) }.isEnabled()
         )
     }
-
 
     @Config(sdk = [LOLLIPOP])
     @Test
@@ -145,7 +140,6 @@ class FingerprintImplTest {
             ).isSupported()
         )
     }
-
 
     @Config(sdk = [O])
     @Test

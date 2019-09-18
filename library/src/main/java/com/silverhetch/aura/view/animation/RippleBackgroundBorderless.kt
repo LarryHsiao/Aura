@@ -6,7 +6,6 @@ import android.util.TypedValue
 import androidx.annotation.DrawableRes
 import com.silverhetch.clotho.Source
 
-
 /**
  * Ripple background resource id
  */

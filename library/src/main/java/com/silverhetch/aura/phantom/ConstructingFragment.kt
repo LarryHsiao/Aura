@@ -19,8 +19,7 @@ class ConstructingFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return ImageView(inflater.context).apply {
-            layoutParams= ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
-
+            layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
             setImageResource(R.drawable.ic_hammer)
         }
     }

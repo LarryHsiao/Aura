@@ -13,7 +13,8 @@ import android.net.Uri
  */
 class CRImage(
     private val context: Context,
-    private val url: Uri) : MnemeItem {
+    private val url: Uri
+) : MnemeItem {
     override fun id(): String {
         return url.toString()
     }

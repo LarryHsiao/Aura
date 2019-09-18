@@ -9,7 +9,6 @@ import android.view.SurfaceHolder
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import java.util.concurrent.TimeUnit.SECONDS
-import kotlin.math.abs
 
 /**
  * Implementation of [AuraMediaPlayer]
@@ -100,5 +99,4 @@ class AuraMediaPlayerImpl(private val context: Context) : AuraMediaPlayer, Playb
     override fun playback(): PlaybackControl {
         return this
     }
-
 }

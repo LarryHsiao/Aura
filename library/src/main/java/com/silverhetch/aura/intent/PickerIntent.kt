@@ -1,10 +1,10 @@
 package com.silverhetch.aura.intent
 
 import android.content.Intent
-import android.content.Intent.*
-import android.os.Build
-import android.os.Build.VERSION.*
-import android.os.Build.VERSION_CODES.*
+import android.content.Intent.ACTION_GET_CONTENT
+import android.content.Intent.EXTRA_MIME_TYPES
+import android.os.Build.VERSION.SDK_INT
+import android.os.Build.VERSION_CODES.KITKAT
 import com.silverhetch.clotho.Source
 
 /**
