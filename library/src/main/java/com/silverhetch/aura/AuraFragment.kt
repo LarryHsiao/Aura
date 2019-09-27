@@ -11,6 +11,7 @@ import com.silverhetch.aura.permission.PermissionCallback
 import com.silverhetch.aura.permission.Permissions
 import com.silverhetch.aura.permission.PermissionsImpl
 import com.silverhetch.aura.permission.PhantomPermission
+import com.silverhetch.aura.view.activity.ActionBarTitle
 import com.silverhetch.aura.view.fab.FabBehavior
 import com.silverhetch.aura.view.fab.FabControl
 import com.silverhetch.aura.view.fab.PhantomFabControl
@@ -160,9 +161,9 @@ abstract class AuraFragment : Fragment(),
      * Convenient method for setting up default ActionBar`s title
      */
     fun setTitle(title: String) {
-        val activity = activity
-        if (activity is AppCompatActivity) {
-            activity.supportActionBar?.title = title
-        }
+        ActionBarTitle(
+            activity,
+            title
+        ).fire()
     }
 }
