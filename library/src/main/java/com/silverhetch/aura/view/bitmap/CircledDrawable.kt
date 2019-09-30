@@ -1,4 +1,4 @@
-package com.silverhetch.aura.view.images
+package com.silverhetch.aura.view.bitmap
 
 import android.content.res.Resources
 import android.graphics.Bitmap
@@ -11,7 +11,7 @@ import com.silverhetch.clotho.Source
  *
  * Simply implemented with [RoundedBitmapDrawableFactory] which is in androidx
  */
-class CircledBitmap(
+class CircledDrawable(
     private val resources: Resources,
     private val bitmap: Bitmap
 ) : Source<Drawable> {
