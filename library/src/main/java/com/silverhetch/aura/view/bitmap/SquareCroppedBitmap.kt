@@ -4,9 +4,9 @@ import android.graphics.Bitmap
 import com.silverhetch.clotho.Source
 
 /**
- * Source to build a square [Bitmap] with given Bitmap
+ * Source to build a square [Bitmap] with given Bitmap which the output cropped from.
  */
-class SquareBitmap(private val origin: Source<Bitmap>) : Source<Bitmap> {
+class SquareCroppedBitmap(private val origin: Source<Bitmap>) : Source<Bitmap> {
     override fun value(): Bitmap {
         val originBmp = origin.value()
         return if (originBmp.width <= originBmp.height) {
