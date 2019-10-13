@@ -71,6 +71,9 @@ class LocationService : Service() {
         return binder
     }
 
+    /**
+     * Binder of this Service
+     */
     inner class Binder : android.os.Binder() {
         /**
          * Live data of monitoring location
