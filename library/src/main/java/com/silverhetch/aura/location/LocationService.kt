@@ -22,7 +22,7 @@ class LocationService : Service() {
 
     private var interval = DEFAULT_INTERVAL
     private val binder = Binder()
-    private val locationLive = MutableLiveData<Location>();
+    private val locationLive = MutableLiveData<Location>()
     private val thread = HandlerThread("LocationThread")
     private lateinit var threadHandler: Handler
     private lateinit var fusedLocationClient: FusedLocationProviderClient
