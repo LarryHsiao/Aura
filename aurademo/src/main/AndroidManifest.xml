@@ -85,6 +85,8 @@
         <activity android:name=".resultpipe.FragmentResultDemoActivity" />
         <activity android:name=".AudioRecordingActivity" />
         <activity android:name=".BioAuthDemoActivity" />
+        <activity android:name=".ClickableSpanActivity" />
+
         <service android:name="com.silverhetch.aurademo.media.MediaPlayerService"/>
     </application>
 </manifest>

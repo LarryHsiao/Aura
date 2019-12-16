@@ -88,7 +88,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 "System UI color light",
                 "System UI color dark",
                 "BioAuth",
-                "PcikerMultipleMimeType"
+                "PcikerMultipleMimeType",
+                "Clickable span"
             ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, view, position, _ ->
             when (position) {
@@ -242,11 +243,20 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                         ).value()
                     )
                 }
+                32 -> {
+                    startActivity(
+                        Intent(this, ClickableSpanActivity::class.java)
+                    )
+                }
             }
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         this.permissions.handleResult(requestCode, permissions, grantResults)
     }
@@ -272,7 +282,11 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
         startActivity(intent)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?
+    ) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_SHOW_MIME_TYPE) {
             val mimeType = UriMimeType(this, data?.data?.toString()
