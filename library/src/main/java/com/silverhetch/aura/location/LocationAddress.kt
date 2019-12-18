@@ -23,7 +23,7 @@ class LocationAddress(
                     location.latitude,
                     location.longitude,
                     1
-                )?.get(0) ?: Address(Locale.getDefault())
+                ).takeIf { it.size > 0 }?.get(0) ?: Address(Locale.getDefault())
         } catch (ioException: IOException) { // network failure
             Address(Locale.getDefault())
         } catch (argException: IllegalArgumentException) {
