@@ -4,16 +4,14 @@
 Aura
 ----
 
-Utility objects for speeding up Android project`s development process. 
+Some utility objects/classes for Android projects
 
-Utilities for regular Java/Kotlin [Clotho][2]
 
 [![PDD status](http://www.0pdd.com/svg?name=LarryHsiao/Aura)](http://www.0pdd.com/p?name=LarryHsiao/Aura)
 
 [![We recommend IntelliJ IDEA](http://www.elegantobjects.org/intellij-idea.svg)](https://www.jetbrains.com/idea/)
 
 [![](https://larryhsiao.com:9082/app/rest/builds/buildType:Aura_Development/statusIcon.svg)](https://github.com/LarryHsiao/Aura)
-[![Sonarqube](https://larryhsiao.com:9100/api/project_badges/measure?project=Aura&metric=alert_status)](https://larryhsiao.com:9100/dashboard?id=Aura)
 [![codebeat badge](https://codebeat.co/badges/0d232226-097e-49a8-84b6-5a5516b33a32)](https://codebeat.co/projects/github-com-larryhsiao-aura-master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/61ed243513854fcd88c356e7d27dc311)](https://www.codacy.com/app/LarryHsiao/Aura?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LarryHsiao/Aura&amp;utm_campaign=Badge_Grade)
 [![Hits-of-Code](https://hitsofcode.com/github/LarryHsiao/Aura)](https://hitsofcode.com/view/github/LarryHsiao/Aura)
@@ -30,6 +28,7 @@ Currently this library has no implementation plans, just develop what I need in 
 ##### UI Component
  - [AuraProgressBar](docs/aura_progress_bar.md)
  - [StatusBarColor](docs/StatusBarColor.md)
+ - [SpannableStr](docs/spannable_string.md)
 
 ## Quick start
 
@@ -37,7 +36,7 @@ Currently this library has no implementation plans, just develop what I need in 
 
 ```groovy
 dependencies {
-    implementation 'com.silverhetch:aura:1.0.5114345'
+    implementation 'com.silverhetch:aura:{latest_version}'
 }
 ```
 
