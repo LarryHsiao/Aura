@@ -27,6 +27,6 @@ class ConstState(
     }
 
     override fun completed(): Boolean {
-        return completed && progress != 0 && duration >= 0
+        return completed
     }
 }
