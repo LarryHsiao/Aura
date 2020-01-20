@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven'
 
-def auraVersionName = "1.20.1"
+def auraVersionName = "1.20.2"
 
 android {
     compileSdkVersion 28
