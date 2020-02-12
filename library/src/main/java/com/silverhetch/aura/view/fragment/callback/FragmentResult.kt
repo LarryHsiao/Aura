@@ -14,10 +14,11 @@ import androidx.fragment.app.Fragment
 class FragmentResult(private val fragment: Fragment) : ResultPipe {
     override fun sendResult(requestCode: Int, resultCode: Int, data: Intent) {
         fragment.targetFragment?.also { target ->
+            val code = if (requestCode == 0) fragment.targetRequestCode else requestCode
             if (target is ResultGate) {
-                target.onFragmentResult(requestCode, resultCode, data)
+                target.onFragmentResult(code, resultCode, data)
             } else {
-                target.onActivityResult(requestCode, resultCode, data)
+                target.onActivityResult(code, resultCode, data)
             }
         } ?: fragment.parentFragment?.also { parent ->
             parent.onActivityResult(requestCode, resultCode, data)
@@ -32,7 +33,7 @@ class FragmentResult(private val fragment: Fragment) : ResultPipe {
 
     private fun throwNotFound() {
         throw UnsupportedOperationException(
-                """
+            """
                 No available result to send to.
                 Possible deliver route:
                 - Target Fragment
