@@ -65,8 +65,9 @@ public final class EmptyListAdapter extends RecyclerViewWrapper<ViewHolder> {
         @NotNull List<Object> payloads) {
         if (ITEM_TYPE_EMPTY == getItemViewType(position)) {
             onBindViewHolder(holder, position);
+        } else {
+            super.onBindViewHolder(holder, position, payloads);
         }
-        super.onBindViewHolder(holder, position, payloads);
     }
 
     @Override
