@@ -21,7 +21,6 @@ import kotlinx.android.synthetic.main.activity_media_player.*
  * @todo #2 review this class to determine if this class is finish.
  */
 class MediaPlayerDemoActivity : AuraActivity() {
-    private val owner = this
     private lateinit var mediaPlayer: AuraMediaPlayer
     private var pendingPlay = false
     private val connection = object : ServiceConnection {
@@ -35,7 +34,7 @@ class MediaPlayerDemoActivity : AuraActivity() {
                 mediaPlayer.playback().play()
             }
             mediaPlayer.attachDisplay(mediaPlayer_display.holder)
-            mediaPlayer.videoSize().observe(owner, Observer {
+            mediaPlayer.videoSize().observe(this@MediaPlayerDemoActivity, Observer {
                 mediaPlayer_display.layoutParams = mediaPlayer_display.layoutParams.apply {
                     width = Point().run {
                         windowManager.defaultDisplay.getSize(this)
@@ -44,15 +43,16 @@ class MediaPlayerDemoActivity : AuraActivity() {
                     height = ((it.y.toFloat() / it.x.toFloat()) * width).toInt()
                 }
             })
-            mediaPlayer.state().observe(owner, Observer {
+            mediaPlayer.state().observe(this@MediaPlayerDemoActivity, Observer {
                 mediaPlayer_progress.secondaryProgress = ((it.buffered() / 100f) * mediaPlayer_progress.max).toInt()
                 mediaPlayer_progress.progress = it.progress()
                 mediaPlayer_progress.max = it.duration()
                 updateButton(it.isPlaying())
                 if (it.completed()) {
-                    mediaPlayer.load(intent?.data.toString())
-                    mediaPlayer.attachDisplay(mediaPlayer_display.holder)
-                    mediaPlayer.playback().play()
+                    mediaPlayer.playback().pause()
+//                    mediaPlayer.load(intent?.data.toString())
+//                    mediaPlayer.attachDisplay(mediaPlayer_display.holder)
+//                    mediaPlayer.playback().play()
                 }
             })
             mediaPlayer_progress.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
@@ -97,9 +97,9 @@ class MediaPlayerDemoActivity : AuraActivity() {
             override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {}
             override fun surfaceDestroyed(holder: SurfaceHolder?) {}
             override fun surfaceCreated(holder: SurfaceHolder?) {
-                startService(Intent(owner, MediaPlayerService::class.java))
+                startService(Intent(this@MediaPlayerDemoActivity, MediaPlayerService::class.java))
                 bindService(
-                    Intent(owner, MediaPlayerService::class.java),
+                    Intent(this@MediaPlayerDemoActivity, MediaPlayerService::class.java),
                     connection,
                     Context.BIND_AUTO_CREATE
                 )
