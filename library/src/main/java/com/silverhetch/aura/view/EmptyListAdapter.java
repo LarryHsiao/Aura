@@ -7,13 +7,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.silverhetch.clotho.Source;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+
 import static android.view.Gravity.CENTER;
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 /**
  * Adapter for representing empty list when there is no data.
  */
-public class EmptyListAdapter extends RecyclerViewWrapper<ViewHolder> {
+public final class EmptyListAdapter extends RecyclerViewWrapper<ViewHolder> {
     private static final int ITEM_TYPE_EMPTY = 4102001;
     private final Source<View> emptyView;
 
@@ -55,6 +57,16 @@ public class EmptyListAdapter extends RecyclerViewWrapper<ViewHolder> {
         } else {
             return super.onCreateViewHolder(parent, viewType);
         }
+    }
+
+    @Override
+    public void onBindViewHolder(
+        @NotNull ViewHolder holder, int position,
+        @NotNull List<Object> payloads) {
+        if (ITEM_TYPE_EMPTY == getItemViewType(position)) {
+            onBindViewHolder(holder, position);
+        }
+        super.onBindViewHolder(holder, position, payloads);
     }
 
     @Override
