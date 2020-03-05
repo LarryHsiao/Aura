@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import androidx.recyclerview.widget.RecyclerView;
+import com.silverhetch.clotho.Source;
 import org.jetbrains.annotations.NotNull;
 
 import static android.view.Gravity.CENTER;
@@ -14,10 +15,11 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
  */
 public class EmptyListAdapter extends RecyclerViewWrapper<ViewHolder> {
     private static final int ITEM_TYPE_EMPTY = 4102001;
-    private final View emptyView;
+    private final Source<View> emptyView;
 
     public EmptyListAdapter(
-        @NotNull RecyclerView.Adapter<ViewHolder> origin, View emptyView) {
+        @NotNull RecyclerView.Adapter<ViewHolder> origin,
+        Source<View> emptyView) {
         super(origin);
         this.emptyView = emptyView;
     }
@@ -48,7 +50,7 @@ public class EmptyListAdapter extends RecyclerViewWrapper<ViewHolder> {
                 new ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
             );
             layout.setGravity(CENTER);
-            layout.addView(emptyView);
+            layout.addView(emptyView.value());
             return new ViewHolder(layout);
         } else {
             return super.onCreateViewHolder(parent, viewType);
