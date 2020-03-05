@@ -32,6 +32,7 @@ class EmptyListAdapterActivity : AppCompatActivity() {
             }
 
             override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+                // Leave empty.
             }
         }, TextView(this).apply {
             text = "Empty View"
