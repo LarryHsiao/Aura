@@ -9,6 +9,52 @@ import androidx.recyclerview.widget.RecyclerView
 open class RecyclerViewWrapper<T : RecyclerView.ViewHolder>(
     private val origin: RecyclerView.Adapter<T>
 ) : RecyclerView.Adapter<T>() {
+
+    init {
+        origin.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+            override fun onChanged() {
+                notifyDataSetChanged()
+            }
+
+            override fun onItemRangeRemoved(
+                positionStart: Int,
+                itemCount: Int
+            ) {
+                notifyItemRangeRemoved(positionStart, itemCount)
+            }
+
+            override fun onItemRangeMoved(
+                fromPosition: Int,
+                toPosition: Int,
+                itemCount: Int
+            ) {
+                notifyDataSetChanged()
+            }
+
+            override fun onItemRangeInserted(
+                positionStart: Int,
+                itemCount: Int
+            ) {
+                notifyItemRangeInserted(positionStart, itemCount)
+            }
+
+            override fun onItemRangeChanged(
+                positionStart: Int,
+                itemCount: Int
+            ) {
+                notifyItemRangeChanged(positionStart, itemCount)
+            }
+
+            override fun onItemRangeChanged(
+                positionStart: Int,
+                itemCount: Int,
+                payload: Any?
+            ) {
+                notifyItemRangeChanged(positionStart, itemCount, payload)
+            }
+        })
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): T {
         return origin.onCreateViewHolder(parent, viewType)
     }

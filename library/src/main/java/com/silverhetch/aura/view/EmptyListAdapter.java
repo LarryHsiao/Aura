@@ -14,6 +14,10 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 /**
  * Adapter for representing empty list when there is no data.
+ *
+ * Note: The origin should use notify range functions with caution which will cause crash.
+ * e.g. When adding new data into empty data set, use notifyDataSetChanged to prevent
+ * notify item insertion to a exist item on View.
  */
 public final class EmptyListAdapter extends RecyclerViewWrapper<ViewHolder> {
     private static final int ITEM_TYPE_EMPTY = 4102001;
