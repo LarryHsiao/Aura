@@ -8,7 +8,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
-import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.AdapterView
@@ -17,16 +16,13 @@ import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
 import com.silverhetch.aura.intent.ChooserIntent
 import com.silverhetch.aura.intent.PickerIntent
 import com.silverhetch.aura.media.BitmapStream
 import com.silverhetch.aura.permission.PermissionCallback
 import com.silverhetch.aura.permission.PermissionsImpl
 import com.silverhetch.aura.uri.UriMimeType
-import com.silverhetch.aura.view.EmptyListAdapter
 import com.silverhetch.aura.view.TintDrawable
-import com.silverhetch.aura.view.ViewHolder
 import com.silverhetch.aura.view.activity.SystemUIColor
 import com.silverhetch.aura.view.activity.statusbar.StatusBarColor
 import com.silverhetch.aura.view.bitmap.DrawableBitmap
@@ -92,8 +88,7 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 "System UI color dark",
                 "BioAuth",
                 "PcikerMultipleMimeType",
-                "Clickable span",
-                "Empty List Adapter"
+                "Clickable span"
             ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, view, position, _ ->
             when (position) {
@@ -250,11 +245,6 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 32 -> {
                     startActivity(
                         Intent(this, ClickableSpanActivity::class.java)
-                    )
-                }
-                33 -> {
-                    startActivity(
-                        Intent(this, EmptyListAdapterActivity::class.java)
                     )
                 }
             }

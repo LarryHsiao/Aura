@@ -86,7 +86,6 @@
         <activity android:name=".AudioRecordingActivity" />
         <activity android:name=".BioAuthDemoActivity" />
         <activity android:name=".ClickableSpanActivity" />
-        <activity android:name=".EmptyListAdapterActivity" />
 
         <service android:name="com.silverhetch.aurademo.media.MediaPlayerService"/>
     </application>
