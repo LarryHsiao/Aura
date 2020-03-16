@@ -5,10 +5,11 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputType.TYPE_CLASS_TEXT
+import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
 import com.silverhetch.aura.view.measures.DP
-import java.lang.RuntimeException
 
 /**
  * Simple dialog for input one field implemented with [DialogFragment].
@@ -26,6 +27,7 @@ class InputDialog : DialogFragment() {
 
     companion object {
         private const val ARG_TITLE = "ARG_TITLE"
+
         /**
          * Argument for passing request code in case launching this dialog from Activity.
          */
@@ -43,6 +45,11 @@ class InputDialog : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val inputField = EditText(context!!)
+        inputField.inputType = TYPE_CLASS_TEXT
+        inputField.setSingleLine()
+        inputField.setLines(1)
+        inputField.maxLines = 1
+        inputField.setImeActionLabel("GO", EditorInfo.IME_ACTION_GO)
         return AlertDialog.Builder(context!!)
             .setTitle(arguments?.getString(ARG_TITLE, "") ?: "")
             .setPositiveButton(android.R.string.ok) { dialog, which ->
