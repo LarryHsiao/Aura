@@ -1,11 +1,11 @@
 package com.silverhetch.aura.view.images.pager
 
 import android.os.Bundle
-import androidx.viewpager.widget.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import androidx.viewpager.widget.ViewPager
 import com.silverhetch.aura.AuraFragment
 
 /**
@@ -24,8 +24,9 @@ class PagerImageFragment : AuraFragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val uris = arguments!!.getStringArrayList(URI_IMAGE)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedState: Bundle?): View? {
+        val uris = requireArguments()
+            .getStringArrayList(URI_IMAGE) ?: ArrayList()
         val pager = ViewPager(inflater.context)
         pager.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
         pager.adapter = PagerImageAdapter(uris)

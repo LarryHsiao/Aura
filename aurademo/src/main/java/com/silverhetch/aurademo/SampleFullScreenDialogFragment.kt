@@ -26,7 +26,7 @@ class SampleFullScreenDialogFragment : FullScreenDialogFragment() {
         return FrameLayout(inflater.context).apply {
             addView(
                     FrameLayout(inflater.context).apply {
-                        layoutParams = LayoutParams(MATCH_PARENT, DP(context!!, 200f).px().toInt(), BOTTOM)
+                        layoutParams = LayoutParams(MATCH_PARENT, DP(requireContext(), 200f).px().toInt(), BOTTOM)
                         setBackgroundColor(Color.WHITE)
                         ImageView(inflater.context).apply {
                             layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT, TOP or END)

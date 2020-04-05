@@ -95,17 +95,17 @@ abstract class AuraFragment : Fragment(),
      * Exit this Activity by default if user decline the promotion.
      */
     override fun onPermissionPermanentlyDecline(permission: Array<String>) {
-        AlertDialog.Builder(context!!)
+        AlertDialog.Builder(requireContext())
             .setMessage(R.string.permission_pleaseAllowPermission)
-            .setOnCancelListener { activity!!.finish() }
+            .setOnCancelListener { requireActivity().finish() }
             .setNegativeButton(R.string.app_cancel) { _, _ ->
-                activity!!.finish()
+                requireActivity().finish()
             }.setPositiveButton(R.string.app_confirm) { _, _ ->
                 val intent = Intent(
                     Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
                     Uri.fromParts(
                         "package",
-                        activity!!.packageName,
+                        requireActivity().packageName,
                         null
                     )
                 )
@@ -122,13 +122,13 @@ abstract class AuraFragment : Fragment(),
      * Override this method to do project specific behavior.
      */
     override fun showPermissionRationale(permission: Array<String>) {
-        AlertDialog.Builder(context!!)
+        AlertDialog.Builder(requireContext())
             .setMessage(R.string.permission_pleaseAllowPermission)
-            .setOnCancelListener { activity!!.finish() }
+            .setOnCancelListener { requireActivity().finish() }
             .setPositiveButton(R.string.app_confirm) { _, _ ->
                 permissionObj.requestPermissions()
             }.setNegativeButton(R.string.app_cancel) { _, _ ->
-                activity!!.finish()
+                requireActivity().finish()
             }.show()
     }
 

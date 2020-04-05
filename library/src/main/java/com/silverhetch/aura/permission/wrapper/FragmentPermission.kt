@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
  */
 internal class FragmentPermission(private val fragment: Fragment) : PermissionAPI {
     override fun context(): Context {
-        return fragment.context!!
+        return fragment.requireContext()
     }
 
     override fun requestPermissions(permissions: Array<String>, requestCode: Int) {
