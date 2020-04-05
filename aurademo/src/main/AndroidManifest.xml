@@ -87,6 +87,7 @@
         <activity android:name=".BioAuthDemoActivity" />
         <activity android:name=".ClickableSpanActivity" />
         <activity android:name=".EmptyListAdapterActivity" />
+        <activity android:name=".AlertDemoActivity" />
 
         <service android:name="com.silverhetch.aurademo.media.MediaPlayerService"/>
     </application>

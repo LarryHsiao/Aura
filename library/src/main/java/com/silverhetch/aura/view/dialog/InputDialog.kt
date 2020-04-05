@@ -44,13 +44,13 @@ class InputDialog : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val inputField = EditText(context!!)
+        val inputField = EditText(requireContext())
         inputField.inputType = TYPE_CLASS_TEXT
         inputField.setSingleLine()
         inputField.setLines(1)
         inputField.maxLines = 1
         inputField.setImeActionLabel("GO", EditorInfo.IME_ACTION_GO)
-        return AlertDialog.Builder(context!!)
+        return AlertDialog.Builder(requireContext())
             .setTitle(arguments?.getString(ARG_TITLE, "") ?: "")
             .setPositiveButton(android.R.string.ok) { dialog, which ->
                 result(Activity.RESULT_OK, inputField.text.toString())

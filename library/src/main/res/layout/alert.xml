@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:background="#ff0000"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:minWidth="200dp"
+        android:minHeight="200dp"
+        android:layout_margin="32dp"
+        android:gravity="center_horizontal"
+        android:background="@drawable/bg_alert"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_warning" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_margin="32dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/alert_title"
+            android:textColor="#000"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:text="This is sample textThis is sample textThis is sample textThis is sample textThis is sample textThis is sample textThis is sample textThis is sample textThis is sample text" />
+
+        <TextView
+            android:text="@string/app_confirm"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="#fff"
+            android:id="@+id/alert_confirm_button"
+            android:background="@drawable/bg_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
