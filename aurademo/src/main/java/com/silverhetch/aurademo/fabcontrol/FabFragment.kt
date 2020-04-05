@@ -27,12 +27,12 @@ class FabFragment : AuraFragment(), FabBehavior {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root = FrameLayout(context)
+        val root = FrameLayout(inflater.context)
         val button = Button(context)
         button.text = "Next Fragment"
         button.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         button.setOnClickListener {
-            with(activity!!.supportFragmentManager!!.beginTransaction()) {
+            with(requireActivity().supportFragmentManager.beginTransaction()) {
                 replace(R.id.fabDemo_fragmentContainer, FabFragment())
                 addToBackStack(null)
                 commit()

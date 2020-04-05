@@ -6,22 +6,18 @@ import androidx.fragment.app.Fragment
 /**
  * Deliver fragment result to Parent Fragment, Target Fragment or Activity.
  *
- * The order to find the deliver destination:
+ * The order to find the delivering destination:
  * Target Fragment -> Parent Fragment -> Activity
  * If target/parent Fragment have implement [ResultGate],
- * the result will goes the method [ResultGate.onFragmentResult].
+ * the result will go the method [ResultGate.onFragmentResult].
  */
 class FragmentResult(private val fragment: Fragment) : ResultPipe {
     override fun sendResult(requestCode: Int, resultCode: Int, data: Intent) {
         fragment.targetFragment?.also { target ->
             val code = if (requestCode == 0) fragment.targetRequestCode else requestCode
-            if (target is ResultGate) {
-                target.onFragmentResult(code, resultCode, data)
-            } else {
-                target.onActivityResult(code, resultCode, data)
-            }
+            sendFragment(target, code, resultCode, data)
         } ?: fragment.parentFragment?.also { parent ->
-            parent.onActivityResult(requestCode, resultCode, data)
+            sendFragment(parent, requestCode, resultCode, data)
         } ?: fragment.activity?.also { activity ->
             if (activity is ResultGate) {
                 activity.onFragmentResult(requestCode, resultCode, data)
@@ -29,6 +25,19 @@ class FragmentResult(private val fragment: Fragment) : ResultPipe {
                 throwNotFound()
             }
         } ?: throwNotFound()
+    }
+
+    private fun sendFragment(
+        frag: Fragment,
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent
+    ) {
+        if (frag is ResultGate) {
+            frag.onFragmentResult(requestCode, resultCode, data)
+        } else {
+            frag.onActivityResult(requestCode, resultCode, data)
+        }
     }
 
     private fun throwNotFound() {
