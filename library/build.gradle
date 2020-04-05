@@ -89,6 +89,7 @@ task javadoc(type: Javadoc) {
     excludes = ['**/*.kt']
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    failOnError false // FIXME
 }
 task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
