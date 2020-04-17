@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven'
 
-def auraVersionName = "1.21.4"
+def auraVersionName = "1.21.5"
 
 android {
     compileSdkVersion 29
@@ -59,7 +59,7 @@ dependencies {
     implementation 'androidx.core:core:1.2.0'
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'com.silverhetch:clotho:1.17.0'
+    implementation 'com.silverhetch:clotho:1.17.2'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.13'

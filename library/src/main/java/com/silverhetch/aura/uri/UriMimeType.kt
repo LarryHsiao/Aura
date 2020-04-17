@@ -1,10 +1,13 @@
 package com.silverhetch.aura.uri
 
-import android.webkit.MimeTypeMap
-import com.silverhetch.clotho.Source
 import android.content.ContentResolver
 import android.content.Context
 import android.net.Uri
+import android.webkit.MimeTypeMap
+import com.silverhetch.clotho.Source
+import com.silverhetch.clotho.file.FileMimeType
+import java.io.File
+import java.net.URI
 
 /**
  * Source to generate mime type from uri.
@@ -16,7 +19,7 @@ class UriMimeType(
     private val url: String
 ) : Source<String> {
     companion object {
-        private const val UNRECOGNIZED_MIME_TYPE = ""
+        private const val UNRECOGNIZED_MIME_TYPE = "content/unknown"
     }
 
     override fun value(): String {
@@ -24,9 +27,13 @@ class UriMimeType(
             val cr = context.contentResolver
             cr.getType(Uri.parse(url)) ?: UNRECOGNIZED_MIME_TYPE
         } else {
-            MimeTypeMap.getSingleton().getMimeTypeFromExtension(
-                MimeTypeMap.getFileExtensionFromUrl(url).toLowerCase()
-            ) ?: UNRECOGNIZED_MIME_TYPE
+            if (url.startsWith("file")) {
+                FileMimeType(File(URI.create(url))).value()
+            } else {
+                MimeTypeMap.getSingleton().getMimeTypeFromExtension(
+                    MimeTypeMap.getFileExtensionFromUrl(url).toLowerCase()
+                ) ?: UNRECOGNIZED_MIME_TYPE
+            }
         }
     }
 }

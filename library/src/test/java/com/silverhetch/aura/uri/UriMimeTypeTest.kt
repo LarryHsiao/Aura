@@ -25,15 +25,26 @@ class UriMimeTypeTest {
     }
 
     /**
-     * Empty string if input not a uri
+     * Unknown content type if input not a uri
      */
     @Test
     fun invalidedUri() {
         assertEquals(
-            "",
+            "content/unknown",
             UriMimeType(
                 ApplicationProvider.getApplicationContext(),
                 "abc.bcd/abc.png"
+            ).value()
+        )
+    }
+
+    @Test
+    fun file() {
+        assertEquals(
+            "image/png",
+            UriMimeType(
+                ApplicationProvider.getApplicationContext(),
+                "file:/abc.bcd/abc.png"
             ).value()
         )
     }
