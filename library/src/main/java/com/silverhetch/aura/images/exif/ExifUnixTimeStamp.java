@@ -32,7 +32,7 @@ public class ExifUnixTimeStamp implements Source<Long> {
         try {
             return format.parse(exifDateTime.value()).getTime();
         } catch (ParseException e) {
-            throw new RuntimeException(e);
+            return -1L;
         }
     }
 }

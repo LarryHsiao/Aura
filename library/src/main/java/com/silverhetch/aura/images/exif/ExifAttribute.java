@@ -17,6 +17,7 @@ public class ExifAttribute implements Source<String> {
 
     @Override
     public String value() {
-        return source.value().getAttribute(tag);
+        final String value = source.value().getAttribute(tag);
+        return value == null ? "" : value;
     }
 }
