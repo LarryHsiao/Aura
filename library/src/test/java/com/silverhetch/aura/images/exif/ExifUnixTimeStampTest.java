@@ -37,4 +37,27 @@ public class ExifUnixTimeStampTest {
                 )
             ).value());
     }
+
+    /**
+     * -1L if exif does not contain time.
+     */
+    @Test
+    public void noTimeData() throws Exception {
+        Assert.assertEquals(
+            new Long(-1L), //2008:10:22 17:00:07
+            new ExifUnixTimeStamp(
+                new ExifAttribute(
+                    new ConstSource<>(
+                        new ExifInterface(
+                            new File(
+                                getClass().getClassLoader().getResource(
+                                    "exif_sample_nothing.jpg"
+                                ).toURI()
+                            ).getAbsolutePath()
+                        )
+                    ), TAG_DATETIME_ORIGINAL
+                )
+            ).value()
+        );
+    }
 }
