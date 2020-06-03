@@ -8,6 +8,7 @@ Some utility objects/classes for Android projects
 
 
 [![PDD status](http://www.0pdd.com/svg?name=LarryHsiao/Aura)](http://www.0pdd.com/p?name=LarryHsiao/Aura)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FLarryHsiao%2FAura.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FLarryHsiao%2FAura?ref=badge_shield)
 
 [![We recommend IntelliJ IDEA](http://www.elegantobjects.org/intellij-idea.svg)](https://www.jetbrains.com/idea/)
 
@@ -48,3 +49,7 @@ Application Module [aurademo][1] have some implementation with Aura for developm
 [1]: https://github.com/LarryHsiao/Aura/tree/master/aurnademo
 [2]: https://github.com/LarryHsiao/Clotho
 [3]: https://github.com/LarryHsiao/Aura/blob/master/library/src/main/java/com/silverhetch/aura/permission/PermissionsImpl.kt
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FLarryHsiao%2FAura.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FLarryHsiao%2FAura?ref=badge_large)
