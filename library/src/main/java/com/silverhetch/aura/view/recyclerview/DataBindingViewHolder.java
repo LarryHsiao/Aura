@@ -1,4 +1,4 @@
-package com.silverhetch.aura.view;
+package com.silverhetch.aura.view.recyclerview;
 
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;

@@ -43,9 +43,11 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
         private const val REQUEST_CODE_SHOW_MIME_TYPE = 1000
     }
 
-    private val permissions = PermissionsImpl(this, this, arrayOf(
-        WRITE_EXTERNAL_STORAGE
-    ))
+    private val permissions = PermissionsImpl(
+        this,
+        this,
+        arrayOf(WRITE_EXTERNAL_STORAGE)
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,7 +93,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 "PcikerMultipleMimeType",
                 "Clickable span",
                 "Empty List Adapter",
-                "Alert Dialog"
+                "Alert Dialog",
+                "Slider"
             ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, view, position, _ ->
             when (position) {
@@ -258,6 +261,11 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 34 -> {
                     startActivity(
                         Intent(this, AlertDemoActivity::class.java)
+                    )
+                }
+                35 -> {
+                    startActivity(
+                        Intent(this, SliderDemoActivity::class.java)
                     )
                 }
             }

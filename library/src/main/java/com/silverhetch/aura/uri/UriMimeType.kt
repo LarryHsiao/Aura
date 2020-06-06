@@ -8,6 +8,7 @@ import com.silverhetch.clotho.Source
 import com.silverhetch.clotho.file.FileMimeType
 import java.io.File
 import java.net.URI
+import java.util.*
 
 /**
  * Source to generate mime type from uri.
@@ -31,7 +32,7 @@ class UriMimeType(
                 FileMimeType(File(URI.create(url))).value()
             } else {
                 MimeTypeMap.getSingleton().getMimeTypeFromExtension(
-                    MimeTypeMap.getFileExtensionFromUrl(url).toLowerCase()
+                    MimeTypeMap.getFileExtensionFromUrl(url).toLowerCase(Locale.US)
                 ) ?: UNRECOGNIZED_MIME_TYPE
             }
         }
