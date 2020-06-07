@@ -29,6 +29,7 @@ Currently this library has no implementation plans, just develop what I need in 
  - [AuraProgressBar](docs/aura_progress_bar.md)
  - [StatusBarColor](docs/StatusBarColor.md)
  - [SpannableStr](docs/spannable_string.md)
+ - [Slider](docs/slider.md)
 
 ## Quick start
 
