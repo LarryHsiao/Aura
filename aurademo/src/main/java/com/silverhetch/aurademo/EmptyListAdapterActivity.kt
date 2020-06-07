@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.silverhetch.aura.view.EmptyListAdapter
-import com.silverhetch.aura.view.ViewHolder
+import com.silverhetch.aura.view.recyclerview.EmptyListAdapter
+import com.silverhetch.aura.view.recyclerview.ViewHolder
 import com.silverhetch.clotho.Source
 
 /**

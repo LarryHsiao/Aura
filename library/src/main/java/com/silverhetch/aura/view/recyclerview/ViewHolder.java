@@ -1,4 +1,4 @@
-package com.silverhetch.aura.view;
+package com.silverhetch.aura.view.recyclerview;
 
 import androidx.annotation.IdRes;
 import androidx.recyclerview.widget.RecyclerView;
