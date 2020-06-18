@@ -8,8 +8,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.silverhetch.aura.AuraActivity
 import com.silverhetch.aura.view.RandomColors
-import com.silverhetch.aura.view.recyclerview.AutoScroll
-import com.silverhetch.aura.view.recyclerview.Slider
+import com.silverhetch.aura.view.recyclerview.slider.Slider
 import com.silverhetch.aura.view.recyclerview.ViewHolder
 
 /**
@@ -31,7 +30,7 @@ class SliderDemoActivity : AuraActivity() {
                 }
 
                 override fun getItemCount(): Int {
-                    return 10
+                    return 2
                 }
 
                 override fun onBindViewHolder(
@@ -44,7 +43,6 @@ class SliderDemoActivity : AuraActivity() {
                 }
             }
             Slider(this).fire()
-            AutoScroll(this,1500).fire()
         })
     }
 }

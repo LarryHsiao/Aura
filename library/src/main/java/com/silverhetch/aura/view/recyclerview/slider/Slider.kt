@@ -1,4 +1,4 @@
-package com.silverhetch.aura.view.recyclerview
+package com.silverhetch.aura.view.recyclerview.slider
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -13,7 +13,7 @@ class Slider(private val view: RecyclerView) : Action {
     override fun fire() {
         view.apply {
             layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-            addItemDecoration(DotsIndicatorDecoration(context))
+            addItemDecoration(DotIndicatorDecoration(this))
             PagerSnapHelper().attachToRecyclerView(this)
         }
     }
