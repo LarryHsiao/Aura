@@ -1,4 +1,5 @@
 plugins {
+    id "com.larryhsiao.thea" version "1.4.7"
     id "org.jlleitschuh.gradle.ktlint" version "8.2.0"
 }
 
@@ -7,7 +8,9 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven'
 
-def auraVersionName = "1.22.5"
+System.out.println(thea.indicator.apply(""))
+
+def auraVersionName = thea.version.version().versionName()
 
 android {
     compileSdkVersion 29
