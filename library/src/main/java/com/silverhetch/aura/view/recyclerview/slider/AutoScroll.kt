@@ -1,4 +1,4 @@
-package com.silverhetch.aura.view.recyclerview
+package com.silverhetch.aura.view.recyclerview.slider
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
