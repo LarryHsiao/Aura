@@ -144,7 +144,7 @@ class DotIndicatorDecoration constructor(
         }
     }
 
-    private infix fun attachTo(recyclerView: RecyclerView) {
+    infix fun attachTo(recyclerView: RecyclerView) {
         if (::scrollListener.isInitialized) {
             recyclerView.removeOnScrollListener(scrollListener)
         }
