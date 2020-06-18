@@ -195,5 +195,4 @@ class DotIndicatorDecoration constructor(
             )
         )
     }
-
 }

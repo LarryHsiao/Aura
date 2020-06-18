@@ -69,11 +69,11 @@ internal class DotDimensions(
         selectNextSmall()
 
         // no more than 3 5's in a row backward
-        if (selectedIndex > 3
-            && dots[selectedIndex - 1] == 5.toByte()
-            && dots[selectedIndex - 2] == 5.toByte()
-            && dots[selectedIndex - 3] == 5.toByte()
-            && dots[selectedIndex - 4] == 5.toByte()) {
+        if (selectedIndex > 3 &&
+            dots[selectedIndex - 1] == 5.toByte() &&
+            dots[selectedIndex - 2] == 5.toByte() &&
+            dots[selectedIndex - 3] == 5.toByte() &&
+            dots[selectedIndex - 4] == 5.toByte()) {
             dots[selectedIndex - 4] = 4
             if (selectedIndex - 5 >= 0) {
                 dots[selectedIndex - 5] = 2
@@ -108,11 +108,11 @@ internal class DotDimensions(
     private fun selectPreviousLarge() {
         selectPreviousSmall()
         // no more than 3 5's in a row backward
-        if (selectedIndex < dots.size - 4
-            && dots[selectedIndex + 1] == 5.toByte()
-            && dots[selectedIndex + 2] == 5.toByte()
-            && dots[selectedIndex + 3] == 5.toByte()
-            && dots[selectedIndex + 4] == 5.toByte()) {
+        if (selectedIndex < dots.size - 4 &&
+            dots[selectedIndex + 1] == 5.toByte() &&
+            dots[selectedIndex + 2] == 5.toByte() &&
+            dots[selectedIndex + 3] == 5.toByte() &&
+            dots[selectedIndex + 4] == 5.toByte()) {
             dots[selectedIndex + 4] = 4
             if (selectedIndex + 5 < dots.size) {
                 dots[selectedIndex + 5] = 2
