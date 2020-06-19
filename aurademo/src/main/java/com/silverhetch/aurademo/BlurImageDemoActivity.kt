@@ -10,6 +10,7 @@ import com.silverhetch.aura.AuraActivity
 import com.silverhetch.aura.view.bitmap.BlurImage
 import com.silverhetch.aura.view.bitmap.CroppedImage
 import com.silverhetch.aura.view.bitmap.MergedImage
+import com.silverhetch.aura.view.bitmap.ResizedImage
 import com.silverhetch.clotho.source.ConstSource
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -26,28 +27,30 @@ class BlurImageDemoActivity : AuraActivity() {
 
         // Blur part of image in Rect(50,50,500,500)
         Picasso.get()
-                .load("https://images.freeimages.com/images/large-previews/a0d/autumn-tree-1382832.jpg")
-                .into(imageView, object : Callback {
-                    override fun onSuccess() {
-                        if (imageView.drawable !is BitmapDrawable) {
-                            return
-                        }
-                        val original = ConstSource((imageView.drawable as BitmapDrawable).bitmap)
-                        val result = MergedImage(
+            .load("https://images.freeimages.com/images/large-previews/a0d/autumn-tree-1382832.jpg")
+            .into(imageView, object : Callback {
+                override fun onSuccess() {
+                    if (imageView.drawable !is BitmapDrawable) {
+                        return
+                    }
+                    val original = ConstSource((imageView.drawable as BitmapDrawable).bitmap)
+                    val result = ResizedImage(MergedImage(
+                        original,
+                        BlurImage(
+                            this@BlurImageDemoActivity,
+                            CroppedImage(
                                 original,
-                                BlurImage(
-                                        this@BlurImageDemoActivity,
-                                        CroppedImage(
-                                                original,
-                                                Rect(50, 50, 99999, 9999)
-                                        ),
-                                        25f
-                                ), 50, 50).value()
-                        imageView.setImageBitmap(result)
-                    }
+                                Rect(50, 50, 99999, 9999)
+                            ),
+                            25f
+                        ), 50, 50),
+                        100
+                    ).value()
+                    imageView.setImageBitmap(result)
+                }
 
-                    override fun onError(e: Exception?) {
-                    }
-                })
+                override fun onError(e: Exception?) {
+                }
+            })
     }
 }

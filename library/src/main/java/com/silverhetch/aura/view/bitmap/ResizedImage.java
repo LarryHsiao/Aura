@@ -2,28 +2,34 @@ package com.silverhetch.aura.view.bitmap;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import com.silverhetch.clotho.Source;
+
+import static android.graphics.Bitmap.createScaledBitmap;
 
 /**
  * Created by larryhsiao on 2017/10/24.
  */
 
-public class ResizedImage {
+public class ResizedImage implements Source<Bitmap>{
+    private final Source<Bitmap> original;
     private final int maximumWidth;
 
-    public ResizedImage(int maximumWidth) {
+    public ResizedImage(Source<Bitmap> original, int maximumWidth) {
+        this.original = original;
         this.maximumWidth = maximumWidth;
     }
 
-    public Bitmap image(String filePath) {
+    @Override
+    public Bitmap value() {
         Bitmap bitmap = null;
         try {
-            bitmap = BitmapFactory.decodeFile(filePath);
+            bitmap = original.value();
             final float originalWidth = bitmap.getWidth();
             final float originalHeight = bitmap.getHeight();
 
             final float destWidth = maximumWidth;
             final float destHeight = destWidth * (originalHeight / originalWidth);
-            return Bitmap.createScaledBitmap(bitmap, (int) destWidth, (int) destHeight, false);
+            return createScaledBitmap(bitmap, (int) destWidth, (int) destHeight, false);
         } finally {
             if (bitmap != null) {
                 bitmap.recycle();
