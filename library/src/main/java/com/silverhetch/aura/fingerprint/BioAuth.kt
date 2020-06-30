@@ -1,12 +1,19 @@
 package com.silverhetch.aura.fingerprint
 
+import android.app.KeyguardManager
+import android.content.Context.KEYGUARD_SERVICE
+import android.os.Build.VERSION.SDK_INT
+import android.os.Build.VERSION_CODES.M
+import android.os.Build.VERSION_CODES.Q
 import android.os.Handler
 import android.os.Looper
+import androidx.biometric.BiometricConstants.ERROR_CANCELED
 import androidx.biometric.BiometricPrompt
+import androidx.biometric.BiometricPrompt.PromptInfo
 import androidx.fragment.app.FragmentActivity
 import com.silverhetch.aura.R
 import com.silverhetch.clotho.Action
-import java.util.concurrent.Executors
+import java.util.concurrent.Executors.newSingleThreadExecutor
 
 /**
  * Bio auth simple wrapper, to make the implementation a little bit easier .
@@ -18,21 +25,37 @@ class BioAuth(
 ) : Action, BiometricPrompt.AuthenticationCallback() {
     private val mainThread = Handler(Looper.getMainLooper())
     override fun fire() {
-        BiometricPrompt(
+        val keyguardManager = activity.getSystemService(KEYGUARD_SERVICE) as KeyguardManager
+        val fallbackAuth = if (SDK_INT > M && SDK_INT < Q) {
+            // The Q and above's fallback auth don't have success callback
+            keyguardManager.isDeviceSecure
+        } else {
+            false
+        }
+        val promote = BiometricPrompt(
             activity,
-            Executors.newSingleThreadExecutor(),
+            newSingleThreadExecutor(),
             this
-        ).authenticate(
-            BiometricPrompt.PromptInfo.Builder()
+        )
+        promote.authenticate(
+            PromptInfo.Builder()
                 .setTitle(activity.getString(R.string.authorization))
-                .setNegativeButtonText(activity.getString(R.string.cancel))
-                .build()
+                .setDeviceCredentialAllowed(fallbackAuth)
+                .apply {
+                    if (!fallbackAuth) {
+                        setNegativeButtonText(activity.getString(R.string.cancel))
+                    }
+                }.build()
         )
     }
 
     override fun onAuthenticationError(code: Int, err: CharSequence) {
         super.onAuthenticationError(code, err)
-        mainThread.post { failed(code, err.toString()) }
+        when (code) {
+            ERROR_CANCELED -> {
+            }
+            else -> mainThread.post { failed(code, err.toString()) }
+        }
     }
 
     override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
