@@ -14,7 +14,7 @@ class InAppBrightness(private val activity: Activity) : Brightness {
             value = 1f
         }
         if (value < 0) {
-            value = -1f
+            value = 0f
         }
         activity.window.attributes = activity.window.attributes.apply { screenBrightness = value }
     }
