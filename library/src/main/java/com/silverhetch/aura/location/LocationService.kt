@@ -1,5 +1,6 @@
 package com.silverhetch.aura.location
 
+import android.annotation.SuppressLint
 import android.app.Service
 import android.content.Intent
 import android.location.Location
@@ -47,6 +48,7 @@ class LocationService : Service() {
         return super.onStartCommand(intent, flags, startId)
     }
 
+    @SuppressLint("MissingPermission") // Permission should declared at app.
     override fun onCreate() {
         super.onCreate()
         thread.start()
