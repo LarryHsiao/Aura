@@ -1,3 +1,1 @@
 include ':library',':aurademo'
-
-enableFeaturePreview('STABLE_PUBLISHING')
