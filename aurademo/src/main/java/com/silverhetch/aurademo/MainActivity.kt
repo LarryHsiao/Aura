@@ -94,7 +94,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 "Clickable span",
                 "Empty List Adapter",
                 "Alert Dialog",
-                "Slider"
+                "Slider",
+                "BlurTextView"
             ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, view, position, _ ->
             when (position) {
@@ -268,6 +269,9 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                         Intent(this, SliderDemoActivity::class.java)
                     )
                 }
+                36-> startActivity(
+                    Intent(this, BlurTextViewDemoActivity::class.java)
+                )
             }
         }
     }
