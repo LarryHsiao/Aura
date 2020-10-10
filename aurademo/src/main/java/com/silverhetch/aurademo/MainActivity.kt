@@ -22,6 +22,7 @@ import com.silverhetch.aura.intent.PickerIntent
 import com.silverhetch.aura.media.BitmapStream
 import com.silverhetch.aura.permission.PermissionCallback
 import com.silverhetch.aura.permission.PermissionsImpl
+import com.silverhetch.aura.sercurity.IsDeviceSecure
 import com.silverhetch.aura.uri.UriMimeType
 import com.silverhetch.aura.view.TintDrawable
 import com.silverhetch.aura.view.activity.SystemUIColor
@@ -95,7 +96,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 "Empty List Adapter",
                 "Alert Dialog",
                 "Slider",
-                "BlurTextView"
+                "BlurTextView",
+                "Is device secure?"
             ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, view, position, _ ->
             when (position) {
@@ -272,6 +274,11 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 36-> startActivity(
                     Intent(this, BlurTextViewDemoActivity::class.java)
                 )
+                37 -> Toast.makeText(
+                    this,
+                    "Device secured: " + IsDeviceSecure(this).value(),
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
     }
