@@ -97,7 +97,8 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                 "Alert Dialog",
                 "Slider",
                 "BlurTextView",
-                "Is device secure?"
+                "Is device secure?",
+                "DeepLink client"
             ))
         listview.onItemClickListener = AdapterView.OnItemClickListener { _, view, position, _ ->
             when (position) {
@@ -279,6 +280,9 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                     "Device secured: " + IsDeviceSecure(this).value(),
                     Toast.LENGTH_LONG
                 ).show()
+                38 -> startActivity(
+                    Intent(this, DeepLinkClientDemoActivity::class.java)
+                )
             }
         }
     }
