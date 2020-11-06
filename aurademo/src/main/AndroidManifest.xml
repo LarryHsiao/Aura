@@ -95,6 +95,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".BlurTextViewDemoActivity" />
+        <activity android:name=".DeepLinkClientDemoActivity" />
 
         <service android:name="com.silverhetch.aurademo.media.MediaPlayerService"/>
     </application>
