@@ -8,8 +8,8 @@ import android.view.WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS
 import android.view.WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
 import androidx.annotation.ColorInt
 import androidx.annotation.FloatRange
-import com.silverhetch.clotho.Action
-import com.silverhetch.clotho.utility.color.LuminanceByColor
+import com.larryhsiao.clotho.Action
+import com.larryhsiao.clotho.utility.color.LuminanceByColor
 
 /**
  * Source to change the status bar and icon theme by luminance.

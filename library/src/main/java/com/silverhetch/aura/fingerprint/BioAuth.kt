@@ -12,7 +12,7 @@ import androidx.biometric.BiometricPrompt
 import androidx.biometric.BiometricPrompt.PromptInfo
 import androidx.fragment.app.FragmentActivity
 import com.silverhetch.aura.R
-import com.silverhetch.clotho.Action
+import com.larryhsiao.clotho.Action
 import java.util.concurrent.Executors.newSingleThreadExecutor
 
 /**

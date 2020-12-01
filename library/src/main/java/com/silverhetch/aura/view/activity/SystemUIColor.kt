@@ -5,7 +5,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.FloatRange
 import com.silverhetch.aura.view.activity.navigationbar.NavigationBarColor
 import com.silverhetch.aura.view.activity.statusbar.StatusBarColor
-import com.silverhetch.clotho.Action
+import com.larryhsiao.clotho.Action
 
 /**
  * Change system UI color

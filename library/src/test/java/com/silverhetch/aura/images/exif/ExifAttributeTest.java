@@ -1,7 +1,7 @@
 package com.silverhetch.aura.images.exif;
 
 import androidx.exifinterface.media.ExifInterface;
-import com.silverhetch.clotho.source.ConstSource;
+import com.larryhsiao.clotho.source.ConstSource;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

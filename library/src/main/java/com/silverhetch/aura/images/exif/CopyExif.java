@@ -1,8 +1,8 @@
 package com.silverhetch.aura.images.exif;
 
 import androidx.exifinterface.media.ExifInterface;
-import com.silverhetch.clotho.Action;
-import com.silverhetch.clotho.Source;
+import com.larryhsiao.clotho.Action;
+import com.larryhsiao.clotho.Source;
 
 import java.io.File;
 import java.util.List;

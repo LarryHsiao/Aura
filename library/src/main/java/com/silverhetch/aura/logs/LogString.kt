@@ -1,6 +1,6 @@
 package com.silverhetch.aura.logs
 
-import com.silverhetch.clotho.Source
+import com.larryhsiao.clotho.Source
 import java.text.SimpleDateFormat
 
 import java.util.Locale.getDefault

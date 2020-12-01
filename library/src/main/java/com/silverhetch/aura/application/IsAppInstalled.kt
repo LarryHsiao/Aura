@@ -2,7 +2,7 @@ package com.silverhetch.aura.application
 
 import android.content.Context
 import android.content.pm.PackageManager
-import com.silverhetch.clotho.Source
+import com.larryhsiao.clotho.Source
 
 /**
  * Source to determine the application is installed or not.

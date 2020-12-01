@@ -3,7 +3,7 @@ package com.silverhetch.aura.view;
 import android.app.Activity;
 import android.graphics.Point;
 import android.view.Display;
-import com.silverhetch.clotho.Source;
+import com.larryhsiao.clotho.Source;
 
 import java.util.AbstractMap;
 import java.util.Map;

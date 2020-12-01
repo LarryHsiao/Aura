@@ -2,7 +2,7 @@ package com.silverhetch.aura.view.activity
 
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
-import com.silverhetch.clotho.Action
+import com.larryhsiao.clotho.Action
 
 /**
  * Action to change ActionBar's title.

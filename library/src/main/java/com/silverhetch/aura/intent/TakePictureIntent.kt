@@ -3,7 +3,7 @@ package com.silverhetch.aura.intent
 import android.content.Intent
 import android.net.Uri
 import android.provider.MediaStore
-import com.silverhetch.clotho.Source
+import com.larryhsiao.clotho.Source
 
 /**
  * Source to build [Intent] that takes picture

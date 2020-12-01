@@ -3,7 +3,7 @@ package com.silverhetch.aura.view.measures
 import android.content.Context
 import android.graphics.Point
 import android.view.WindowManager
-import com.silverhetch.clotho.Source
+import com.larryhsiao.clotho.Source
 
 /**
  * Utility to grant the screen size from context.

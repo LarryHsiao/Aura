@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Build.VERSION.SDK_INT
 import android.os.Build.VERSION_CODES.M
 import androidx.core.hardware.fingerprint.FingerprintManagerCompat
-import com.silverhetch.clotho.storage.Ceres
+import com.larryhsiao.clotho.storage.Ceres
 
 /**
  * Implementation of [Fingerprint]

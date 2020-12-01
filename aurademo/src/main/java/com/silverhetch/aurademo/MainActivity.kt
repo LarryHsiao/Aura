@@ -17,6 +17,7 @@ import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.silverhetch.aurademo.*
 import com.silverhetch.aura.intent.ChooserIntent
 import com.silverhetch.aura.intent.PickerIntent
 import com.silverhetch.aura.media.BitmapStream
@@ -33,7 +34,7 @@ import com.silverhetch.aura.view.images.pager.PagerImageActivity
 import com.silverhetch.aurademo.fabcontrol.FabControlDemoActivity
 import com.silverhetch.aurademo.media.MediaPlayerDemoActivity
 import com.silverhetch.aurademo.resultpipe.FragmentResultDemoActivity
-import com.silverhetch.clotho.file.ToFile
+import com.larryhsiao.clotho.file.ToFile
 import java.io.File
 
 /**

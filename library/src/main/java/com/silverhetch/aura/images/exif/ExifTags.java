@@ -1,7 +1,7 @@
 package com.silverhetch.aura.images.exif;
 
 import androidx.exifinterface.media.ExifInterface;
-import com.silverhetch.clotho.Source;
+import com.larryhsiao.clotho.Source;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

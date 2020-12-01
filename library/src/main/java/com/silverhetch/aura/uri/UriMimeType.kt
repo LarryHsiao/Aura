@@ -4,8 +4,8 @@ import android.content.ContentResolver
 import android.content.Context
 import android.net.Uri
 import android.webkit.MimeTypeMap
-import com.silverhetch.clotho.Source
-import com.silverhetch.clotho.file.FileMimeType
+import com.larryhsiao.clotho.Source
+import com.larryhsiao.clotho.file.FileMimeType
 import java.io.File
 import java.net.URI
 import java.util.*

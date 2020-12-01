@@ -5,7 +5,7 @@ import android.text.Spanned;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import androidx.annotation.NonNull;
-import com.silverhetch.clotho.Source;
+import com.larryhsiao.clotho.Source;
 
 /**
  * Source to build clickable string for textView.

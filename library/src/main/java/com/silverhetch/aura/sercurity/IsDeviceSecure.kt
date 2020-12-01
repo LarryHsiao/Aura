@@ -4,7 +4,7 @@ import android.app.KeyguardManager
 import android.content.Context
 import android.os.Build
 import androidx.core.content.ContextCompat
-import com.silverhetch.clotho.Source
+import com.larryhsiao.clotho.Source
 
 /**
  * Source to determine if the device have pin/password

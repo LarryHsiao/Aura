@@ -4,7 +4,7 @@ import android.content.Context
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
-import com.silverhetch.clotho.Source
+import com.larryhsiao.clotho.Source
 import java.io.IOException
 import java.lang.IllegalArgumentException
 import java.util.*

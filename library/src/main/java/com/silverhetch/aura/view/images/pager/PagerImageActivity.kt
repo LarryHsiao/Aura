@@ -17,6 +17,7 @@ import com.silverhetch.aura.R
 class PagerImageActivity : AuraActivity() {
     companion object {
         private const val URI_IMAGE = "URI_IMAGE"
+
         /**
          * Factory method for the [Intent]
          */
@@ -52,7 +53,9 @@ class PagerImageActivity : AuraActivity() {
         window.decorView.systemUiVisibility = visibility
 
         with(supportFragmentManager.beginTransaction()) {
-            replace(R.id.temp001, PagerImageFragment.newInstance(intent.getStringArrayListExtra(URI_IMAGE)))
+            replace(R.id.temp001, PagerImageFragment.newInstance(
+                intent.getStringArrayListExtra(URI_IMAGE) ?: ArrayList()
+            ))
             commit()
         }
     }

@@ -1,7 +1,7 @@
 package com.silverhetch.aura.view.span;
 
 import android.text.SpannableStringBuilder;
-import com.silverhetch.clotho.Source;
+import com.larryhsiao.clotho.Source;
 
 /**
  * Source to build a {@link CharSequence} to append two charSequence without losing
