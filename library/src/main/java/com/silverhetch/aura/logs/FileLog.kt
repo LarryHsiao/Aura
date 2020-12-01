@@ -1,6 +1,6 @@
 package com.silverhetch.aura.logs
 
-import com.silverhetch.clotho.log.Log
+import com.larryhsiao.clotho.log.Log
 
 import java.io.BufferedWriter
 import java.io.File

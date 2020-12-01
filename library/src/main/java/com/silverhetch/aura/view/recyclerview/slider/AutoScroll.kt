@@ -2,7 +2,7 @@ package com.silverhetch.aura.view.recyclerview.slider
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.silverhetch.clotho.Action
+import com.larryhsiao.clotho.Action
 
 /**
  * Action to make a RecyclerView auto scroll.

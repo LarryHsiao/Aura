@@ -1,7 +1,7 @@
 package com.silverhetch.aura.view
 
 import android.graphics.Color
-import com.silverhetch.clotho.Source
+import com.larryhsiao.clotho.Source
 
 /**
  * Source to generate RGB color int.

@@ -1,6 +1,6 @@
 package com.silverhetch.aura.images.exif;
 
-import com.silverhetch.clotho.Source;
+import com.larryhsiao.clotho.Source;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

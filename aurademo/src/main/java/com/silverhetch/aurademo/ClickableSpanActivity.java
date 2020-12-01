@@ -9,7 +9,7 @@ import com.silverhetch.aura.AuraActivity;
 import com.silverhetch.aura.view.span.AppendedStr;
 import com.silverhetch.aura.view.span.ClickableStr;
 import com.silverhetch.aura.view.span.ColoredStr;
-import com.silverhetch.clotho.source.ConstSource;
+import com.larryhsiao.clotho.source.ConstSource;
 
 /**
  * Activity to demo clickable textView Action

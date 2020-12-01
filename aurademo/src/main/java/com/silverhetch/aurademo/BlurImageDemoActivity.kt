@@ -11,7 +11,7 @@ import com.silverhetch.aura.view.bitmap.BlurImage
 import com.silverhetch.aura.view.bitmap.CroppedImage
 import com.silverhetch.aura.view.bitmap.MergedImage
 import com.silverhetch.aura.view.bitmap.ResizedImage
-import com.silverhetch.clotho.source.ConstSource
+import com.larryhsiao.clotho.source.ConstSource
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 

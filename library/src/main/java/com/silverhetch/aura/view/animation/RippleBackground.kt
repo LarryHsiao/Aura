@@ -3,7 +3,7 @@ package com.silverhetch.aura.view.animation
 import android.content.Context
 import android.util.TypedValue
 import androidx.annotation.DrawableRes
-import com.silverhetch.clotho.Source
+import com.larryhsiao.clotho.Source
 
 /**
  * Ripple background resource id

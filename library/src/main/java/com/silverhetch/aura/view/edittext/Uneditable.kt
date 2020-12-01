@@ -1,7 +1,7 @@
 package com.silverhetch.aura.view.edittext
 
 import android.widget.EditText
-import com.silverhetch.clotho.Action
+import com.larryhsiao.clotho.Action
 
 /**
  * Action that make given [EditText] uneditable .

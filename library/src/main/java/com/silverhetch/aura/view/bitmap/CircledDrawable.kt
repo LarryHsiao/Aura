@@ -4,7 +4,7 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
-import com.silverhetch.clotho.Source
+import com.larryhsiao.clotho.Source
 
 /**
  * Source to build a Drawable that crops the given bitmap to circle one.

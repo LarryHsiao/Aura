@@ -1,6 +1,6 @@
 package com.silverhetch.aura.logs
 
-import com.silverhetch.clotho.log.Log
+import com.larryhsiao.clotho.log.Log
 
 /**
  * Created by mikes on 4/24/2018.

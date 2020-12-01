@@ -2,7 +2,7 @@ package com.silverhetch.aura.view.textview
 
 import android.graphics.BlurMaskFilter
 import android.widget.TextView
-import com.silverhetch.clotho.Action
+import com.larryhsiao.clotho.Action
 
 /**
  * Action to blur given [TextView].

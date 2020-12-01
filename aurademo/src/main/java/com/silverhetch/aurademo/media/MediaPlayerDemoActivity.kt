@@ -94,9 +94,9 @@ class MediaPlayerDemoActivity : AuraActivity() {
         pendingPlay = savedInstanceState == null && intent?.data != null
 
         mediaPlayer_display.holder.addCallback(object : SurfaceHolder.Callback {
-            override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {}
-            override fun surfaceDestroyed(holder: SurfaceHolder?) {}
-            override fun surfaceCreated(holder: SurfaceHolder?) {
+            override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {}
+            override fun surfaceDestroyed(holder: SurfaceHolder) {}
+            override fun surfaceCreated(holder: SurfaceHolder) {
                 startService(Intent(this@MediaPlayerDemoActivity, MediaPlayerService::class.java))
                 bindService(
                     Intent(this@MediaPlayerDemoActivity, MediaPlayerService::class.java),

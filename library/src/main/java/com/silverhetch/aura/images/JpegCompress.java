@@ -1,7 +1,7 @@
 package com.silverhetch.aura.images;
 
 import com.silverhetch.aura.images.exif.CopyExif;
-import com.silverhetch.clotho.Action;
+import com.larryhsiao.clotho.Action;
 
 import java.io.File;
 import java.io.FileOutputStream;

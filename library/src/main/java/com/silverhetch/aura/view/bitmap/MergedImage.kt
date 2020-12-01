@@ -3,7 +3,7 @@ package com.silverhetch.aura.view.bitmap
 import android.graphics.Bitmap
 import android.graphics.Bitmap.Config.ARGB_8888
 import android.graphics.Canvas
-import com.silverhetch.clotho.Source
+import com.larryhsiao.clotho.Source
 
 /**
  * Merge two [Bitmap] into one.

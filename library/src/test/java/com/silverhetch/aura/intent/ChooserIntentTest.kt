@@ -22,7 +22,7 @@ class ChooserIntentTest {
                 "title",
                 Intent(Intent.ACTION_VIEW),
                 Intent("ACTION")
-            ).value().getParcelableArrayExtra(Intent.EXTRA_INITIAL_INTENTS).size
+            ).value().getParcelableArrayExtra(Intent.EXTRA_INITIAL_INTENTS)?.size
         )
     }
 
@@ -34,7 +34,7 @@ class ChooserIntentTest {
                 ApplicationProvider.getApplicationContext(),
                 "title",
                 Intent(Intent.ACTION_VIEW)
-            ).value().getParcelableArrayExtra(Intent.EXTRA_INITIAL_INTENTS).size
+            ).value().getParcelableArrayExtra(Intent.EXTRA_INITIAL_INTENTS)?.size
         )
     }
 }

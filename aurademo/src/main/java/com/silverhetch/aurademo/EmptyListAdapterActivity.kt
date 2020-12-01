@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.silverhetch.aura.view.recyclerview.EmptyListAdapter
 import com.silverhetch.aura.view.recyclerview.ViewHolder
-import com.silverhetch.clotho.Source
+import com.larryhsiao.clotho.Source
 
 /**
  * Activity to demo the adapter of empty list

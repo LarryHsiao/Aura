@@ -2,7 +2,7 @@ package com.silverhetch.aura.view.bitmap
 
 import android.graphics.Bitmap
 import android.graphics.Rect
-import com.silverhetch.clotho.Source
+import com.larryhsiao.clotho.Source
 
 /**
  * Crop a [Bitmap] with given coordinator.

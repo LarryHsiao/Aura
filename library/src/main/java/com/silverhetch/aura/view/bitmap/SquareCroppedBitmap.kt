@@ -1,7 +1,7 @@
 package com.silverhetch.aura.view.bitmap
 
 import android.graphics.Bitmap
-import com.silverhetch.clotho.Source
+import com.larryhsiao.clotho.Source
 
 /**
  * Source to build a square [Bitmap] with given Bitmap which the output cropped from.

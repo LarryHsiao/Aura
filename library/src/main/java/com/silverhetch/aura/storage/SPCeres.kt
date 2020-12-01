@@ -1,7 +1,7 @@
 package com.silverhetch.aura.storage
 
 import android.content.SharedPreferences
-import com.silverhetch.clotho.storage.Ceres
+import com.larryhsiao.clotho.storage.Ceres
 
 /**
  * [Ceres] implemented with shared preference

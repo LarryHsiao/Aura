@@ -3,7 +3,7 @@ package com.silverhetch.aura.view.span;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
-import com.silverhetch.clotho.Source;
+import com.larryhsiao.clotho.Source;
 
 /**
  * Source to build colored {@link CharSequence}

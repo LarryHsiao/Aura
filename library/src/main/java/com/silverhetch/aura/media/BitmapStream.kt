@@ -1,7 +1,7 @@
 package com.silverhetch.aura.media
 
 import android.graphics.Bitmap
-import com.silverhetch.clotho.Source
+import com.larryhsiao.clotho.Source
 import java.io.*
 
 /**

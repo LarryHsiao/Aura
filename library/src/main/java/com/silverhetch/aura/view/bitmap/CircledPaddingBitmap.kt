@@ -2,8 +2,8 @@ package com.silverhetch.aura.view.bitmap
 
 import android.graphics.Bitmap
 import android.graphics.Color
-import com.silverhetch.clotho.Source
-import com.silverhetch.clotho.source.ConstSource
+import com.larryhsiao.clotho.Source
+import com.larryhsiao.clotho.source.ConstSource
 import kotlin.math.pow
 import kotlin.math.sqrt
 

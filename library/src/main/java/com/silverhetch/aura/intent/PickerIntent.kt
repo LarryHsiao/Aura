@@ -5,7 +5,7 @@ import android.content.Intent.ACTION_GET_CONTENT
 import android.content.Intent.EXTRA_MIME_TYPES
 import android.os.Build.VERSION.SDK_INT
 import android.os.Build.VERSION_CODES.KITKAT
-import com.silverhetch.clotho.Source
+import com.larryhsiao.clotho.Source
 
 /**
  * Source to generate [Intent] for picking files in given MimeType.

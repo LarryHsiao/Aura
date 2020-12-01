@@ -3,7 +3,7 @@ package com.silverhetch.aura.view
 import android.graphics.drawable.Drawable
 import androidx.annotation.ColorInt
 import androidx.core.graphics.drawable.DrawableCompat
-import com.silverhetch.clotho.Source
+import com.larryhsiao.clotho.Source
 
 /**
  * Source to generate drawable that tint with given color.
