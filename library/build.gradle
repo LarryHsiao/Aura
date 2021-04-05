@@ -43,9 +43,7 @@ android {
 }
 
 repositories {
-    mavenCentral()
-    google()
-    maven { url = "https://dl.bintray.com/larryhsiao/Elizabeth" }
+    maven { url = 'https://larryhsiao.com:11000/repository/maven-public/' }
 }
 
 dependencies {
@@ -140,58 +138,26 @@ project.afterEvaluate {
     }
 }
 
-
-apply plugin: 'com.jfrog.bintray'
-bintray {
-    user = 'larryhsiao'
-    key = System.getenv('BINTRAY_KEY')
-    publications = ['release']
-    publish = true
-    override = true
-    pkg {
-        repo = 'Elizabeth'
-        name = 'Aura'
-        userOrg = 'larryhsiao'
-        licenses = ['MIT']
-        vcsUrl = 'https://github.com/LarryHsiao/Aura.git'
-        version {
-            name = auraVersionName
-            gpg {
-                sign = true
-                passphrase = System.getenv('BINTRAY_PASSPHRASE')
-            }
-        }
-    }
-}
-
 apply plugin: 'digital.wup.android-maven-publish'
 publishing {
     publications {
         release(MavenPublication) {
-            from components.android
             artifact sourcesJar
             artifact javadocJar
-            groupId 'com.silverhetch'
+            groupId 'com.larryhsiao'
             artifactId 'aura'
             version auraVersionName
+            from components.android
         }
     }
-}
 
-apply plugin: 'org.sonarqube'
-sonarqube {
-    properties {
-        property "sonar.projectName", "Aura"
-        property "sonar.projectVersion", "${auraVersionName}"
-
-        property 'sonar.sources', 'src/main/java'
-        property "sonar.tests", "src/test/java"
-
-//        property "sonar.java.binaries", "build/tmp/kotlin-classes/debug"
-
-        property "sonar.java.coveragePlugin", "jacoco"
-        property "sonar.android.lint.report", "build/reports/lint-results.xml"
-        property "sonar.jacoco.reportPaths", "build/jacoco/testDebugUnitTest.exec"
-        property "sonar.junit.reportPahts", "build/test-results/testDebugUnitTest"
+    repositories {
+        maven {
+            url = 'https://larryhsiao.com:11000/repository/Elizabeth/'
+            credentials {
+                username(System.getenv("NEXUS_USER_NAME"))
+                password(System.getenv("NEXUS_PASSWORD"))
+            }
+        }
     }
 }
