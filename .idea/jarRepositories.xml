@@ -41,5 +41,10 @@
       <option name="name" value="maven3" />
       <option name="url" value="https://dl.bintray.com/larryhsiao/Elizabeth" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="https://larryhsiao.com:11000/repository/maven-public/" />
+    </remote-repository>
   </component>
 </project>

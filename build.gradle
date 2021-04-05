@@ -3,15 +3,12 @@
 buildscript {
     ext.kotlin_version = '1.4.10'
     repositories {
-        google()
-        jcenter()
+        maven { url = 'https://larryhsiao.com:11000/repository/maven-public/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
         classpath 'digital.wup:android-maven-publish:3.6.2'
-        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -20,13 +17,7 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
-
-        maven{
-            url 'https://maven.google.com'
-        }
-        maven { url = 'http://172.104.79.181:81/repository/Elizabeth/'}
-        google()
+        maven { url = 'https://larryhsiao.com:11000/repository/maven-public/' }
     }
 }
 
