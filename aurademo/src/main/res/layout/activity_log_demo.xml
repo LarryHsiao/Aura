@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.silverhetch.aura.view.log.LogView
+    <com.larryhsiao.aura.view.log.LogView
         android:layout_width="match_parent"
         android:id="@+id/logDemo_logView"
         android:layout_height="match_parent" />

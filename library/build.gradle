@@ -109,7 +109,7 @@ project.afterEvaluate {
 
             classDirectories.from = fileTree(
                     dir: "${project.buildDir}/intermediates/javac/$name/",
-                    includes: ['**/com/silverhetch/aura/**'],
+                    includes: ['**/com/larryhsiao/aura/**'],
                     excludes: ['**/R.class',
                                '**/R$*.class',
                                '**/*$ViewInjector*.*',
@@ -118,7 +118,7 @@ project.afterEvaluate {
                                '**/Manifest*.*']
             ) + fileTree(
                     dir: "${project.buildDir}/tmp/kotlin-classes/$name",
-                    includes: ['**/com/silverhetch/aura/**'],
+                    includes: ['**/com/larryhsiao/aura/**'],
                     excludes: ['**/R.class',
                                '**/R$*.class',
                                '**/*$ViewInjector*.*',

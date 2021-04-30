@@ -37,7 +37,7 @@ Currently this library has no implementation plans, just develop what I need in 
 
 ```groovy
 dependencies {
-    implementation 'com.silverhetch:aura:{latest_version}'
+    implementation 'com.larryhsiao:aura:{latest_version}'
 }
 ```
 
@@ -48,4 +48,4 @@ Application Module [aurademo][1] have some implementation with Aura for developm
 
 [1]: https://github.com/LarryHsiao/Aura/tree/master/aurnademo
 [2]: https://github.com/LarryHsiao/Clotho
-[3]: https://github.com/LarryHsiao/Aura/blob/master/library/src/main/java/com/silverhetch/aura/permission/PermissionsImpl.kt
+[3]: https://github.com/LarryHsiao/Aura/blob/master/library/src/main/java/com/larryhsiao/aura/permission/PermissionsImpl.kt
