@@ -21,7 +21,6 @@ import com.larryhsiao.aura.view.fragment.PageControlImpl
 import com.larryhsiao.aura.view.fragment.PhantomPageControl
 import com.larryhsiao.aura.view.fragment.callback.ResultGate
 import com.larryhsiao.aura.view.fragment.callback.ResultPipe
-import com.larryhsiao.aura.R
 
 /**
  * Aura style Activity. Inherit this class for all Aura feature.

@@ -7,7 +7,7 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 
 /**
- * Tests for [com.silverhetch.aura.application.IsAppInstalled]
+ * Tests for [com.larryhsiao.aura.application.IsAppInstalled]
  */
 @RunWith(RobolectricTestRunner::class)
 class IsAppIntentInstalledTest {

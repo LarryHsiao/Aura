@@ -1,4 +1,4 @@
-package com.silverhetch.aurademo
+package com.larryhsiao.aurademo
 
 import org.junit.Test
 

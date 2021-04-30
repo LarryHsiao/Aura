@@ -8,7 +8,7 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 
 /**
- * Tests for [com.silverhetch.aura.bundle.BundleString]
+ * Tests for [com.larryhsiao.aura.bundle.BundleString]
  */
 @RunWith(RobolectricTestRunner::class)
 class BundleStringTest {

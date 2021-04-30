@@ -36,7 +36,7 @@ public class ExifTags implements Source<List<String>> {
             try {
                 if (field.getName().startsWith("TAG_")) {
                     Object exifName = field.get(null);
-                    if (exifName != null && !dynamicTags.contains(exifName)) {
+                    if (exifName instanceof String && !dynamicTags.contains(exifName)) {
                         result.add(exifName.toString());
                     }
                 }

@@ -7,7 +7,7 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 
 /**
- * Test for [com.silverhetch.aura.uri.UriMimeType]
+ * Test for [com.larryhsiao.aura.uri.UriMimeType]
  */
 @RunWith(RobolectricTestRunner::class)
 class UriMimeTypeTest {

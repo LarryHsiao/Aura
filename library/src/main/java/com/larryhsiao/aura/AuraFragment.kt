@@ -17,7 +17,6 @@ import com.larryhsiao.aura.view.fab.PhantomFabControl
 import com.larryhsiao.aura.view.fragment.PageControl
 import com.larryhsiao.aura.view.fragment.callback.FragmentResult
 import com.larryhsiao.aura.view.fragment.callback.ResultPipe
-import com.larryhsiao.aura.R
 
 /**
  * Convenient Fragment class to inherit all Aura style interfaces.
