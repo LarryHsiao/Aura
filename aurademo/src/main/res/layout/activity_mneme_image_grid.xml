@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MnemeImageGridDemoActivity">
+    tools:context="com.larryhsiao.aurademo.MnemeImageGridDemoActivity">
 
-    <com.silverhetch.aura.view.images.MnemeImageGrid
+    <com.larryhsiao.aura.view.images.MnemeImageGrid
         android:id="@+id/mnemeImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

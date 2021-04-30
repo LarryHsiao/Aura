@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import com.larryhsiao.clotho.date.JdkWeekdays;
 import com.larryhsiao.clotho.date.Weekday;
 import com.larryhsiao.clotho.date.Weekdays;
-import com.silverhetch.aura.view.measures.DP;
+import com.larryhsiao.aura.view.measures.DP;
 
 import static android.os.Build.VERSION_CODES.LOLLIPOP;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;

@@ -11,7 +11,7 @@ Implemented with canvas drawing and Animator.
 
 ###### Xml
 ```xml
-<com.silverhetch.aura.view.progressbar.AuraProgressBar
+<com.larryhsiao.aura.view.progressbar.AuraProgressBar
     android:id="@+id/auraProgressBar"
     android:layout_width="300dp"
     android:layout_height="100dp"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.silverhetch.aurademo">
+    package="com.larryhsiao.aurademo">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- For overlay -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -16,9 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MnemeImageGridDemoActivity"></activity>
-        <activity android:name=".InputDialogDemoActivity" />
-        <activity android:name="com.silverhetch.aurademo.MainActivity">
+        <activity android:name="com.larryhsiao.aurademo.MnemeImageGridDemoActivity"></activity>
+        <activity android:name="com.larryhsiao.aurademo.InputDialogDemoActivity" />
+        <activity android:name="com.larryhsiao.aurademo.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,13 +26,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ColorFragmentDemoActivity" />
-        <activity android:name=".fabcontrol.FabControlDemoActivity" />
-        <activity android:name=".PermissionRequestAuraActivity" />
-        <activity android:name=".AuraFragmentPermissionActivity" />
-        <activity android:name=".LogDemoActivity" />
+        <activity android:name="com.larryhsiao.aurademo.ColorFragmentDemoActivity" />
+        <activity android:name="com.larryhsiao.aurademo.fabcontrol.FabControlDemoActivity" />
+        <activity android:name="com.larryhsiao.aurademo.PermissionRequestAuraActivity" />
+        <activity android:name="com.larryhsiao.aurademo.AuraFragmentPermissionActivity" />
+        <activity android:name="com.larryhsiao.aurademo.LogDemoActivity" />
         <activity
-            android:name=".BlurImageDemoActivity"
+            android:name="com.larryhsiao.aurademo.BlurImageDemoActivity"
             android:label="BlurDemo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +41,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".media.MediaPlayerDemoActivity"
+            android:name="com.larryhsiao.aurademo.media.MediaPlayerDemoActivity"
             android:label="MediaPlayerDemo">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -56,7 +56,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FullScreenActivity"
+            android:name="com.larryhsiao.aurademo.FullScreenActivity"
             android:label="Fullscreen Demo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -65,10 +65,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".OverlayPermissionDemoActivity"
+            android:name="com.larryhsiao.aurademo.OverlayPermissionDemoActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".PlaceHolderViewDemoActivity"
+            android:name="com.larryhsiao.aurademo.PlaceHolderViewDemoActivity"
             android:label="Place Holder">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -76,27 +76,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RippleBackgroundActivity" />
-        <activity android:name=".BrightnessDemoActivity" />
-        <activity android:name=".ConstructingActivity" />
-        <activity android:name=".AuraProgressBarActivity" />
-        <activity android:name=".WebViewDemoActivity" />
-        <activity android:name=".PageControlDemoActivity" />
-        <activity android:name=".resultpipe.FragmentResultDemoActivity" />
-        <activity android:name=".AudioRecordingActivity" />
-        <activity android:name=".BioAuthDemoActivity" />
-        <activity android:name=".ClickableSpanActivity" />
-        <activity android:name=".EmptyListAdapterActivity" />
-        <activity android:name=".AlertDemoActivity" />
-        <activity android:name=".SliderDemoActivity" >
+        <activity android:name="com.larryhsiao.aurademo.RippleBackgroundActivity" />
+        <activity android:name="com.larryhsiao.aurademo.BrightnessDemoActivity" />
+        <activity android:name="com.larryhsiao.aurademo.ConstructingActivity" />
+        <activity android:name="com.larryhsiao.aurademo.AuraProgressBarActivity" />
+        <activity android:name="com.larryhsiao.aurademo.WebViewDemoActivity" />
+        <activity android:name="com.larryhsiao.aurademo.PageControlDemoActivity" />
+        <activity android:name="com.larryhsiao.aurademo.resultpipe.FragmentResultDemoActivity" />
+        <activity android:name="com.larryhsiao.aurademo.AudioRecordingActivity" />
+        <activity android:name="com.larryhsiao.aurademo.BioAuthDemoActivity" />
+        <activity android:name="com.larryhsiao.aurademo.ClickableSpanActivity" />
+        <activity android:name="com.larryhsiao.aurademo.EmptyListAdapterActivity" />
+        <activity android:name="com.larryhsiao.aurademo.AlertDemoActivity" />
+        <activity android:name="com.larryhsiao.aurademo.SliderDemoActivity" >
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER"/>
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
-        <activity android:name=".BlurTextViewDemoActivity" />
-        <activity android:name=".DeepLinkClientDemoActivity" />
+        <activity android:name="com.larryhsiao.aurademo.BlurTextViewDemoActivity" />
+        <activity android:name="com.larryhsiao.aurademo.DeepLinkClientDemoActivity" />
 
-        <service android:name="com.silverhetch.aurademo.media.MediaPlayerService"/>
+        <service android:name="com.larryhsiao.aurademo.media.MediaPlayerService"/>
     </application>
 </manifest>
