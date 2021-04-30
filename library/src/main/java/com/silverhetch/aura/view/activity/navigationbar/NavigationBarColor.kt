@@ -9,7 +9,7 @@ import android.view.WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
 import androidx.annotation.ColorInt
 import androidx.annotation.FloatRange
 import com.larryhsiao.clotho.Action
-import com.larryhsiao.clotho.utility.color.LuminanceByColor
+import com.larryhsiao.clotho.color.LuminanceByColor
 
 /**
  * Change the navigation bar color.

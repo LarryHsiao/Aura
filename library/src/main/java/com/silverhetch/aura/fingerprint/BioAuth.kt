@@ -7,8 +7,8 @@ import android.os.Build.VERSION_CODES.M
 import android.os.Build.VERSION_CODES.Q
 import android.os.Handler
 import android.os.Looper
-import androidx.biometric.BiometricConstants.ERROR_CANCELED
 import androidx.biometric.BiometricPrompt
+import androidx.biometric.BiometricPrompt.ERROR_CANCELED
 import androidx.biometric.BiometricPrompt.PromptInfo
 import androidx.fragment.app.FragmentActivity
 import com.silverhetch.aura.R

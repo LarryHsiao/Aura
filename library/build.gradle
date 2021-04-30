@@ -1,5 +1,5 @@
 plugins {
-    id "com.larryhsiao.thea" version "1.4.7"
+    id "com.larryhsiao.thea" version "1.5.0"
     id "org.jlleitschuh.gradle.ktlint" version "8.2.0"
 }
 
@@ -8,9 +8,9 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven'
 
-System.out.println(thea.indicator.apply(""))
+System.out.println(thea.versionIndicator())
 
-def auraVersionName = thea.version.version().versionName()
+def auraVersionName = thea.version().versionName()
 
 android {
     compileSdkVersion 29
@@ -54,19 +54,19 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.android.support', module: 'exifinterface'
     }
-    implementation 'androidx.biometric:biometric:1.0.1'
-    implementation 'com.google.android.gms:play-services-location:17.0.0'
-    implementation 'androidx.fragment:fragment:1.2.5'
+    implementation 'androidx.biometric:biometric:1.1.0'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+    implementation 'androidx.fragment:fragment:1.3.3'
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.annotation:annotation:1.2.0'
     implementation 'androidx.core:core:1.3.2'
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'com.larryhsiao:clotho:1.18.5'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0'
+    implementation 'com.larryhsiao:clotho:1.18.6'
     implementation 'com.google.code.gson:gson:2.8.6'
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.2'
     testImplementation 'androidx.test:core:1.3.0'
-    testImplementation 'org.robolectric:robolectric:4.3.1'
+    testImplementation 'org.robolectric:robolectric:4.4'
     testImplementation 'org.robolectric:shadows-multidex:4.0.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
