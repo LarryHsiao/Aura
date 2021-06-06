@@ -34,7 +34,6 @@ import com.larryhsiao.aurademo.fabcontrol.FabControlDemoActivity
 import com.larryhsiao.aurademo.media.MediaPlayerDemoActivity
 import com.larryhsiao.aurademo.resultpipe.FragmentResultDemoActivity
 import com.larryhsiao.clotho.file.ToFile
-import com.larryhsiao.aurademo.R
 import java.io.File
 
 /**
