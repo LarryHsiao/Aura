@@ -24,4 +24,8 @@ class SPCeres(private val preference: SharedPreferences) : Ceres {
     override fun store(key: String, value: String) {
         preference.edit().putString(key, value).apply()
     }
+
+    override fun delete(key: String?) {
+        preference.edit().remove(key).apply()
+    }
 }

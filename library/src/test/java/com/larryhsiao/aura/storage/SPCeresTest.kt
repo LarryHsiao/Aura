@@ -17,9 +17,31 @@ class SPCeresTest {
      */
     @Test
     fun simple() {
-        SPCeres(RuntimeEnvironment.application.getSharedPreferences("test", Context.MODE_PRIVATE)).let {
+        SPCeres(
+            RuntimeEnvironment.application.getSharedPreferences(
+                "test",
+                Context.MODE_PRIVATE
+            )
+        ).let {
             it.store("Key", "value")
             Assert.assertEquals("value", it.get("Key"))
+        }
+    }
+
+    /**
+     * Delete function
+     */
+    @Test
+    fun delete() {
+        SPCeres(
+            RuntimeEnvironment.application.getSharedPreferences(
+                "test",
+                Context.MODE_PRIVATE
+            )
+        ).let {
+            it.store("Key", "value")
+            it.delete("Key")
+            Assert.assertEquals("", it.get("Key"))
         }
     }
 }
