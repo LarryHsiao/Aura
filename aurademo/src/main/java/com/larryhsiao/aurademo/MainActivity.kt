@@ -211,7 +211,7 @@ class MainActivity : AppCompatActivity(), PermissionCallback {
                                         ).value()).value()
                                     ).value(),
                                     dest
-                                ) {}.fire()
+                                ) { null }.fire()
                             }.toURI().toString()
                         )
                     )
