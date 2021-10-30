@@ -28,7 +28,7 @@ public class JpegCompressTest {
                 "exif_sample_geo_001.jpg"
             ).toURI()
         );
-        final File target = Files.createTempFile("jpeg-compress-", ".jpg").toFile();
+        final File target = new File("D:\\Dropbox\\abc.jpeg");
         new JpegCompress(origin, target).fire();
 
         ExifInterface ori = new ExifInterface(origin.getAbsolutePath());
